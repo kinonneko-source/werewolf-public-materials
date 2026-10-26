@@ -1,0 +1,12 @@
+UTC: 2026-10-26T03:56:42.697361+00:00
+Python: 3.13.16 (main, Oct  6 2026, 02:04:05) [GCC 12.2.0]
+Snapshot: 46ef0d5
+Command: /usr/local/bin/python examples/run_test_game.py
+Exit: 0
+STDOUT:
+{"alive": ["A", "B", "C", "D", "E", "F"], "game_id": "TEST-process-restart-demo", "label": "TEST", "phase": "night", "round": 1, "status": "running", "test": true, "version": 1, "winner": null}
+{"alive": ["B", "C", "D", "E", "F"], "game_id": "TEST-process-restart-demo", "label": "TEST", "phase": "night", "round": 2, "status": "running", "test": true, "version": 24, "winner": null}
+{"alive": ["C", "D", "E", "F"], "game_id": "TEST-process-restart-demo", "label": "TEST", "phase": "finished", "round": 2, "status": "finished", "test": true, "version": 44, "winner": "good"}
+{"test": true, "fresh_process_per_operation": true, "winner": "good", "event_count": 44, "audit_verified": true, "network_sends": 0}
+
+STDERR:

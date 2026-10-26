@@ -1,0 +1,581 @@
+[
+  {
+    "game_id": "VERIFY-e636f4da-20261023",
+    "mode": "verification",
+    "test": false,
+    "source_database_sha256": "9f7ff7b6c6e3d69de6e722d0ccf153adbdcd44a9fd308b7fce34a68a254001f6",
+    "status": "stopped",
+    "winner": null,
+    "public_events": [
+      {
+        "source_outbox_id": "VERIFY-e636f4da-20261023:1:0",
+        "version": 1,
+        "type": "created",
+        "public_fields": {
+          "players": [
+            "星界军甲",
+            "星界军乙",
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6097
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-20261023:20:0",
+        "version": 20,
+        "type": "control",
+        "public_fields": {
+          "operation": "pause"
+        },
+        "delivery_status": "pending",
+        "platform_message_id": null
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-20261023:21:0",
+        "version": 21,
+        "type": "control",
+        "public_fields": {
+          "operation": "stop"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6103
+      }
+    ],
+    "warning": "本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。"
+  },
+  {
+    "game_id": "VERIFY-e636f4da-relay-20261023",
+    "mode": "verification",
+    "test": false,
+    "source_database_sha256": "9f7ff7b6c6e3d69de6e722d0ccf153adbdcd44a9fd308b7fce34a68a254001f6",
+    "status": "finished",
+    "winner": "wolves",
+    "public_events": [
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:1:0",
+        "version": 1,
+        "type": "created",
+        "public_fields": {
+          "players": [
+            "星界军甲",
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己",
+            "星界军乙"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6104
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:35:0",
+        "version": 35,
+        "type": "deaths",
+        "public_fields": {
+          "players": []
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6118
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:35:1",
+        "version": 35,
+        "type": "discussion",
+        "public_fields": {
+          "alive": [
+            "星界军甲",
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己",
+            "星界军乙"
+          ],
+          "deadline": 1792758400.213581
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6119
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:52:0",
+        "version": 52,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军戊",
+          "text": "目前公开信息有限，建议大家给出明确判断及理由。我会结合公开发言再决定投票。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6122
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:53:0",
+        "version": 53,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军甲",
+          "text": "当前全员存活。我先听各位发言，关注投票理由与前后是否一致。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6123
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:54:0",
+        "version": 54,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军丙",
+          "text": "目前我没有足够的公开信息锁定目标。请各位说明判断依据，我会结合发言中的矛盾与投票理由作选择。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6124
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:61:0",
+        "version": 61,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军己",
+          "text": "己席已实收本阶段提示。本轮仅验证真实收发通道；当前提示未提供局内身份或行动证据，我暂不指认任何席位，请按已收到的公开信息继续讨论。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6128
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:65:0",
+        "version": 65,
+        "type": "vote",
+        "public_fields": {
+          "alive": [
+            "星界军甲",
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己",
+            "星界军乙"
+          ],
+          "deadline": 1792759016.6596968
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6134
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:86:0",
+        "version": 86,
+        "type": "deaths",
+        "public_fields": {
+          "players": []
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6149
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:86:3",
+        "version": 86,
+        "type": "night",
+        "public_fields": {
+          "round": 2
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6150
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:109:0",
+        "version": 109,
+        "type": "deaths",
+        "public_fields": {
+          "players": [
+            "星界军甲",
+            "星界军乙"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6175
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:109:1",
+        "version": 109,
+        "type": "discussion",
+        "public_fields": {
+          "alive": [
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己"
+          ],
+          "deadline": 1792760606.7724054
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6176
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:122:0",
+        "version": 122,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军丁",
+          "text": "丁席已收到本阶段提示，按验证局规则发言。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6178
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:123:0",
+        "version": 123,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军戊",
+          "text": "现在存活人数减少，建议各位明确说明本轮怀疑对象与依据，避免分散票型。我希望听到可以核对的公开理由。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6179
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:130:0",
+        "version": 130,
+        "type": "vote",
+        "public_fields": {
+          "alive": [
+            "星界军丙",
+            "星界军丁",
+            "星界军戊",
+            "星界军己"
+          ],
+          "deadline": 1792761113.7611089
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6180
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:145:0",
+        "version": 145,
+        "type": "deaths",
+        "public_fields": {
+          "players": [
+            "星界军丙"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6185
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:151:1",
+        "version": 151,
+        "type": "night",
+        "public_fields": {
+          "round": 3
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6188
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:166:0",
+        "version": 166,
+        "type": "deaths",
+        "public_fields": {
+          "players": [
+            "星界军丁"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6199
+      },
+      {
+        "source_outbox_id": "VERIFY-e636f4da-relay-20261023:166:1",
+        "version": 166,
+        "type": "winner",
+        "public_fields": {
+          "winner": "wolves"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6200
+      }
+    ],
+    "warning": "本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。"
+  },
+  {
+    "game_id": "VERIFY-c71137ee-20261023-01",
+    "mode": "verification",
+    "test": false,
+    "source_database_sha256": "925ffef8eac96d58fccc5674dad0770269c9ecb8866bd3363215ebe9cd8164bc",
+    "status": "finished",
+    "winner": "good",
+    "public_events": [
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:1:0",
+        "version": 1,
+        "type": "created",
+        "public_fields": {
+          "players": [
+            "星界军甲",
+            "星界军乙",
+            "星界军丙",
+            "星界军戊",
+            "星界军己",
+            "马卡里乌斯"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6623
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:32:0",
+        "version": 32,
+        "type": "deaths",
+        "public_fields": {
+          "players": []
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6625
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:32:1",
+        "version": 32,
+        "type": "discussion",
+        "public_fields": {
+          "alive": [
+            "星界军甲",
+            "星界军乙",
+            "星界军丙",
+            "星界军戊",
+            "星界军己",
+            "马卡里乌斯"
+          ],
+          "deadline": 1792782892.013637
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6625
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:47:0",
+        "version": 47,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "马卡里乌斯",
+          "text": "六号马卡里乌斯发言。昨夜无人出局，但单凭平安夜不能判断谁是好人，也不能确定女巫用了药。目前没有公开查验，也还没有其他人的发言，我不凭座位随机点狼。预言家如果决定出来，请说清查了谁、结果是什么；若有人对跳，我们比较两人的查验和后续逻辑，不是谁先说就信谁。女巫不必为了说明平安夜把用药和身份都暴露，猎人也先别急着跳。希望各位给出具体怀疑对象及理由，不要只说自己是好人。我会看公开发言和查验再决定投票；无可靠信息时也不会把猜测说成铁证。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6626
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:50:0",
+        "version": 50,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军丙",
+          "text": "丙发言。首夜平安，不能据此认定任何人是好人，也先别让女巫报救人信息。六人两狼，今天投错可能直接进入危险局面，不能凭座位盲推。预言家若查到狼建议明确报查验；若只有好人结果，自行判断起跳收益。对跳请各自说清首验对象和选择理由，大家重点看逻辑和投票一致性。当前没有他人发言可比较，我暂不点狼，投票前会结合完整公开发言判断。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6627
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:51:0",
+        "version": 51,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军乙",
+          "text": "乙发言：首夜平安，先别把平安夜直接等同于某个人被救。六人两狼，今天需要认真找狼，不能只按座位盲推。预言家若有查杀请明确报查验对象和结果；若报金水也请说明后续验人思路，便于比较是否真在找狼。女巫暂时不必为了证明平安夜暴露自己。我目前没有足够公开信息锁定谁，重点看谁先给结论后补理由、谁只跟票不解释。等大家原话齐了再决定票，暂不提前绑定票型。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6628
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:52:0",
+        "version": 52,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军甲",
+          "text": "甲席：我报预言家，首夜查验马卡里乌斯，结果不是狼。目前六人都活着，两狼在乙、丙、戊、己四席中。首夜无人出局只能确认公开结果，不能据此确定女巫用药或谁被刀。请其他席位给出独立判断；若有对跳，请明确首夜验人和结果，我会结合发言找矛盾。今天投票需要集中，平票会让狼继续获得夜间机会。我暂不盲点某席为狼，等全员原话再定票。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6629
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:53:0",
+        "version": 53,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军戊",
+          "text": "我是4号戊。首夜无人出局，只能确认今天六人都在，不能据此认定谁是好人，也不急着让女巫报信息。预言家若有查杀，建议把查验对象和理由讲清楚；若有人对跳，重点看双方信息能否自洽。我目前没有可锁定的狼坑，想听每人明确说一个怀疑对象和理由，投票前再结合公开发言判断。不要因为谁先说或说得长就直接认好。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6630
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:54:0",
+        "version": 54,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军己",
+          "text": "我是5号己，女巫。首夜刀口是6号马卡里乌斯，我用了救药，因此今天平安夜；毒药还在。6号是我的银水，先偏好人看，但不能排除狼自刀。六人局今天投错、今晚再死好人很危险，请预言家报真实查验和验人理由；若有对跳，大家比较查验与发言，不凭身份外因素站队。目前没有公开查验，我不随便点狼，投票前会看完各席原话。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6631
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:65:0",
+        "version": 65,
+        "type": "vote",
+        "public_fields": {
+          "alive": [
+            "星界军甲",
+            "星界军乙",
+            "星界军丙",
+            "星界军戊",
+            "星界军己",
+            "马卡里乌斯"
+          ],
+          "deadline": 1792782948.9679048
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6632
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:86:0",
+        "version": 86,
+        "type": "deaths",
+        "public_fields": {
+          "players": []
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6633
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:86:3",
+        "version": 86,
+        "type": "night",
+        "public_fields": {
+          "round": 2
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6633
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:105:0",
+        "version": 105,
+        "type": "deaths",
+        "public_fields": {
+          "players": [
+            "星界军甲",
+            "星界军戊"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6634
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:105:1",
+        "version": 105,
+        "type": "discussion",
+        "public_fields": {
+          "alive": [
+            "星界军乙",
+            "星界军丙",
+            "星界军己",
+            "马卡里乌斯"
+          ],
+          "deadline": 1792783070.475056
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6634
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:116:0",
+        "version": 116,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军丙",
+          "text": "丙报猎人。昨天我投戊。甲单跳预言家给马卡里乌斯金水，己单跳女巫报救马卡里乌斯；现在甲、戊双死而游戏继续，说明至少一狼已经出局。我倾向甲被刀、戊被己毒，但需要己说清今晚用药，不能把推断当公告。若己确认毒戊，则甲预言家、马卡里乌斯金水和我的猎人视角合起来，最后一狼就是乙，今天我会投乙。乙若反驳，请给出能解释双死和首日两份无人对跳身份的完整逻辑。若有人对跳猎人，也请直接说。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6635
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:119:0",
+        "version": 119,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "马卡里乌斯",
+          "text": "六号发言。昨天我投戊，理由只是其要求别人明确点人，自己却没有给怀疑对象，这只是弱怀疑，不是查杀；最终无人出局。今天公开只确认甲、戊死亡，没有公布死亡原因和身份。甲昨天单跳预言家给我金水，己单跳女巫报救我，我目前倾向相信这两条信息，但死亡不能单独证明甲是真预言家。请己说明昨夜是否用毒、毒谁，这能帮助解释两人死亡。若甲是被刀、戊是被毒，且规则正常判胜仍进入白天，则戊很可能是狼，否则两狼四人已达胜利条件；这是条件推断，不是已揭身份。剩下乙和丙昨天都没有明确狼坑，公开信息不足以硬分。请两位今天明确：相信甲和己吗，昨天投了谁，今天怀疑谁以及理由。我倾向从乙、丙中找最后一狼，但会听完发言再投，不把这种倾向当铁证。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6636
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:120:0",
+        "version": 120,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军己",
+          "text": "5号己继续报信息：昨夜刀口是甲，我已没有救药；我用毒药毒了戊。昨日我也投戊，原因是在唯一预言家甲与其金水6号之外，乙丙戊三席的发言都偏保守，戊只有索要怀疑对象，没有给具体找狼方法，我优先排他。今天四人仍未终局，按两狼规则结合甲夜间被刀，戊大概率被我毒中狼；剩下一狼重点看乙丙。6号有甲金水与首夜刀口双重支撑，暂不回头。乙丙请各自解释昨日票投谁及理由，并给出今天判断；我会听完再投，不能让平票继续消耗好人。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6637
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:121:0",
+        "version": 121,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军乙",
+          "text": "乙：现在四人还能进入白天，说明场上不会仍有两狼。甲和戊双死，结合甲昨天报预言家、己报女巫，我倾向甲被刀、戊被毒，请己说明用毒对象。昨天我投丙，是在乙丙戊己四席中排除当时无人对跳的女巫后，丙只作安全表态，没有独立找狼点，所以选丙。今天我报猎人，昨天没跳是避免提前暴露枪；目前我最怀疑丙。六号若是真金水，己又能说明毒戊，剩余狼坑就在丙。请丙正面报身份和昨天投票理由，别只靠我发言较晚或座位来推我。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6638
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:128:0",
+        "version": 128,
+        "type": "vote",
+        "public_fields": {
+          "alive": [
+            "星界军乙",
+            "星界军丙",
+            "星界军己",
+            "马卡里乌斯"
+          ],
+          "deadline": 1792783120.9278388
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6639
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:143:0",
+        "version": 143,
+        "type": "deaths",
+        "public_fields": {
+          "players": [
+            "星界军乙"
+          ]
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6640
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:148:0",
+        "version": 148,
+        "type": "player_speech",
+        "public_fields": {
+          "speaker": "星界军乙",
+          "text": "乙遗言：本席已出局，不再参与后续投票。我的投票和判断都已在前面说明，场上按公开结算继续判断即可。等待主持完成遗言后的正式胜负结算。"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6641
+      },
+      {
+        "source_outbox_id": "VERIFY-c71137ee-20261023-01:151:0",
+        "version": 151,
+        "type": "winner",
+        "public_fields": {
+          "winner": "good"
+        },
+        "delivery_status": "sent",
+        "platform_message_id": 6642
+      }
+    ],
+    "warning": "本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。"
+  }
+]

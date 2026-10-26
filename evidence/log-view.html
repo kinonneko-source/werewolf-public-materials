@@ -1,0 +1,49 @@
+<!doctype html><meta charset="utf-8"><title>Actual offline TEST logs</title><style>body{background:#101924;color:#d9e5ef;font:16px monospace;padding:32px}h1{font-size:25px;color:#8bddb2}h2{color:#9bcaff}pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55;border:1px solid #42536a;padding:20px}p{color:#b9c9d9}</style><h1>Werewolf — actual offline TEST output</h1><p>Local replay only • no platform sends • no model calls<br>Excerpts from the raw logs in this directory. Not a historical platform screenshot.</p><h2>Snapshot 99a6ca7</h2><pre>UTC: 2026-10-26T03:56:14.524348+00:00
+Python: 3.13.16 (main, Oct  6 2026, 02:04:05) [GCC 12.2.0]
+Snapshot: 99a6ca7
+Command: /usr/local/bin/python -m unittest discover -s tests -v
+Exit: 0
+test_100_complete_or_bounded_games (test_simulation.SimulationTest.test_100_complete_or_bounded_games) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 20.268s
+
+OK
+
+UTC: 2026-10-26T03:56:18.974955+00:00
+Python: 3.13.16 (main, Oct  6 2026, 02:04:05) [GCC 12.2.0]
+Snapshot: 99a6ca7
+Command: /usr/local/bin/python examples/run_test_game.py
+Exit: 0
+STDOUT:
+{&quot;alive&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;night&quot;, &quot;round&quot;: 1, &quot;status&quot;: &quot;running&quot;, &quot;test&quot;: true, &quot;version&quot;: 1, &quot;winner&quot;: null}
+{&quot;alive&quot;: [&quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;night&quot;, &quot;round&quot;: 2, &quot;status&quot;: &quot;running&quot;, &quot;test&quot;: true, &quot;version&quot;: 24, &quot;winner&quot;: null}
+{&quot;alive&quot;: [&quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;finished&quot;, &quot;round&quot;: 2, &quot;status&quot;: &quot;finished&quot;, &quot;test&quot;: true, &quot;version&quot;: 44, &quot;winner&quot;: &quot;good&quot;}
+{&quot;test&quot;: true, &quot;fresh_process_per_operation&quot;: true, &quot;winner&quot;: &quot;good&quot;, &quot;event_count&quot;: 44, &quot;audit_verified&quot;: true, &quot;network_sends&quot;: 0}
+
+STDERR:
+</pre><h2>Snapshot 46ef0d5</h2><pre>UTC: 2026-10-26T03:56:38.573414+00:00
+Python: 3.13.16 (main, Oct  6 2026, 02:04:05) [GCC 12.2.0]
+Snapshot: 46ef0d5
+Command: /usr/local/bin/python -m unittest discover -s tests -v
+Exit: 0
+test_100_complete_or_bounded_games (test_simulation.SimulationTest.test_100_complete_or_bounded_games) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 19.523s
+
+OK
+
+UTC: 2026-10-26T03:56:42.697361+00:00
+Python: 3.13.16 (main, Oct  6 2026, 02:04:05) [GCC 12.2.0]
+Snapshot: 46ef0d5
+Command: /usr/local/bin/python examples/run_test_game.py
+Exit: 0
+STDOUT:
+{&quot;alive&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;night&quot;, &quot;round&quot;: 1, &quot;status&quot;: &quot;running&quot;, &quot;test&quot;: true, &quot;version&quot;: 1, &quot;winner&quot;: null}
+{&quot;alive&quot;: [&quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;night&quot;, &quot;round&quot;: 2, &quot;status&quot;: &quot;running&quot;, &quot;test&quot;: true, &quot;version&quot;: 24, &quot;winner&quot;: null}
+{&quot;alive&quot;: [&quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;], &quot;game_id&quot;: &quot;TEST-process-restart-demo&quot;, &quot;label&quot;: &quot;TEST&quot;, &quot;phase&quot;: &quot;finished&quot;, &quot;round&quot;: 2, &quot;status&quot;: &quot;finished&quot;, &quot;test&quot;: true, &quot;version&quot;: 44, &quot;winner&quot;: &quot;good&quot;}
+{&quot;test&quot;: true, &quot;fresh_process_per_operation&quot;: true, &quot;winner&quot;: &quot;good&quot;, &quot;event_count&quot;: 44, &quot;audit_verified&quot;: true, &quot;network_sends&quot;: 0}
+
+STDERR:
+</pre>
