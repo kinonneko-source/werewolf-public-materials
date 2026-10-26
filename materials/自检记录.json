@@ -1,0 +1,70 @@
+{
+  "task_id": "b26c2cd7-3ebe-45e0-9f74-2018f53cdbb1",
+  "at_utc": "2026-10-25T15:55:35.300075+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "check": "旧任务18份逐项存在与哈希",
+      "passed": true,
+      "evidence": "来源索引67条，含跨任务复用，不复制旧原件"
+    },
+    {
+      "check": "交付JSON全部可解析",
+      "passed": true,
+      "evidence": "本任务deliverables/*.json"
+    },
+    {
+      "check": "三局分开且均verification",
+      "passed": true,
+      "evidence": "只读审计与局界.json；正式局未取得原件"
+    },
+    {
+      "check": "原DB事件链与状态一致且未改变",
+      "passed": true,
+      "evidence": "build_review.py按原引擎encode/hash规则只读重算"
+    },
+    {
+      "check": "主局11段发言/遗言",
+      "passed": true,
+      "evidence": "历史公开记录投影.json"
+    },
+    {
+      "check": "主局19次真实公开正文与旧原件逐字相符",
+      "passed": true,
+      "evidence": "SQLite public_presentations固定正文对旧公开消息与真实回执.json"
+    },
+    {
+      "check": "公开投影白名单且没有私密字段",
+      "passed": true,
+      "evidence": "不导出完整DB、status/audit、原始夜信、私密outbox、逐人夜间映射"
+    },
+    {
+      "check": "无DB及压缩私密包",
+      "passed": true,
+      "evidence": "只交付文字报告和公开/摘要JSON"
+    },
+    {
+      "check": "常见凭据形态扫描",
+      "passed": true,
+      "evidence": "范围仅本任务交付文本；未读取环境变量和凭据文件；人工检查排除无关内部材料"
+    },
+    {
+      "check": "边界和实现各项落盘",
+      "passed": true,
+      "evidence": "全局复盘与实现解说.md、记录覆盖与披露边界.json"
+    },
+    {
+      "check": "插件和Jev分层",
+      "passed": true,
+      "evidence": "插件化卡点与Jev证据分析.md"
+    }
+  ],
+  "not_done": [
+    "未新建/重启任何局或补发动作",
+    "未取得LIVE局game_id和原件",
+    "未导出未授权赛后私密内容",
+    "未重研Jev或实测当前远端/市场状态",
+    "未代组长对合作频道#9797发布或结案"
+  ],
+  "test_scope": "本次仅来源和只读历史一致性核验，不重跑游戏/模型/旧研发测试"
+}

@@ -1,0 +1,7 @@
+{
+  "game_id": "TEST-public-example",
+  "players": ["A", "B", "C", "D", "E", "F"],
+  "key": "create-public-example",
+  "seed": 42,
+  "timeout": 60
+}

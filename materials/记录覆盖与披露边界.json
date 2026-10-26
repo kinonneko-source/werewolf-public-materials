@@ -1,0 +1,44 @@
+{
+  "games": [
+    {
+      "game_id": "VERIFY-e636f4da-20261023",
+      "configuration": "存在，原生skill/源码规则及DB；身份分配不公开",
+      "stages": "存在，分局阶段计数与主局旧审计摘要",
+      "speech": "公开投影原话；停止首局未进入白天，不适用",
+      "votes": "未进入白天，未产生",
+      "night_actions": "原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验",
+      "adjudication": "公开outbox投影，状态与平台ID分列",
+      "ending": "stopped，无胜负，不补终局",
+      "missing": "赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失"
+    },
+    {
+      "game_id": "VERIFY-e636f4da-relay-20261023",
+      "configuration": "存在，原生skill/源码规则及DB；身份分配不公开",
+      "stages": "存在，分局阶段计数与主局旧审计摘要",
+      "speech": "公开投影原话；c711另有原件公开对局原话.md",
+      "votes": "白天阶段接纳计数与公开裁决；逐人目标未作为公开附件",
+      "night_actions": "原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验",
+      "adjudication": "公开outbox投影，状态与平台ID分列",
+      "ending": "finished/wolves",
+      "missing": "赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失"
+    },
+    {
+      "game_id": "VERIFY-c71137ee-20261023-01",
+      "configuration": "存在，原生skill/源码规则及DB；身份分配不公开",
+      "stages": "存在，分局阶段计数与主局旧审计摘要",
+      "speech": "公开投影原话；c711另有原件公开对局原话.md",
+      "votes": "白天阶段接纳计数与公开裁决；逐人目标未作为公开附件",
+      "night_actions": "原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验",
+      "adjudication": "公开outbox投影，状态与平台ID分列",
+      "ending": "finished/good",
+      "missing": "赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失"
+    }
+  ],
+  "disclosure_categories": {
+    "public": "引擎public事件、已发布玩家原话、规则与胜负；玩家自述不等于身份认证",
+    "post_game_shareable": "去身份化阶段数量、接纳数、审计哈希、投递状态、故障事实；本次可交付",
+    "host_private": "roles/actions/原始夜信/status/audit完整表/私密outbox/原DB；终局不自动解密，不附信"
+  },
+  "missing_formal": "未取得 LIVE game_id 与原件",
+  "no_generated_game_actions": true
+}

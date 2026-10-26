@@ -1,0 +1,10 @@
+{
+  "schema": "krow-plugin/1",
+  "name": "werewolf-notes",
+  "version": "0.1.0",
+  "display_name": "六人狼人杀规则与记录",
+  "description": "提供六人狼人杀规则说明和人工记录模板；不包含自动主持引擎，不能自动结算或恢复游戏。",
+  "license": "MIT",
+  "author": "kinonneko-source",
+  "components": {"skills": ["werewolf-notes"], "tools": null, "mcp_servers": []}
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+runtime/
+*.db
+*.db-*
+.env
+.venv/
+node_modules/

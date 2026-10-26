@@ -1,0 +1,7 @@
+Command: python3 -m werewolf --db <temporary-db> create
+Exit: 0
+{"alive": ["A", "B", "C", "D", "E", "F"], "game_id": "TEST-public-example", "label": "TEST", "phase": "night", "round": 1, "status": "running", "test": true, "version": 1, "winner": null}
+
+Command: python3 -m werewolf --db <temporary-db> public
+Exit: 0
+{"alive": ["A", "B", "C", "D", "E", "F"], "game_id": "TEST-public-example", "label": "TEST", "phase": "night", "round": 1, "status": "running", "test": true, "version": 1, "winner": null}

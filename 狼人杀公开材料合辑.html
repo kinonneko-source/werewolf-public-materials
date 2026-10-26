@@ -1,0 +1,1226 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>狼人杀公开材料合辑</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;color:#243246;background:#f3f5f8;font:16px/1.8 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}header{background:#15283d;color:#fff;padding:56px max(6vw,24px)}header small{letter-spacing:.15em;color:#b7ccdf}h1{font-size:clamp(28px,4vw,42px);line-height:1.3;margin:12px 0}header p{max-width:850px;color:#d3deea}.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1440px;margin:auto;gap:32px;padding:32px 24px}nav{position:sticky;top:24px;align-self:start}nav strong{display:block;margin-bottom:16px}nav a{display:block;color:#294b69;text-decoration:none;padding:10px 8px;border-bottom:1px solid #dbe2e9;font-size:14px}nav span{color:#7b8d9f;margin-right:12px}main{min-width:0}.notice,section{background:white;border:1px solid #dfe5ec;border-radius:12px;margin-bottom:28px;padding:28px}.notice{border-left:4px solid #bc8a3e}.notice p{margin:6px 0}.doc-head{border-bottom:1px solid #e0e7ee;padding-bottom:20px;margin-bottom:28px}.doc-head p{margin:0;color:#66788b;font-size:13px}.doc-head h2{margin:6px 0 12px;font-size:25px}.hash{overflow-wrap:anywhere;font-family:monospace;font-size:11px!important;margin-top:12px!important}.download{display:inline-block;color:#245879;font-size:14px}article h1{font-size:27px}article h2{font-size:23px;margin-top:36px}article h3{font-size:19px}article p,article li{overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow-x:auto;font-size:14px;margin:20px 0}th,td{padding:12px;border:1px solid #dce3eb;min-width:100px;vertical-align:top}th{background:#edf2f7}blockquote{border-left:3px solid #a8bbcd;margin:20px 0;padding:4px 20px;background:#f6f8fa}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f6f9;border:1px solid #e1e6ed;padding:20px;border-radius:8px;font:13px/1.7 ui-monospace,monospace}code{font-family:ui-monospace,monospace}footer{color:#6d7f91;font-size:13px;text-align:center;padding:24px}@media(max-width:900px){.layout{display:block;padding:20px 14px}nav{position:static;margin-bottom:24px}section,.notice{padding:20px}header{padding:36px 22px}}@media print{body{background:white;font-size:11pt}header{background:white;color:#111;padding:0}header p,header small{color:#444}.layout{display:block;padding:0}nav,.download{display:none}section{border:0;padding:0;break-before:page}table{display:table;font-size:9pt}pre{font-size:8pt}a{color:inherit}}</style></head><body><header><small>公开材料 · 七份原件合并阅读版</small><h1>狼人杀复盘与插件化证据</h1><p>全局复盘、插件化与 Jev 分析、公开对局原话，以及四份结构化记录。单文件离线阅读，原文完整收录。</p></header><div class="layout"><nav><strong>内容目录</strong><a href="#doc1"><span>01</span>全局复盘与实现解说.md</a><a href="#doc2"><span>02</span>插件化卡点与Jev证据分析.md</a><a href="#doc3"><span>03</span>公开对局原话.md</a><a href="#doc4"><span>04</span>公开消息与真实回执.json</a><a href="#doc5"><span>05</span>记录覆盖与披露边界.json</a><a href="#doc6"><span>06</span>历史公开记录投影.json</a><a href="#doc7"><span>07</span>自检记录.json</a></nav><main><aside class="notice"><strong>公开实现支撑仓库</strong><p><a href="https://github.com/kinonneko-source/werewolf-public-materials">GitHub：狼人杀公开实现与证据材料</a>（联网访问）。仓库包含两个固定历史源码快照、依赖说明、TEST配置、启动步骤及本轮离线测试日志与截图；不代表市场上线或真实平台重新接通。</p><p>本轮主局快照48项测试、工程局快照41项测试通过，原有跨进程TEST演示均完成。历史平台运行截图和完整宿主原始日志尚未取得，具体缺件及复现边界见仓库README。下方七份原文与内嵌下载均原样保留，断网仍可阅读全文。</p></aside><aside class="notice"><strong>阅读边界与来源</strong><p>三局均为 VERIFY 验证局，非 LIVE 正式局；正式 LIVE 的 game_id 与原件未取得。官方 Adapter 离线测试不等于 Jev 模型或平台 API 接通。</p><p>本合辑仅收录已提供的七份公开原件，不含私密夜间行动、逐人选票和完整数据库。玩家自述身份不等于主持揭牌。</p><p>原件由山阵号组长转交，来源任务：b26c2cd7-3ebe-45e0-9f74-2018f53cdbb1。报告及 JSON 中的测试、服务和市场状态均按原件所述历史范围理解；本次只核对合并完整性。</p><p>各节“下载此份原件”保留原始字节；引用的其他文件与来源索引未随这七份材料提供，不在本合辑中补造。原始时间戳按来源保留。</p></aside><section id="doc1"><div class="doc-head"><p>原件 1 / 7 · 8,405 字节</p><h2>全局复盘与实现解说.md</h2><a class="download" href="data:application/octet-stream;base64,IyDml6LmnInni7zkurrmnYDlhajlsYDlpI3nm5jvvJrni6znq4vpnZ7liafmnKzpqozor4HlsYDkuI7lt6XnqIvpqozor4HooaXlhYUKCuS7u+WKoSBiMjZjMmNkNy0zZWJlLTQ1ZTAtOWY3NC0yMDE4ZjUzY2RiYjHjgILmjInovrnnlYzov73liqAwMWExNzNjMS1lMjMyLTczZDgtOTBmMC1lMTQ4MzIzNmZhM2HmiafooYzjgILlhajpg6jmlbTlsYDlnYfkuLogVkVSSUZZIOmqjOivgeWxgO+8jOmdniBMSVZFIOato+W8j+WxgO+8m+ato+W8j+WxgOS4uuKAnOacquWPluW+lyBnYW1lX2lkIOS4juWOn+S7tuKAneOAguacrOasoeacquW8gOWxgOOAgeacquihpeWKqOS9nOOAgeacquaBouWkjeWBnOatouWxgOOAgeacquaUueW8leaTjuaIlueUn+S6p+mFjee9ruOAggoKIyMg5bGA55WM5LiO57uT6K66Cgp8IGdhbWVfaWQgfCDni6znq4vojIPlm7QgfCDmnKzmrKHlj6ror7vmoLjpqowgfCDnu5PorrogfAp8LS0tfC0tLXwtLS18LS0tfAp8IFZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMSB8IOS4u+WxgO+8m+S4geWPquS4u+aMge+8jOeUsuS5meS4meaIiuW3seWPiue7hOmVv+S4uuWFreeOqeWutiB8IDE1M+S6i+S7ti8xNTPniYjmnKzvvJsyOeaOpee6s+i+k+WFpe+8mzU5IG91dGJveOWFqHNlbnQgfCBmaW5pc2hlZO+8jGdvb2TvvJvpnZ7liafmnKznnJ/lrp7pqozor4EgfAp8IFZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMyB8IOW3peeoi+ihpeWFhe+8m+S4geWFvOS4u+aMgeWSjOeOqeWutu+8jOe7hOmVv+mdnueOqeWutuS4ree7pyB8IDE3MOS6i+S7tu+8mzI56L6T5YWl77ybNTYgc2VudC8zIHVua25vd24gfCBmaW5pc2hlZO+8jHdvbHZlc++8m+S4jeS9nOS4uuWFrOW5s+ernuaKgOivgeaYjiB8CnwgVkVSSUZZLWU2MzZmNGRhLTIwMjYxMDIzIHwg5YGc5q2i6aaW5bGA77yb6Ieq5Y+R5L+h6ZmQ5Yi25a+86Ie05aSx6LSlIHwgMjPkuovku7bvvJsw5o6l57qz6L6T5YWl77ybOCBzZW50LzIgdW5rbm93bi8xIHBlbmRpbmcgfCBzdG9wcGVk77yM5peg6IOc6LSf77yb5LiN5piv5o6l57ut5bGA55qE5YmN5Y2K5Zy6IHwKfCBMSVZFIOato+W8j+WxgCB8IOacquWPluW+lyBnYW1lX2lkIOS4juWOn+S7tiB8IOW9k+WJjeajgOe0ouS4jeaehOaIkOWFqOW5s+WPsOept+WwveivgeaYjiB8IOS4jee8lumAoO+8jOS4jeaKiiBWRVJJRlkg5pS556ew5q2j5byP5bGAIHwKCuaXp+S7u+WKoSBlNjM2ZjRkYSDnmoQxOOS7veWOn+S7tuWFqOmDqOWtmOWcqOW5tumAkOmhueagoemqjO+8m+WFtuS9mSBKZXYg5LiOIGM3MTEg5pen5Lqk5LuY5YWxNDnmnaHmnaXmupDnmbvorrDvvIzlkIjorqE2N+adoeadpea6kOiusOW9le+8iOaciei3qOS7u+WKoeWkjeeUqOWQjGZpbGVfaWTvvIzmnaHmlbDkuI3nrYnkuo42N+S4quWUr+S4gOaWh+S7tu+8ieOAguadpea6kOe0ouW8leS/neeVmeWOn+i3r+W+hOOAgei1hOa6kOW6k+WPpeafhOOAgVNIQTI1Nu+8m+ayoeacieWkjeWItuaXp+WOn+S7tuaNouWQjemHjeS6pOOAggoK5Li75bGA5Zu65a6a5a6e546wOTlhNmNhN2FjMDJiY2FlMzhlYThmYTBjYTg4MzNmODAwOTNkZjEyY++8m2U2Mzblm7rlrpo0NmVmMGQ1ZTIzNDE5ZmEwMjQzZWEyYjY5ODc4MWI0Njc0MTRkNjY244CC5ZCO5p2l55qE5oqA6IO95YyF5ZCr56iz5a6a5o6l57qz5Zue5omn5ZKM5a6M5pW05Yqo5L2cc2NoZW1h77yM5LiN6IO95YCS5o6o5Li75bGAOTlhNmNhN+W3suWFt+Wkh+i/meS6m+S/ruWkjeOAguaXp+aKpeWRilBS54q25oCB5Z2H5Li65b2T5pe2546w5Zy677yM5pys5qyh5LiN5aOw56ew6YeN5paw5qC45a6e5b2T5YmN6L+c56uv5ZCI5bm25oiW5biC5Zy654q25oCB44CCCgojIyDkuLvlsYDlrozmlbTml7bpl7Tnur/kuI7lhazlvIDop6Por7QKCuWMl+S6rOaXtumXtDIwMjYtMTAtMjQgMDI6NDM6MDflvIDlsYDvvIwwMjo0OToyN+W8leaTjuWIpOiDnO+8jDAyOjQ5OjI457uI5bGA5YWs5ZGK6YCB6L6+44CC5Lik5aSp5Lik5aSc77yMMTHkuKrlrp7pmYXmjqjov5vpmLbmrrXvvIznvLrluK0w44CBY29ycmVjdDDjgIFjb250cm9sMOOAguavj+mYtuauteacgOmVvzE4MDDnp5LvvIzlhajlkZjlkIjms5XliLDpvZDmj5DliY3mjqjov5vvvJvmnKzmrKHmsqHmnInph43mlrDmiafooYzov5nkupvpmLbmrrXjgIIKCnwg6aG65bqPIHwg5bey5o6l5Y+X6KGM5Yqo5pWwIHwg5YWs5byA5bey5Y+R55Sf5LqL5Lu2IHwg6K+B5o2u5LiO6ZmQ5Yi2IHwKfC0tLXwtLS06fC0tLXwtLS18Cnwg6aaW5aSc54u8L+mihOiogOWuti/lpbPlt6sgfCAyLzEvMSB8IOe7k+eul+aXoOS6uuWHuuWxgO+8jOi/m+WFpemmluaXpeWPkeiogCB8ICM2NjI177yb5aSc6Ze055uu5qCH5ZKM57uT5p6c5LiN5YWs5byAIHwKfCDnrKzkuIDlpKnlj5HoqIAgfCA2IHwg5YWt5bit5ZCE6Ieq5Y6f6K+dIHwgIzY2MjbigJM2NjMx77yb5LiN5piv5Li75oyB55Sf5oiQ55qE6KeS6Imy6K6k6K+BIHwKfCDnrKzkuIDlpKnmipXnpaggfCA2IHwg5peg5Lq65Ye65bGA77yM6L+b5YWl56ys5LqM5aScIHwgIzY2MzLigJM2NjMz77yb6YCQ5Lq66YCJ56Wo5piv56eB5L+h77yM5LiN5LuO6Ieq6L+w6KGl6YCg56Wo6KGoIHwKfCDnrKzkuozlpJzni7wv6aKE6KiA5a62L+Wls+W3qyB8IDIvMS8xIHwg55Sy44CB5oiK5q275Lqh77yM6L+b5YWl56ys5LqM5aSpIHwgIzY2MzTvvJvlhazlkYrmnKrnu5nmrbvkuqHljp/lm6DmiJbogYzkuJogfAp8IOesrOS6jOWkqeWPkeiogCB8IDQgfCDkuJnjgIHnu4Tplb/jgIHlt7HjgIHkuZnljp/or50gfCAjNjYzNeKAkzY2MzggfAp8IOesrOS6jOWkqeaKleelqCB8IDQgfCDkuZnlh7rlsYAgfCAjNjYzOeKAkzY2NDAgfAp8IOS5memBl+iogCB8IDEgfCDkuZnljp/or53vvIznu6fogIzlpb3kurrog5wgfCAjNjY0MeKAkzY2NDLvvJvmnKzlsYDmnKrop6blj5HnjI7kurrliIbmlK8gfAoK56ys5LiA5aSp5Y+R6KiA6YeM77yM55Sy5oql6aKE6KiA5a625bm256ew6aqM57uE6ZW/6Z2e54u877yM5bex5oql5aWz5ber5bm256ew6aaW5aSc5pWR57uE6ZW/77yb5YW25L2Z5bit5L2N5by66LCD5LiN6IO95LuF5Yet5bmz5a6J5aSc5a6a6Lqr5Lu944CC56ys5LiA5aSp5rKh5pyJ5b2i5oiQ5Ye65bGA57uT5p6c44CC56ys5LqM5aSp5LiZ5oql54yO5Lq644CB5LmZ6ZqP5ZCO5Lmf5oql54yO5Lq677yb5bex5YWs5byA56ew5q+S5oiK77yM57uE6ZW/5bCG4oCc55Sy6KKr5YiA44CB5oiK6KKr5q+S4oCd55qE6Kej6YeK5L+d55WZ5Li65p2h5Lu25o6o5pat44CC5pyA57uI5YWs5byA57uT5p6c5piv5LmZ5Ye65bGA44CB6YGX6KiA5ZCO5aW95Lq66IOc44CC6L+Z5Lqb5piv5YWs5byA5Y6f6K+d5ZKM6KOB5Yaz6IO95pSv5oyB55qE5Y+Z6L+w77yM5LiN6IO95Y+N5o6o5pyq5o+t54mM6Lqr5Lu95oiW5bCG5Y+R6KiA6YeM6Ieq6L+w5oqV56Wo5b2T5L2c5Y6f5aeL56Wo5o2u44CCCgrljp/jgIrlhazlvIDlr7nlsYDljp/or50ubWTjgIvkv53nlZnlhajpg6gxMeauteeOqeWutuWOn+ivneWPijE55qyh5aSn5Y6F5Y+R6YCB5q2j5paH77yM5Y6f44CK5YWs5byA5raI5oGv5LiO55yf5a6e5Zue5omnLmpzb27jgIvkv53nlZnlubPlj7BJROOAguatpOasoeaWsOWinuOAiuWOhuWPsuWFrOW8gOiusOW9leaKleW9sS5qc29u44CL5LuO5Y6fRELnmoRwdWJsaWPmlLbku7borrDlvZXnmb3lkI3ljZXlr7zlh7rvvIzkuLvlsYAyMuadoeW8leaTjuS6i+S7tuWQiOW5tuS4ujE55qyh5aSn5Y6F5Y+R6YCB77yM5LiO5pen5oql5ZGK5LiA6Ie044CCMjLkuI3mmK/lj5HpgIHmrKHmlbDvvJvlj6YzN+asoeengeS/oe+8jOWFsTU25qyh5bmz5Y+w5Y+R6YCB44CBNTnmnaFvdXRib3jjgILljp/mlofnlKjmnaXmupDntKLlvJXlj6Xmn4TpmYTkv6HvvIzkuI3lpI3liLbliLDmnKzku7vliqHjgIIKCiMjIOW3peeoi+mqjOivgeS4pOWxgOWNleWIlwoK5YGc5q2i6aaW5bGA5Y+q6K+B5piO6YOo5YiG5Y+R54mM5ZKM6Ieq5Y+R5L+h6Zi75pat77ya5LiB6KeS6Imy5LiO5o+Q56S6dW5rbm93bu+8jOWwmuaciXBhdXNl5YWs5ZGKcGVuZGluZ++8m3N0b3Dlrp7pmYXpgIHovr4jNjEwM+OAguayoeacieeZveWkqeihjOWKqOOAgeaKleelqOaIluiDnOi0n++8jOS4jeS4uuWFtuihpemAoOWujOaVtOa1geeoi+OAggoK5o6l57ut5bGA5piv5YWo5paw6ZqP5py65bGA77yM57uI5bGA56ys5LiJ5aScd29sdmVz77yM5YWs5byAIzYyMDDvvJvpppbml6Xlj5HoqIDku4U05Lq65o6l57qz77yM5LiB5LmZ57y65bit77yM5Lil5qC85oyJ5Y6fZGVhZGxpbmXmjqjov5vogIzpnZ7ku6PloavjgILlha3luK3lkIzkuIDpppbml6XmipXnpajlkIToh6rorqTor4HlhaXotKbjgILnu4jlsYDkuInmnaF1bmtub3du5LuF5LiB55m95aSp6YeN5aSN56eB5L+h5o+Q56S677yM5LiN5piv6KeS6Imy5oiW5aSc6Ze057uT5p6c77yb5LiB5a6e6ZmF6K+75YWs5byA6Zi25q615bm255yf5a6e5o+Q5Lqk77yM5pyq55+l5oqV6YCS5LuN5L+d5oyBdW5rbm93buOAguWOn+WFreW4reWunuaUtuehruiupOS4juS4mei/veWKoOS4iea6kOaguOWvueWcqOaXp+WOn+S7tuWGhe+8jOWunuaUtuOAgeaOpee6s+OAgee7iOWxgOWFrOWRiuS4ieiAheWIhuW8gOOAggoKIyMg5a6e546w5oCO5qC35a6e6ZmF6L+Q6KGMCgoxLiDmj5DnpLror40gc2tpbGwg5piv57uZ5Li75oyBQWdlbnTnmoTmk43kvZznuqbmnZ/vvJtQeXRob27ohJrmnKwvQ0xJ5om/5ouF56Gu5a6a5oCn6KeE5YiZ44CCQWdlbnTlnKjlnLror7vnq5nlhoXkv6HjgIHosIPnlKhDTEnjgIHlj5HlubPlj7Dlt6Xlhbflkozlm57loavlm57miafjgILmsqHmnInluLjpqbvosIPluqblrojmiqTov5vnqIvvvIzlm57lkIjnu5PmnZ/ov5vnqIvnu4jmraLvvIzkuI3og73kv53or4Hot6jova7oh6rliqjnu6fnu63jgIIKMi4g5raI5oGv5a+75Z2A77ya5Yib5bu65bGA5pe25oyB5LmF57uR5a6a5YWt5bit5bmz5Y+wVVVJROWIsOW4reS9jeWPiuWnk+WQjei3r+eUse+8jOWPkemAgeWJjeafpXJvc3RlcuaguOaYoOWwhOOAguW5s+WPsHRvX3dvcmtlcumHh+eUqOWnk+WQje+8jOi+k+WFpei6q+S7veWPlmZpcnN0X3BhcnR55Y6f5L+hZnJvbV93b3JrZXJfaWQvdG9fd29ya2VyX2lk77yM6ICM6Z2e5q2j5paH5aeT5ZCN5oiW5aSn5Y6F5pi+56S65ZCN44CC55m95aSp5Y+R6KiA44CB5oqV56Wo5a6e6ZmF55Sx6K6k6K+B56eB5L+h6L+b5YWl77yM5byV5pOOcHVibGljIG91dGJveOWGjeWFrOW4g+OAggozLiDnirbmgIHmjIHkuYXljJbvvJpTUUxpdGUgZ2FtZXMvZXZlbnRzL291dGJveOWQjOS4gOS6i+WKoeiusOW9leeKtuaAgeOAgeeJiOacrOWSjOW+heWPkemAgemhue+8jOWOn0RC5Li75oyB54us5Y2g44CC5q+P6Zi25q615YWI6YeN6K+754q25oCB77yb54mI5pys5Yay56qB5Y+q5Zyo5ZCM6Zi25q6155So5Y6f6L+Q6L6T5raI5oGvSUTph43or5XvvIzkuI3og73mlLnlhplwaGFzZeOAguS6i+S7tuWTiOW4jOmTvueUqOS6juS4gOiHtOaAp+ajgOafpe+8jOS4jeiDvemYsuWuv+S4u+WGmeadg+mZkOiAhemHjeeul+OAggo0LiDlj5HpgIHvvJpob3N0LWRpc3BhdGNo5YWI6K6wc2VuZGluZ++8jEFnZW505omn6KGM55yf5a6e5bel5YW35LiA5qyh77yMaG9zdC1yZWNlaXB05oyJ55yf5a6e5Zue5omn6K6wc2VudC91bmtub3du44CC572R57uc5Y+R6YCB5Zyo5pWw5o2u5bqT5LqL5Yqh5aSW77yM5rKh5pyJ6Leo572R57ucZXhhY3RseS1vbmNl5L+d6K+B44CC5Li75bGAcHVibGljX3ByZXNlbnRhdGlvbnPlm7rlrprlkIjlubblhazlkYrmraPmlofjgIHmiJDlkZjkuI5hbmNob3LvvIzpgb/lhY3ltKnmuoPlkI7mjInnm7jkvLzmlofmnKznjJzmtYvph43lj5HjgIIKNS4g56eB5a+G6ZqU56a777ya6KeS6Imy44CB54u86Zif44CB5YiA5Y+j44CB5p+l6aqM44CB55So6I2v5Y+q57uZ57uR5a6a546p5a6244CC5YWs5byA5bGV56S65LuFY3JlYXRlZC9kaXNjdXNzaW9uL3ZvdGUvZGVhdGhzL3dpbm5lci9uaWdodC9jb250cm9sL3BsYXllcl9zcGVlY2jnmb3lkI3ljZXvvJvnjqnlrrblj5HoqIDmmK/ljp/or53mlbDmja7jgILlrozmlbRzdGF0dXMvYXVkaXQvb3V0Ym94L0RC5ZCr6ZqQ56eB77yM5LiN6ZmE5L+h44CC5LiB5YW8546p5a6255qE5bel56iL5bGA5pyJ5a6/5Li75Y+v6KeB5oCn5bGA6ZmQ77yb5Li75bGA5LiB5LiN5Y+C6LWb44CCCjYuIOiwg+W6pu+8muWQjOmYtuauteW5tuihjOaUtumbhmV4cGVjdGVk77yM6L2u6K+i4omkMjXnp5LvvIzliLDpvZDmiJbnu53lr7lkZWFkbGluZeWQjnRpY2vkuJTkuIDmrKHkuIDpmLbmrrXjgILnvLrluK3lvIPmnYPjgIHkuI3nu6fmib/ml6fooYzliqjjgILkuI3mmK/lha3kuKrni6znq4tEQuWHkeaIkOS4gOWxgOOAggo3LiDmgaLlpI3vvJrljp9EQumHjeW8gOWQjnNlbmRpbmfovax1bmtub3du77ybc2VudOS4jemHjeWPke+8jHVua25vd27pnIDlrp7pmYXlubPlj7Dlm57miafmiJborqTor4HmlLbku7bnoa7orqTjgILlgZzmraLlkoznu4jlsYDkuI3og73mgaLlpI3jgILljoblj7Lph43lkK/or4Hmja7lj6ror4HmmI7mlrBDTEnov5vnqIvnirbmgIHmgaLlpI3vvIzkuI3or4HmmI7lubPlj7DlrpXmnLrmvJTnu4PjgIIKCiMjIOW3suWPkeeUn+aVhemanOS4juivgeaNrui+ueeVjAoKfCDmlYXpmpwgfCDlvZPml7bnu5Pmnpwv5aSE572uIHwg5Y6f5Lu2IHwKfC0tLXwtLS18LS0tfAp8IOW5s+WPsOemgeatouiHquWPkeengeS/oSB8IOmmluWxgOWBnOatou+8m+aWsOW3peeoi+WxgOe7keWumumdnueOqeWutuS4ree7p++8jOmmlui3s+S4jeW9k+acq+i3s+mAgei+viB8IOmmluWxgOmYu+aWreS4jue7iOatouivgeaNruOAgemqjOivgeWxgOivgeaNriB8Cnwg6Leo6aG555uu5Lit57unNDA0IHwg55So5a6M5pW06aG555uuL+e6v+eoi+WPpeafhOaOpee7reWQjuaUtuWIsO+8m+W5s+WPsOmZkOWItuacquWboOatpOS/ruWkjSB8IOW5s+WPsOi3qOmhueebruS4ree7p+mYu+aWrS5tZCB8Cnwg5Y6f5L+h5YaN6K+75Y+W5Ye6546w4oCc5YWI5o6l57qz5ZCO5pen6Zi25q615ouS57ud4oCdIHwg5Li75bGA5Y6f56Wo5LuF5YWl6LSm5LiA5qyh77yb5Li75oyB57qg5q2j5ZGK55+l5bm26L+H5ruk5bey5aSE55CG5Y6fSUQgfCDpnZ7liafmnKznnJ/lrp7muLjnjqnpqozor4HmiqXlkYoubWTvvIznuqDmraPkv6FmZDRkYTU1Yi0wNjljLTRhNzItOWU2OC03YzExOGQxYjkxZGMgfAp8IOeUqOiNr3NjaGVtYeS4jeWFqCB8IOino+mHiuWtl+aute+8jOeUseacrOS6uuiHquS4u+mAieaLqe+8m+S4u+WxgOacqueDreaUueW8leaTjiB8IOWQjOS4iu+8m+WQjue7reaKgOiDveS/ruWkjeS4jeiuoeacrOWxgOeJiOacrOiDveWKmyB8Cnwgcm9zdGVy6Kej5p6Q5aSx6LSlL+WFqGF1ZGl06L6T5Ye66LaF6ZmQIHwg5Y+R6YCB5YeG5aSH5YmN6YeN6K+777yM5oiW5pys5py65qCh6aqM5Y+q5Ye65pGY6KaB77yb5pyq55uy6YeN5Y+RIHwg5ZCM5LiK44CB6ZW/5bGA6K+75Y+W5L+u5aSN6K+B5o2uLmpzb24gfAp8IOeOqeWutumZhOS7tuazhOmcsuWknOmXtHBoYXNlX2lkIHwg5Y+v6IO95Y+N5o6o6KeS6Imy77yM5Y6f6ZmE5Lu25LiN6L2s5Lqk5pmu6YCa546p5a62IHwg5ZCM5LiK77yb5pys5qyh5LiN5a+85Ye66YCQ5Lq65aSc6Ze05pig5bCEIHwKCiMjIOiusOW9leimhuebluS4jue8uuWPowoK6YWN572u44CB6Zi25q6144CB5Y+R6KiA44CB5oqV56Wo5o6l57qz6K6h5pWw44CB6KOB5Yaz44CB57uT5bGA5pyJ5p2l5rqQ44CC6YCQ5Lq66YCJ56Wo5ZKM5aSc6Ze05a6M5pW06KGM5Yqo5a2Y5Zyo5a6/5Li75Y6fRELvvIzkvYbmnKrlj5blvpfotZvlkI7mj63niYwv5a+55aSW5oqr6Zyy5o6I5p2D77yM5LiN6ZqP5YWs5byA5YyF5Lqk5LuY77yb6L+Z5bGe5LqO5oqr6Zyy57y65Y+j77yM5LiN5YaZ5oiQ4oCc5pWw5o2u5LiN5a2Y5Zyo4oCd44CC5Y6f5aeL5aSc5L+h5a6M5pW06ZuG5ZCI5pyq5YGa6YCQ5bCB6LWE5rqQ5bqT5Y+W5Zue77yM5LiN6IO956ew5omA5pyJ5bmz5Y+w5Y6f5aeL5L+h5bCB5bey5b2S5qGj5Lqk5LuY44CC5YGc5q2i5bGA5pyq5Y+R55Sf55qE6Zi25q615qCH5pyq5Lqn55Sf77ybTElWReWxgOadkOaWmeacquWPluW+l+OAguivpuingeOAiuiusOW9leimhuebluS4juaKq+mcsui+ueeVjC5qc29u44CL44CCCgrotZvlkI7lj6/miqvpnLLnmoTmmK/ljrvouqvku73ljJbpmLbmrrXmlbDph4/jgIHmipXpgJLkuI7lrqHorqHmkZjopoHlkozlhazlvIDkuovku7bvvJvnu4jlsYDkuI3oh6rliqjop6Plr4bop5LoibLjgILmiYDmnInmipXlvbHliJflh7rmnaXmupBEQuWTiOW4jOOAgeWOn291dGJveCBJROWSjOWtl+autemAieaLqe+8jOacquS7peiEseaVj+WJr+acrOWGkuWFheWOn+aVsOaNruW6k+OAguWFrOW8gOWPkeiogOmHjOeahOi6q+S7veS4u+W8oOWOn+agt+S/neeVme+8jOS4jeiupOivgeecn+WBh+OAguatpOasoeacquW8leWFpeWHreaNruOAgeeOr+Wig+WPmOmHj+OAgeW3peS9nOWPsOi0puaIt+mFjee9ruaIluaXoOWFs+WGhemDqOa6kOeggeOAggo=" download="全局复盘与实现解说.md">下载此份原件</a><p class="hash">SHA-256：6e2aff5748b81cd0bf9e65aed5a5eed8de004e23c296bd018cdff8c9914316fe</p></div><article><h1>既有狼人杀全局复盘：独立非剧本验证局与工程验证补充</h1>
+<p>任务 b26c2cd7-3ebe-45e0-9f74-2018f53cdbb1。按边界追加01a173c1-e232-73d8-90f0-e1483236fa3a执行。全部整局均为 VERIFY 验证局，非 LIVE 正式局；正式局为“未取得 game_id 与原件”。本次未开局、未补动作、未恢复停止局、未改引擎或生产配置。</p>
+<h2>局界与结论</h2>
+<table>
+<thead>
+<tr>
+  <th>game_id</th>
+  <th>独立范围</th>
+  <th>本次只读核验</th>
+  <th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>VERIFY-c71137ee-20261023-01</td>
+  <td>主局；丁只主持，甲乙丙戊己及组长为六玩家</td>
+  <td>153事件/153版本；29接纳输入；59 outbox全sent</td>
+  <td>finished，good；非剧本真实验证</td>
+</tr>
+<tr>
+  <td>VERIFY-e636f4da-relay-20261023</td>
+  <td>工程补充；丁兼主持和玩家，组长非玩家中继</td>
+  <td>170事件；29输入；56 sent/3 unknown</td>
+  <td>finished，wolves；不作为公平竞技证明</td>
+</tr>
+<tr>
+  <td>VERIFY-e636f4da-20261023</td>
+  <td>停止首局；自发信限制导致失败</td>
+  <td>23事件；0接纳输入；8 sent/2 unknown/1 pending</td>
+  <td>stopped，无胜负；不是接续局的前半场</td>
+</tr>
+<tr>
+  <td>LIVE 正式局</td>
+  <td>未取得 game_id 与原件</td>
+  <td>当前检索不构成全平台穷尽证明</td>
+  <td>不编造，不把 VERIFY 改称正式局</td>
+</tr>
+</tbody>
+</table>
+<p>旧任务 e636f4da 的18份原件全部存在并逐项校验；其余 Jev 与 c711 旧交付共49条来源登记，合计67条来源记录（有跨任务复用同file_id，条数不等于67个唯一文件）。来源索引保留原路径、资源库句柄、SHA256；没有复制旧原件换名重交。</p>
+<p>主局固定实现99a6ca7ac02bcae38ea8fa0ca8833f80093df12c；e636固定46ef0d5e23419fa0243ea2b698781b467414d666。后来的技能包含稳定接纳回执和完整动作schema，不能倒推主局99a6ca7已具备这些修复。旧报告PR状态均为当时现场，本次不声称重新核实当前远端合并或市场状态。</p>
+<h2>主局完整时间线与公开解说</h2>
+<p>北京时间2026-10-24 02:43:07开局，02:49:27引擎判胜，02:49:28终局公告送达。两天两夜，11个实际推进阶段，缺席0、correct0、control0。每阶段最长1800秒，全员合法到齐提前推进；本次没有重新执行这些阶段。</p>
+<table>
+<thead>
+<tr>
+  <th>顺序</th>
+  <th style="text-align:right">已接受行动数</th>
+  <th>公开已发生事件</th>
+  <th>证据与限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>首夜狼/预言家/女巫</td>
+  <td style="text-align:right">2/1/1</td>
+  <td>结算无人出局，进入首日发言</td>
+  <td>#6625；夜间目标和结果不公开</td>
+</tr>
+<tr>
+  <td>第一天发言</td>
+  <td style="text-align:right">6</td>
+  <td>六席各自原话</td>
+  <td>#6626–6631；不是主持生成的角色认证</td>
+</tr>
+<tr>
+  <td>第一天投票</td>
+  <td style="text-align:right">6</td>
+  <td>无人出局，进入第二夜</td>
+  <td>#6632–6633；逐人选票是私信，不从自述补造票表</td>
+</tr>
+<tr>
+  <td>第二夜狼/预言家/女巫</td>
+  <td style="text-align:right">2/1/1</td>
+  <td>甲、戊死亡，进入第二天</td>
+  <td>#6634；公告未给死亡原因或职业</td>
+</tr>
+<tr>
+  <td>第二天发言</td>
+  <td style="text-align:right">4</td>
+  <td>丙、组长、己、乙原话</td>
+  <td>#6635–6638</td>
+</tr>
+<tr>
+  <td>第二天投票</td>
+  <td style="text-align:right">4</td>
+  <td>乙出局</td>
+  <td>#6639–6640</td>
+</tr>
+<tr>
+  <td>乙遗言</td>
+  <td style="text-align:right">1</td>
+  <td>乙原话，继而好人胜</td>
+  <td>#6641–6642；本局未触发猎人分支</td>
+</tr>
+</tbody>
+</table>
+<p>第一天发言里，甲报预言家并称验组长非狼，己报女巫并称首夜救组长；其余席位强调不能仅凭平安夜定身份。第一天没有形成出局结果。第二天丙报猎人、乙随后也报猎人；己公开称毒戊，组长将“甲被刀、戊被毒”的解释保留为条件推断。最终公开结果是乙出局、遗言后好人胜。这些是公开原话和裁决能支持的叙述，不能反推未揭牌身份或将发言里自述投票当作原始票据。</p>
+<p>原《公开对局原话.md》保留全部11段玩家原话及19次大厅发送正文，原《公开消息与真实回执.json》保留平台ID。此次新增《历史公开记录投影.json》从原DB的public收件记录白名单导出，主局22条引擎事件合并为19次大厅发送，与旧报告一致。22不是发送次数；另37次私信，共56次平台发送、59条outbox。原文用来源索引句柄附信，不复制到本任务。</p>
+<h2>工程验证两局单列</h2>
+<p>停止首局只证明部分发牌和自发信阻断：丁角色与提示unknown，尚有pause公告pending；stop实际送达#6103。没有白天行动、投票或胜负，不为其补造完整流程。</p>
+<p>接续局是全新随机局，终局第三夜wolves，公开#6200；首日发言仅4人接纳，丁乙缺席，严格按原deadline推进而非代填。六席同一首日投票各自认证入账。终局三条unknown仅丁白天重复私信提示，不是角色或夜间结果；丁实际读公开阶段并真实提交，未知投递仍保持unknown。原六席实收确认与丙追加三源核对在旧原件内，实收、接纳、终局公告三者分开。</p>
+<h2>实现怎样实际运行</h2>
+<ol>
+<li>提示词 skill 是给主持Agent的操作约束；Python脚本/CLI承担确定性规则。Agent在场读站内信、调用CLI、发平台工具和回填回执。没有常驻调度守护进程，回合结束进程终止，不能保证跨轮自动继续。</li>
+<li>消息寻址：创建局时持久绑定六席平台UUID到席位及姓名路由，发送前查roster核映射。平台to_worker采用姓名，输入身份取first_party原信from_worker_id/to_worker_id，而非正文姓名或大厅显示名。白天发言、投票实际由认证私信进入，引擎public outbox再公布。</li>
+<li>状态持久化：SQLite games/events/outbox同一事务记录状态、版本和待发送项，原DB主持独占。每阶段先重读状态；版本冲突只在同阶段用原运输消息ID重试，不能改写phase。事件哈希链用于一致性检查，不能防宿主写权限者重算。</li>
+<li>发送：host-dispatch先记sending，Agent执行真实工具一次，host-receipt按真实回执记sent/unknown。网络发送在数据库事务外，没有跨网络exactly-once保证。主局public_presentations固定合并公告正文、成员与anchor，避免崩溃后按相似文本猜测重发。</li>
+<li>私密隔离：角色、狼队、刀口、查验、用药只给绑定玩家。公开展示仅created/discussion/vote/deaths/winner/night/control/player_speech白名单；玩家发言是原话数据。完整status/audit/outbox/DB含隐私，不附信。丁兼玩家的工程局有宿主可见性局限；主局丁不参赛。</li>
+<li>调度：同阶段并行收集expected，轮询≤25秒，到齐或绝对deadline后tick且一次一阶段。缺席弃权、不继承旧行动。不是六个独立DB凑成一局。</li>
+<li>恢复：原DB重开后sending转unknown；sent不重发，unknown需实际平台回执或认证收件确认。停止和终局不能恢复。历史重启证据只证明新CLI进程状态恢复，不证明平台宕机演练。</li>
+</ol>
+<h2>已发生故障与证据边界</h2>
+<table>
+<thead>
+<tr>
+  <th>故障</th>
+  <th>当时结果/处置</th>
+  <th>原件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>平台禁止自发私信</td>
+  <td>首局停止；新工程局绑定非玩家中继，首跳不当末跳送达</td>
+  <td>首局阻断与终止证据、验证局证据</td>
+</tr>
+<tr>
+  <td>跨项目中继404</td>
+  <td>用完整项目/线程句柄接续后收到；平台限制未因此修复</td>
+  <td>平台跨项目中继阻断.md</td>
+</tr>
+<tr>
+  <td>原信再读取出现“先接纳后旧阶段拒绝”</td>
+  <td>主局原票仅入账一次；主持纠正告知并过滤已处理原ID</td>
+  <td>非剧本真实游玩验证报告.md，纠正信fd4da55b-069c-4a72-9e68-7c118d1b91dc</td>
+</tr>
+<tr>
+  <td>用药schema不全</td>
+  <td>解释字段，由本人自主选择；主局未热改引擎</td>
+  <td>同上；后续技能修复不计本局版本能力</td>
+</tr>
+<tr>
+  <td>roster解析失败/全audit输出超限</td>
+  <td>发送准备前重读，或本机校验只出摘要；未盲重发</td>
+  <td>同上、长局读取修复证据.json</td>
+</tr>
+<tr>
+  <td>玩家附件泄露夜间phase_id</td>
+  <td>可能反推角色，原附件不转交普通玩家</td>
+  <td>同上；本次不导出逐人夜间映射</td>
+</tr>
+</tbody>
+</table>
+<h2>记录覆盖与缺口</h2>
+<p>配置、阶段、发言、投票接纳计数、裁决、结局有来源。逐人选票和夜间完整行动存在宿主原DB，但未取得赛后揭牌/对外披露授权，不随公开包交付；这属于披露缺口，不写成“数据不存在”。原始夜信完整集合未做逐封资源库取回，不能称所有平台原始信封已归档交付。停止局未发生的阶段标未产生；LIVE局材料未取得。详见《记录覆盖与披露边界.json》。</p>
+<p>赛后可披露的是去身份化阶段数量、投递与审计摘要和公开事件；终局不自动解密角色。所有投影列出来源DB哈希、原outbox ID和字段选择，未以脱敏副本冒充原数据库。公开发言里的身份主张原样保留，不认证真假。此次未引入凭据、环境变量、工作台账户配置或无关内部源码。</p>
+</article></section><section id="doc2"><div class="doc-head"><p>原件 2 / 7 · 7,887 字节</p><h2>插件化卡点与Jev证据分析.md</h2><a class="download" href="data:application/octet-stream;base64,IyDmj5Lku7bljJbljaHngrnkuI4gSmV2IOaXouacieivgeaNruWIhuaekAoK5pys5qyh5Y+q5pW055CG5bey5pyJ5a6e546w5LiO5a6e5rWL77yM5LiN5paw56CU5Y+R44CB5LiN6LCD55So5qih5Z6L5oiW5pS26LS55o6l5Y+j44CB5LiN6YOo572y44CB5LiN5pS55biC5Zy654q25oCB44CC5p2l5rqQ5Y+l5p+E5ZKM5ZOI5biM6KeB5p2l5rqQ57Si5byV77yM57uT6K666ZmQ5a6a5Y6G5Y+y5a6e5rWL5pe26Ze077yM5LiN5oqK5pen5b+r54Wn5b2T5b2T5YmN5pyN5Yqh5om/6K+644CCCgojIyDlm5vkuKrlsYLmrKEKCnwg5bGC5qyhIHwg5bey5pyJ6K+B5o2uIHwg5Y+v5Lul6K+05LuA5LmIIHwg5LiN6IO96K+05LuA5LmIIHwKfC0tLXwtLS18LS0tfC0tLXwKfCDmj5DnpLror41za2lsbCB8IOWOn+eUn+ebruW9lXdlcmV3b2xm56ym5Y+36ZO+5o6l44CBU0tJTEwubWTjgIHlhaXlj6PmoLjmn6UgfCBBZ2VudOWPr+WPkeeOsOW5tuaMieS4u+aMgea1geeoi+iwg+eUqCB8IHNraWxs5pys6Lqr5o+Q5L6b56Gu5a6a5oCn54q25oCB5oiW5ZCO5Y+w5pyN5YqhIHwKfCDmnKzlnLDohJrmnKwgfCDlm7rlrprmj5DkuqRQeXRob27lvJXmk47jgIFTUUxpdGXjgIHnnJ/lrp7kuKTlsYDnu4jlsYAgfCDmnKzlnLDop4TliJnjgIHnirbmgIHjgIHlrr/kuLvmoaXmjqXlt7Lov5DooYwgfCDlt7LmiJDkuLrlubPlj7DmiZjnrqHmuLjmiI/mj5Lku7YgfAp8IOWOn+eUn+aPkuS7ti/lt6Xlhbfms6jlhowgfCDnnJ/lrp7kvb/nlKjnq5nlhoXkv6HkuI7lpKfljoXpgJrnlKhNQ1DvvJvlvZPml7bml6Dni7zkurrmnYDkuJPlsZ7lt6XlhbcgfCDlt7LlpI3nlKjlubPlj7DpgJrnlKjog73lipsgfCDlt7Lms6jlhozni7zkurrmnYDmnI3liqHmiJblrozmlbRBMkHnq6/ngrkgfAp8IOW4guWcuuS4iue6vyB8IGM3MTHnjrDlnLpwbHVnaW5fbWluZSBpdGVtcz1bXe+8jOinhOWImeivtOaYjuaPkuS7tua6kOWtmOWcqCB8IOacrOW4reW9k+aXtuaXoOW3suWuieijheW4guWcuuaPkuS7tuivgeaNriB8IOa6kOeggeWtmOWcqOWNs+W3suWPkeW4g+OAgeW3suWuoeaguOOAgeW3suWuieijhSB8CgojIyDljaHngrnpgJDpobnlr7notKYKCnwg5Y2h54K5IHwg5pei5pyJ6K+B5o2uIHwg57y65LuA5LmIIHwg5b2x5ZONIHwg5LiL5LiA5q2l77yI5bu66K6u77yM5pyq5omn6KGM77yJIHwKfC0tLXwtLS18LS0tfC0tLXwtLS18Cnwg5Lqn5ZOB6IO95Yqb5YyF6KOFIHwgYzcxMeWuieijheS4juW3peWFt+eOsOWcuuOAgeW8gOWxgOS4juWFpeWPo+aguOafpSB8IOW8leaTjuWPr+aJp+ihjOW3peWFt+a4heWNleS4juW5s+WPsOaJmOeuoeWlkee6piB8IOWuieijheinhOWImeivtOaYjuS4jeS8muWQr+WKqOS4u+aMgSB8IOWFiOWumuS5ieWPquivu+eKtuaAgS/lj5fmjqfliqjkvZzlt6Xlhbflj4rovpPlhaXovpPlh7rvvIzkuI3pnaDmj5DnpLror43mqKHmi5/mnI3liqEgfAp8IOW4uOmpu+iwg+W6piB8IGM3MTHlnKjlnLpBZ2VudOaJi+W3peiwg0NMSe+8jOeUn+WRveWRqOacn+iusOW9lSB8IOWPr+aOiOadg+eahOaMgee7rei/kOihjC/lrprml7bllKTphpLjgIHotoXml7blkozlgZzmraLlpZHnuqYgfCDot6jova7ml6DkurrlgLzlrojml6Dor4HmmI4gfCDmmI7noa7lrr/kuLvnlJ/lkb3lkajmnJ/kuI7pmLbmrrXllKTphpLmlrnlvI/lkI7lsI/ojIPlm7TpqozmlLYgfAp8IOiupOivgeWvu+WdgCB8IGU2MzYgVVVJROe7keWumuOAgXJvc3Rlcui3r+eUseOAgeiHquWPkeS/oUhUVFA0MDAgfCDmj5Lku7bov5DooYzouqvku73jgIHnjqnlrrbnu5HlrprmjojmnYPjgIHlp5PlkI3lj5jmm7TnrZbnlaUgfCDplJnnu5HkvJrms4Tlr4bvvJvlkIzluK3kuLvmjIHpnIDkuK3nu6cgfCDkvJjlhYjpnZ7njqnlrrbkuLvmjIHvvJvlm7rljJZVVUlE5p2D6ZmQ5LiO6Lev55Sx5qCh6aqMIHwKfCDlpKfljoXovpPlhaXorqTor4EgfCDml6fmiqXlkYpoYWxsX3JlYWTku4XmmL7npLrlkI3vvIzlrp7pmYXnp4Hkv6Hlm57mlLYgfCDnu5PmnoTljJblj6/kv6F3b3JrZXJfaWTovpPlhaXkuovku7YgfCDkuI3og73miormmL7npLrlkI3lvZPnjqnlrrbouqvku70gfCDmsr/nlKjorqTor4Hnp4Hkv6HmiJblj5blvpflubPlj7DorqTor4Hkuovku7blpZHnuqYgfAp8IOWPkemAgeW5guetieS4juaBouWkjSB8IGU2Mzbph43lkK/jgIEzIHVua25vd27vvJvkuLvlsYDlkIjlubZhbmNob3IgfCDov5znq6/luYLnrYnlj5HpgIHplK4v5Zue5omn5p+l6K+i5aWR57qmIHwg5pys5Zyw5LqL5Yqh5LiN5L+d6K+B572R57uc5LuF5Y+R5LiA5qyhIHwg5rOo5YWl5Y+R6YCB5ZCO5bSp5rqD5Zy65pmv77yMdW5rbm93buS6uuW3peaguOWvue+8jOemgeatouebsumHjeWPkSB8Cnwg6Leo6aG555uu6K6/6ZeuIHwg5bmz5Y+w6Leo6aG555uu5Lit57un6Zi75patLm1k77yM55yf5a6eNDA0IHwg5piO56Gu5Lu75YqhL+mikemBky/kv6Hku7bmjojmnYPkuI7lj6Xmn4Tlj6/op4HmgKcgfCDlkIzkuIDmlLblj5Hmlrnku43lj6/og73or7vkuI3liLDljp/kv6EgfCDmmI7noa7pobnnm65zY29wZe+8jOS4jemAmui/h+WkjeWItuengeWvhuadkOaWmeinhOmBv+malOemuyB8Cnwg5oyB5LmF5YyW5LiO5a6h6K6hIHwg5LikRELlj6ror7vpk77mo4Dmn6XpgJrov4fvvIznirbmgIHmnKzlnLDmjIHkuYUgfCDmiZjnrqHlrZjlgqjjgIHlpIfku70v5oGi5aSN44CB5bm25Y+R6ZSB44CB5a6h6K6h5p2D6ZmQIHwg5oyB5LmF5Y235LiN562J5LqO55Sf5Lqn6auY5Y+v55SoIHwg5a6/5Li75Y+q6K+75a6h6K6h5LiO5oGi5aSN6aqM5pS254us56uL5LqO6KeE5YiZ5rWL6K+VIHwKfCDnp4Hlr4botYTmlpnmiqvpnLIgfCDkuLvlsYDnjqnlrrbpmYTku7blpJzpl7RwaGFzZV9pZOWPr+aOqOi6q+S7vSB8IOinkuiJsi/pmLbmrrXljrvlhbPogZTohLHmlY/jgIHotZvlkI7mnYPpmZDnrZbnlaUgfCDnu4jlsYDpmYTku7bku43lj6/ms4TniYwgfCDlhazlhbHmipXlvbHkuI7lrr/kuLvnp4Hlr4blrZjlgqjliIbmnYPvvJvkuI3oh6rliqjmj63niYwgfAp8IOS9k+mqjOS4juWbnuaJpyB8IOS4u+WxgOaXp+S/oemHjeWkjeaLkue7neOAgeeUqOiNr+Wtl+auteivoumXriB8IOeos+WumuaOpee6s+WbnuaJp+WSjOWujOaVtHNjaGVtYeWcqOebruagh+eJiOacrOeahOmqjOaUtiB8IOeOqeWutuaUtuWIsOefm+ebvuehruiupOaIluaXoOazleaPkOS6pCB8IOWkjeeUqOWQjue7reS/ruWkjeivgeaNru+8jOS4jeWbnuWGmeWOhuWPsuWxgO+8jOS4jemHjeeglOaXp+S/ruWkjSB8Cnwg6L6T5Ye66ZW/5bqmIHwg6ZW/5bGAODI0Mi10b2tlbuaIquaWreOAgeWIhumhteS/ruWkjeivgeaNriB8IOWuv+S4u+W3peWFt+WIhumhtS/nqLPlrprmjpLluo/kuI7or7vkuIrpmZDnuqblrpogfCDmiKrmlq3mmJPooqvor6/orqTkuLrlpLHotKXlr7zoh7Tph43lj5EgfCDmjIlJROmAkOmhueaKlemAku+8jHB1YmxpY+aJueasoeWbuuWumuato+aWh++8jOaRmOimgeivu+eKtuaAgSB8CnwgQTJB6L6555WMIHwgZG9jcy9rcm93LWhvc3TjgIHljp/miqXlkYpBMkHor4TkvLAgfCBBZ2VudENhcmTjgIHmoIflh4bku7vliqHnlJ/lkb3lkajmnJ8vSlNPTi1SUEPnq6/ngrnnrYnnm67moIfop4TojIMgfCDljp/nlJ9NQ1DmoaXmjqXkuI3nrYnkuo7lrozmlbRBMkHkupLpgJogfCDlhYjnoa7orqTpnIDopoHlk6rnp43kupLpgJrvvIzlho3or4TkvLDljY/orq7lsYLvvIzkuI3og73lj6rmjaLlkI3np7AgfAp8IOW4guWcuuWPkeW4gyB8IOWOhuWPsuWuieijheW/q+eFp+S4juinhOWImea6kO+8jOS4jeWQq+WPkeW4g+mqjOaUtiB8IOaPkuS7tuWMheOAgeadg+mZkOWjsOaYjuOAgeWuoeaguC/lronoo4Xlj4rlvJXmk47osIPnlKjlm57miacgfCDkuI3og73np7Dlt7LkuIrnur8gfCDnlLHnu4Tplb/noa7orqTkuqflk4Hlj5HluIPnm67moIflkozmjojmnYPvvIzlho3otbDlj5HluIPpqozor4EgfAoK5Lul5LiK5piv5aSN55So5Y2h54K55riF5Y2V77yM5LiN5piv5bey5a6J5o6S55qE5paw5byA5Y+R5bel5Y2V44CC5rKh5pyJ5Lul5Y+W5raIVEVTVOS/neaKpOabv+S7o+ecn+WunuaooeW8j+iupOivge+8jOayoeacieaWsOWinue9keermeaIluWQjuWPsOacjeWKoeOAggoKIyMgSmV2IOWGs+etluS4juWFt+S9k+WvueixoQoK5Yaz562WODk0OTU2MjAtYzY3NC00OGRlLWExNDYtMWVmZTJmMjc1Yzlk5LqOMjAyNi0xMC0yNCAxMDoyMDowOFrmibnlh4bvvJvml6fku7vliqFhZTRkNWQ4YeaYjuehruiusOi9veS7heaJp+ihjEHmlrnmoYjvvJrnoa7orqQgVHlwZVNhZmUg5YCZ6YCJ5bm26aqM6K+B5a6Y5pa5QWRhcHRlcuemu+e6v+WNj+iuruOAgui0puacrGFwcHJvdmVk5Y+q6KGo56S65Yaz562W6YCa6L+H77yM5LiN562J5LqO5omY566hQVBJ5oiW5qih5Z6L5o6l6YCa44CCYTdmOTg3ZDHmiqXlkYrkuK3nmoTigJzouqvku73lvoXnoa7orqTigJ3mmK/mraTliY3ljoblj7LnirbmgIHvvIzkuI3og73nlKjlroPopobnm5blkI7nu63lt7Lmibnlh4ZB6Lev57q/44CCCgp8IOWvueixoS/mjqXlj6MgfCDlt7LmoLjlrp7lr7nosaEgfCDlrp7mtYvnirbmgIEgfAp8LS0tfC0tLXwtLS18CnwgVHlwZVNhZmUgSmV2IC8gU3lzdGVtIE9uZSDmiZjnrqFBUEkgfCDml6LmnInlrpjmlrnmlofmoaPlj4p0eXBlc2FmZS1zZGstcHl0aG9u5a6i5oi356uv5p2l5rqQIHwg5pyq5Y+W5b6XSmV25p2D6YeNL+aooeWei+a6kOegge+8m+acquWunua1i+aJmOeuoeaooeWei+iwg+eUqO+8jOS4jeaKilNES+W8gOa6kOW7tuS8uOWIsOaooeWeiyB8Cnwgc3lzdGVtLW9uZS1hZGFwdGVyLXB5dGhvbiB8IHYwLjIuMe+8jFNIQSBlMWQ0Y2M5MzgyMDRiMjJmYzVhM2MzYWNhNzA0NDA3MmZlM2Y3MTJk77ybTUlUIHwg5a6Y5pa5QWRhcHRlcu+8jOWvueWFtuS7lnByb3ZpZGVy5YGa57G75Z6L5YyW6Zeu562U5bCB6KOF77yb5LiN5pivSmV25pys5L2TIHwKfCDlkIzmraUv5byC5q2lIFN5c3RlbU9uZUFkYXB0ZXJDbGllbnQuc3lzdGVtX29uZShzdGF0ZSwgcXVlc3Rpb25zLCBtb2RlbD1wcm92aWRlcikgfCBOb3VsL1Njb3JlL0Nob2ljZe+8jFNES+WFvOWuuWFuc3dlcnMvdXNhZ2UvZGVidWcgfCAzOTnpobnlrpjmlrnnprvnur/mtYvor5XpgJrov4fvvJtub3JtYWwv55W45b2i57qg5q2jL+iAl+WwveS4iee7hOWQiOaIkOWbnuaJp++8m+mqjOivgeWtkOi/m+eoi3NvY2tldOWwneivlTAgfAp8IOacrOWcsGRlY2lzaW9uLnB5IGRlY2lkZS9DTEkgfCBhM2ZiMjFkNe+8jOagh+WHhuW6k+inhOWImeS4juWPr+mAiUFkYXB0ZXLmoaUgfCAyOCBBUEnjgIE5IENMSeOAgTEyODDop4TliJnnu4TlkIjvvJttb2RlbF9pbmZlcmVuY2U9ZmFsc2XvvIzkuI3og73np7DmqKHlnovmjqXlhaUgfAp8IFF3ZW4vUXdlbjIuNS0xLjVCLUluc3RydWN0LUdHVUYgfCDlkI7nu601ZGIwNmIyYe+8jOWbuuWumuS/ruiuouS4juadg+mHjVNIQeWcqOWOn+aKpeWRiiB8IENQVeecn+WunlRyYW5zZm9ybWVy5YmN5ZCR5bey5omn6KGM77yb5piv5ZCM57G75a6e6aqM5qih5Z6L77yM5LiN5pivSmV2IHwKfCBrcm935Y6f55Sf5Lya6K+dIHwg55yf5a6e6YKu5Lu25Y2V5om5MTbmnaHlkIjmiJDliKTmlq3lj4rlm57miacgfCDkvJror53liKTmlq3lt7Lpqozor4HvvJvnqIvluo/pgJrnlKjmqKHlnotBUEnjgIHoh6rliqjlrr/kuLvosIPnlKjmnKrmjqXpgJogfAoK5a6Y5pa55Ye65aSE5Li65pei5pyJ5b+r54Wn77yaaHR0cHM6Ly9kb2NzLnR5cGVzYWZlLmFpL2ludHJvZHVjdGlvbiDjgIFodHRwczovL2dpdGh1Yi5jb20vdHlwZXNhZmUtYWkvc3lzdGVtLW9uZS1hZGFwdGVyLXB5dGhvbi90cmVlL2UxZDRjYzkzODIwNGIyMmZjNWEzYzNhY2E3MDQ0MDcyZmUzZjcxMmQg44CC5pys5qyh5pyq6YeN5paw6IGU572R5rWL54mI5pys5oiW5pyN5Yqh54q25oCB77yM5omA5pyJ5rWL6K+V5pWw5p2l6Ieq5Y6f5Lu25bm25qC45a+55Y6f5aeL5Lqk5LuY77yb5LiN5byV55So5a6j5Lyg5pWw5o2u5L2c5bmz5Y+w5a6e5rWL44CCCgojIyDlkI7nu63nnJ/lrp7mqKHlnovnmoTnu5Pmnpzlj4rpmZDliLYKCjVkYjA2YjJh6K6w5b2V77ya5pys5ZywMS41QuWGu+e7k+eVmeWHujE25p2h57uT5p6E5pyJ5pWIMTYvMTbjgIHmvJTnpLrph4/op4TljLnphY0xMS8xNu+8jOinhOWImeWQjOi+k+WFpTEzLzE277yba3Jvd+S8muivnTE2LzE244CC5qC35pys5Li65omL5bel5ZCI5oiQ5ryU56S66YeP6KeE77yM5LiN5piv55Sf5Lqn5YeG56Gu546H44CC6L6T5Ye65p6a5Li+55Sx5qih5Z6L5YCZ6YCJbG9naXTlj5fpmZDpgInmi6nlho3nlLHnqIvluo/ljIXoo4VKU09O77ybSlNPTuacieaViOS4jeivgeaYjuivreS5ieWPr+mdoO+8jOS5n+S4jeS7o+ihqOaooeWei+iHqueUseeUn+aIkOato+ehruino+mHiuOAggoK5bel5L2c5Y+w5a6e5rWL77ya5Ya3Q0xJ5aKZ6ZKfNDgyNDcuMzkwbXPvvIzmjIHkuYVFbmdpbmXliJ3lp4vljJY0MjM0Ni41Njhtc++8jOeDreiwg+eUqOS4reS9jTE1NTEuODA0bXPvvIzop4TliJnkuK3kvY0wLjAyMG1z77yb5Li76L+b56iL5bOw5YC8UlNTNzY4MC41TWlC44CC5a6e6ZmFY2dyb3VwIDhHaUIvMuaguO+8jOWPjOaooeWei+W5tuWPkeabvlNJR0tJTEzvvJvmnIDnu4jkuLLooYzjgILmnKrmtYtrcm93d29ya+i1hOa6kOOAgUplduWQjOi+k+WFpeaOqOeQhuOAgeeUn+S6p+WPq+mGkuaXtumXtOaIluerr+WIsOerr+aPkOmAn++8jOS4jeiDvei3qOeOr+Wig+avlOi+g+aIluaOqOWvvOW5tuWPkeWuuemHj+OAggoKIyMg5bey6aqM6K+B44CB6K6+5oOz44CB5b6F5r6E5riF5YiG5Yir5piv5LuA5LmICgotIOW3sumqjOivge+8muWumOaWuUFkYXB0ZXLnprvnur/nu5PmnoQv5byC5bi45Y2P6K6u77yb54us56uL6KeE5YiZQ0xJL0FQSe+8m+acrOWcsFF3ZW7nnJ/lrp7mjqjnkIbjgIHnu5PmnoTjgIHmi5Lnu53kuI7lm57pgIDvvJtrcm935Lya6K+d5LiA5qyh5ZCI5oiQ5Yik5pat77yb5Y6f55Sf54u85Lq65p2A55yf5a6e5raI5oGv5Yiw57uI5bGA44CCCi0g6K6+5oOz77ya55So5L2O5oiQ5pys6K+t5LmJ5Yaz562W5Y2P5Yqp5raI5oGv5YiG6K+K44CB5b2i5oiQ5Y+q6K+75bu66K6u77yM5YaN55Sx5Lq65bel5oiW5Y+v5L+h562W55Wl5aSN5qC477yb5bCG5bey5pyJ6ISa5pys5YyF6KOF5Li65o6I5p2D5bel5YW344CC5pyq5a6e546w5bmz5Y+w5YWl6Zif6LCD55So44CB6Ieq5Yqo5rS+5bel44CB5oyB57ut6LCD5bqm5oiW55Sf5Lqn6Lev55Sx44CCCi0g5b6F5r6E5riFL+e8uuWPo++8muW5s+WPsOmAmueUqOaooeWei+iwg+eUqOWlkee6puOAgeWPr+S/oeagh+etvi/miKrmraLovpPlhaXpkqnlrZDjgIHov5DooYzouqvku73lj4rpooTnrpfjgIHmjIHkuYXljJYv5bm25Y+R44CB6YOo572y5LiO6L+U5Zue5bu66K6u5o6l5Y+j44CB6IO96L+H54us56uL6K+t5LmJ6aqM5pS255qE5pa55qGI44CC6Iul6KaBVHlwZVNhZmXmiZjnrqFBUEnvvIzpnIDlj6bmnInmmI7noa7mjojmnYPkuI7lkIjms5Xlh63mja7vvIzpgJrov4fkuqflk4HpgJrpgZPnrqHnkIbvvIzkuI3ku47lt6XkvZzlj7Dmj5Dlj5blh63mja7jgIIKCuWOn+W5s+WPsOivt+axgjY2ZGVkY2Zk5Zyo5pen5Lu75Yqh5bey5Yqe57uT77yM562U5aSN5Y+q5piv5Lia5Yqh6Lev57q/6K+05piO77yM5rKh5pyJ6IGU6LCD77yb5LiN6IO95YaN56ew562J5b6F6K+l5Y6f6K+35rGC44CC5ZCO57ut6K+35rGCMmEyMDQwOTPlnKjml6fku7vliqHorrDlvZXkuLrnrYnlvoXnu63moLjvvIzmnKzmrKHmnKrmn6XlhbbmnIDmlrDnu5PlsYDvvIzkuI3mm7/nu4Tplb/liKTlrprjgILmraTlpI3nm5jkuI3mlrDlu7rlpJbpg6jor7fmsYLvvIzkuI3lkJHlm77ngbXmiJblkIjkvZzpopHpgZPlj5Hkv6HjgIJKZXbmlbTkvZPlubPlj7DmjqXlhaXlj4rlj6vphpLmj5DpgJ/nm67moIfmnKrlrozmiJDvvJvmnKzmrKHor4Hmja7liIbmnpDkuqTku5jkuI7or6XmioDmnK/nm67moIfovr7miJDliIblvIDjgIIK" download="插件化卡点与Jev证据分析.md">下载此份原件</a><p class="hash">SHA-256：785e4a7bdabc5d510bfbd47197db2b2496af77aa6b82a7dcbed165e1ea01a47d</p></div><article><h1>插件化卡点与 Jev 既有证据分析</h1>
+<p>本次只整理已有实现与实测，不新研发、不调用模型或收费接口、不部署、不改市场状态。来源句柄和哈希见来源索引，结论限定历史实测时间，不把旧快照当当前服务承诺。</p>
+<h2>四个层次</h2>
+<table>
+<thead>
+<tr>
+  <th>层次</th>
+  <th>已有证据</th>
+  <th>可以说什么</th>
+  <th>不能说什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>提示词skill</td>
+  <td>原生目录werewolf符号链接、SKILL.md、入口核查</td>
+  <td>Agent可发现并按主持流程调用</td>
+  <td>skill本身提供确定性状态或后台服务</td>
+</tr>
+<tr>
+  <td>本地脚本</td>
+  <td>固定提交Python引擎、SQLite、真实两局终局</td>
+  <td>本地规则、状态、宿主桥接已运行</td>
+  <td>已成为平台托管游戏插件</td>
+</tr>
+<tr>
+  <td>原生插件/工具注册</td>
+  <td>真实使用站内信与大厅通用MCP；当时无狼人杀专属工具</td>
+  <td>已复用平台通用能力</td>
+  <td>已注册狼人杀服务或完整A2A端点</td>
+</tr>
+<tr>
+  <td>市场上线</td>
+  <td>c711现场plugin_mine items=[]，规则说明插件源存在</td>
+  <td>本席当时无已安装市场插件证据</td>
+  <td>源码存在即已发布、已审核、已安装</td>
+</tr>
+</tbody>
+</table>
+<h2>卡点逐项对账</h2>
+<table>
+<thead>
+<tr>
+  <th>卡点</th>
+  <th>既有证据</th>
+  <th>缺什么</th>
+  <th>影响</th>
+  <th>下一步（建议，未执行）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>产品能力包装</td>
+  <td>c711安装与工具现场、开局与入口核查</td>
+  <td>引擎可执行工具清单与平台托管契约</td>
+  <td>安装规则说明不会启动主持</td>
+  <td>先定义只读状态/受控动作工具及输入输出，不靠提示词模拟服务</td>
+</tr>
+<tr>
+  <td>常驻调度</td>
+  <td>c711在场Agent手工调CLI，生命周期记录</td>
+  <td>可授权的持续运行/定时唤醒、超时和停止契约</td>
+  <td>跨轮无人值守无证明</td>
+  <td>明确宿主生命周期与阶段唤醒方式后小范围验收</td>
+</tr>
+<tr>
+  <td>认证寻址</td>
+  <td>e636 UUID绑定、roster路由、自发信HTTP400</td>
+  <td>插件运行身份、玩家绑定授权、姓名变更策略</td>
+  <td>错绑会泄密；同席主持需中继</td>
+  <td>优先非玩家主持；固化UUID权限与路由校验</td>
+</tr>
+<tr>
+  <td>大厅输入认证</td>
+  <td>旧报告hall_read仅显示名，实际私信回收</td>
+  <td>结构化可信worker_id输入事件</td>
+  <td>不能把显示名当玩家身份</td>
+  <td>沿用认证私信或取得平台认证事件契约</td>
+</tr>
+<tr>
+  <td>发送幂等与恢复</td>
+  <td>e636重启、3 unknown；主局合并anchor</td>
+  <td>远端幂等发送键/回执查询契约</td>
+  <td>本地事务不保证网络仅发一次</td>
+  <td>注入发送后崩溃场景，unknown人工核对，禁止盲重发</td>
+</tr>
+<tr>
+  <td>跨项目访问</td>
+  <td>平台跨项目中继阻断.md，真实404</td>
+  <td>明确任务/频道/信件授权与句柄可见性</td>
+  <td>同一收发方仍可能读不到原信</td>
+  <td>明确项目scope，不通过复制私密材料规避隔离</td>
+</tr>
+<tr>
+  <td>持久化与审计</td>
+  <td>两DB只读链检查通过，状态本地持久</td>
+  <td>托管存储、备份/恢复、并发锁、审计权限</td>
+  <td>持久卷不等于生产高可用</td>
+  <td>宿主只读审计与恢复验收独立于规则测试</td>
+</tr>
+<tr>
+  <td>私密资料披露</td>
+  <td>主局玩家附件夜间phase_id可推身份</td>
+  <td>角色/阶段去关联脱敏、赛后权限策略</td>
+  <td>终局附件仍可泄牌</td>
+  <td>公共投影与宿主私密存储分权；不自动揭牌</td>
+</tr>
+<tr>
+  <td>体验与回执</td>
+  <td>主局旧信重复拒绝、用药字段询问</td>
+  <td>稳定接纳回执和完整schema在目标版本的验收</td>
+  <td>玩家收到矛盾确认或无法提交</td>
+  <td>复用后续修复证据，不回写历史局，不重研旧修复</td>
+</tr>
+<tr>
+  <td>输出长度</td>
+  <td>长局8242-token截断、分页修复证据</td>
+  <td>宿主工具分页/稳定排序与读上限约定</td>
+  <td>截断易被误认为失败导致重发</td>
+  <td>按ID逐项投递，public批次固定正文，摘要读状态</td>
+</tr>
+<tr>
+  <td>A2A边界</td>
+  <td>docs/krow-host、原报告A2A评估</td>
+  <td>AgentCard、标准任务生命周期/JSON-RPC端点等目标规范</td>
+  <td>原生MCP桥接不等于完整A2A互通</td>
+  <td>先确认需要哪种互通，再评估协议层，不能只换名称</td>
+</tr>
+<tr>
+  <td>市场发布</td>
+  <td>历史安装快照与规则源，不含发布验收</td>
+  <td>插件包、权限声明、审核/安装及引擎调用回执</td>
+  <td>不能称已上线</td>
+  <td>由组长确认产品发布目标和授权，再走发布验证</td>
+</tr>
+</tbody>
+</table>
+<p>以上是复用卡点清单，不是已安排的新开发工单。没有以取消TEST保护替代真实模式认证，没有新增网站或后台服务。</p>
+<h2>Jev 决策与具体对象</h2>
+<p>决策89495620-c674-48de-a146-1efe2f275c9d于2026-10-24 10:20:08Z批准；旧任务ae4d5d8a明确记载仅执行A方案：确认 TypeSafe 候选并验证官方Adapter离线协议。账本approved只表示决策通过，不等于托管API或模型接通。a7f987d1报告中的“身份待确认”是此前历史状态，不能用它覆盖后续已批准A路线。</p>
+<table>
+<thead>
+<tr>
+  <th>对象/接口</th>
+  <th>已核实对象</th>
+  <th>实测状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TypeSafe Jev / System One 托管API</td>
+  <td>既有官方文档及typesafe-sdk-python客户端来源</td>
+  <td>未取得Jev权重/模型源码；未实测托管模型调用，不把SDK开源延伸到模型</td>
+</tr>
+<tr>
+  <td>system-one-adapter-python</td>
+  <td>v0.2.1，SHA e1d4cc938204b22fc5a3c3aca7044072fe3f712d；MIT</td>
+  <td>官方Adapter，对其他provider做类型化问答封装；不是Jev本体</td>
+</tr>
+<tr>
+  <td>同步/异步 SystemOneAdapterClient.system_one(state, questions, model=provider)</td>
+  <td>Noul/Score/Choice，SDK兼容answers/usage/debug</td>
+  <td>399项官方离线测试通过；normal/畸形纠正/耗尽三组合成回执；验证子进程socket尝试0</td>
+</tr>
+<tr>
+  <td>本地decision.py decide/CLI</td>
+  <td>a3fb21d5，标准库规则与可选Adapter桥</td>
+  <td>28 API、9 CLI、1280规则组合；model_inference=false，不能称模型接入</td>
+</tr>
+<tr>
+  <td>Qwen/Qwen2.5-1.5B-Instruct-GGUF</td>
+  <td>后续5db06b2a，固定修订与权重SHA在原报告</td>
+  <td>CPU真实Transformer前向已执行；是同类实验模型，不是Jev</td>
+</tr>
+<tr>
+  <td>krow原生会话</td>
+  <td>真实邮件单批16条合成判断及回执</td>
+  <td>会话判断已验证；程序通用模型API、自动宿主调用未接通</td>
+</tr>
+</tbody>
+</table>
+<p>官方出处为既有快照：https://docs.typesafe.ai/introduction 、https://github.com/typesafe-ai/system-one-adapter-python/tree/e1d4cc938204b22fc5a3c3aca7044072fe3f712d 。本次未重新联网测版本或服务状态，所有测试数来自原件并核对原始交付；不引用宣传数据作平台实测。</p>
+<h2>后续真实模型的结果及限制</h2>
+<p>5db06b2a记录：本地1.5B冻结留出16条结构有效16/16、演示量规匹配11/16，规则同输入13/16；krow会话16/16。样本为手工合成演示量规，不是生产准确率。输出枚举由模型候选logit受限选择再由程序包装JSON；JSON有效不证明语义可靠，也不代表模型自由生成正确解释。</p>
+<p>工作台实测：冷CLI墙钟48247.390ms，持久Engine初始化42346.568ms，热调用中位1551.804ms，规则中位0.020ms；主进程峰值RSS7680.5MiB。实际cgroup 8GiB/2核，双模型并发曾SIGKILL；最终串行。未测krowwork资源、Jev同输入推理、生产叫醒时间或端到端提速，不能跨环境比较或推导并发容量。</p>
+<h2>已验证、设想、待澄清分别是什么</h2>
+<ul>
+<li>已验证：官方Adapter离线结构/异常协议；独立规则CLI/API；本地Qwen真实推理、结构、拒绝与回退；krow会话一次合成判断；原生狼人杀真实消息到终局。</li>
+<li>设想：用低成本语义决策协助消息分诊、形成只读建议，再由人工或可信策略复核；将已有脚本包装为授权工具。未实现平台入队调用、自动派工、持续调度或生产路由。</li>
+<li>待澄清/缺口：平台通用模型调用契约、可信标签/截止输入钩子、运行身份及预算、持久化/并发、部署与返回建议接口、能过独立语义验收的方案。若要TypeSafe托管API，需另有明确授权与合法凭据，通过产品通道管理，不从工作台提取凭据。</li>
+</ul>
+<p>原平台请求66dedcfd在旧任务已办结，答复只是业务路线说明，没有联调；不能再称等待该原请求。后续请求2a204093在旧任务记录为等待续核，本次未查其最新结局，不替组长判定。此复盘不新建外部请求，不向图灵或合作频道发信。Jev整体平台接入及叫醒提速目标未完成；本次证据分析交付与该技术目标达成分开。</p>
+</article></section><section id="doc3"><div class="doc-head"><p>原件 3 / 7 · 8,076 字节</p><h2>公开对局原话.md</h2><a class="download" href="data:application/octet-stream;base64,IyDlhazlvIDlr7nlsYDljp/or50KCuS7peS4i+S7heaUtuW9leacrOWxgOW8leaTjuWxleekuuWxguWunumZheWPkemAgeacrOe7hOWkp+WOheeahOS4reaWh+ato+aWh++8jOeOqeWutuiHqui/sOi6q+S7veWPquaYr+acrOS6uuWOn+ivne+8jOS4jeaYr+S4u+aMgeaPreeJjOOAguW8gOWxgOWJjeinhOWImeWPpuingeWkp+WOhSM2NjE344CBIzY2MjLjgIIKCiMjIOWkp+WOhSAjNjYyMwoK5YWt5bit5ri45oiP5bey5YeG5aSH5aW944CC5Y+C5LiO5bit5L2N77ya5pif55WM5Yab55Sy44CB5pif55WM5Yab5LmZ44CB5pif55WM5Yab5LiZ44CB5pif55WM5Yab5oiK44CB5pif55WM5Yab5bex44CB6ams5Y2h6YeM5LmM5pav44CCCgojIyDlpKfljoUgIzY2MjUKCuacrOasoee7k+eul+aXoOS6uuWHuuWxgOOAggoK55m95aSp5Y+R6KiA5byA5aeL77yM6K+35ZCE5L2N5o+Q5Lqk6Ieq5bex55qE5Y+R6KiA44CCCuWtmOa0u+W4reS9je+8muaYn+eVjOWGm+eUsuOAgeaYn+eVjOWGm+S5meOAgeaYn+eVjOWGm+S4meOAgeaYn+eVjOWGm+aIiuOAgeaYn+eVjOWGm+W3seOAgemprOWNoemHjOS5jOaWr+OAggrmiKrmraLvvJoyMDI2LTEwLTI0IDAzOjE0OjUy77yIQXNpYS9TaGFuZ2hhae+8jOWMl+S6rOaXtumXtO+8ieOAggoKIyMg5aSn5Y6FICM2NjI2CgrpqazljaHph4zkuYzmlq8g5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaCj4g5YWt5Y+36ams5Y2h6YeM5LmM5pav5Y+R6KiA44CC5pio5aSc5peg5Lq65Ye65bGA77yM5L2G5Y2V5Yet5bmz5a6J5aSc5LiN6IO95Yik5pat6LCB5piv5aW95Lq677yM5Lmf5LiN6IO956Gu5a6a5aWz5ber55So5LqG6I2v44CC55uu5YmN5rKh5pyJ5YWs5byA5p+l6aqM77yM5Lmf6L+Y5rKh5pyJ5YW25LuW5Lq655qE5Y+R6KiA77yM5oiR5LiN5Yet5bqn5L2N6ZqP5py654K554u844CC6aKE6KiA5a625aaC5p6c5Yaz5a6a5Ye65p2l77yM6K+36K+05riF5p+l5LqG6LCB44CB57uT5p6c5piv5LuA5LmI77yb6Iul5pyJ5Lq65a+56Lez77yM5oiR5Lus5q+U6L6D5Lik5Lq655qE5p+l6aqM5ZKM5ZCO57ut6YC76L6R77yM5LiN5piv6LCB5YWI6K+05bCx5L+h6LCB44CC5aWz5ber5LiN5b+F5Li65LqG6K+05piO5bmz5a6J5aSc5oqK55So6I2v5ZKM6Lqr5Lu96YO95pq06Zyy77yM54yO5Lq65Lmf5YWI5Yir5oCl552A6Lez44CC5biM5pyb5ZCE5L2N57uZ5Ye65YW35L2T5oCA55aR5a+56LGh5Y+K55CG55Sx77yM5LiN6KaB5Y+q6K+06Ieq5bex5piv5aW95Lq644CC5oiR5Lya55yL5YWs5byA5Y+R6KiA5ZKM5p+l6aqM5YaN5Yaz5a6a5oqV56Wo77yb5peg5Y+v6Z2g5L+h5oGv5pe25Lmf5LiN5Lya5oqK54yc5rWL6K+05oiQ6ZOB6K+B44CCCgojIyDlpKfljoUgIzY2MjcKCuaYn+eVjOWGm+S4mSDlj5HoqIDvvIjnjqnlrrbljp/mlofvvInvvJoKPiDkuJnlj5HoqIDjgILpppblpJzlubPlronvvIzkuI3og73mja7mraTorqTlrprku7vkvZXkurrmmK/lpb3kurrvvIzkuZ/lhYjliKvorqnlpbPlt6vmiqXmlZHkurrkv6Hmga/jgILlha3kurrkuKTni7zvvIzku4rlpKnmipXplJnlj6/og73nm7TmjqXov5vlhaXljbHpmanlsYDpnaLvvIzkuI3og73lh63luqfkvY3nm7LmjqjjgILpooToqIDlrrboi6Xmn6XliLDni7zlu7rorq7mmI7noa7miqXmn6XpqozvvJvoi6Xlj6rmnInlpb3kurrnu5PmnpzvvIzoh6rooYzliKTmlq3otbfot7PmlLbnm4rjgILlr7not7Por7flkIToh6ror7TmuIXpppbpqozlr7nosaHlkozpgInmi6nnkIbnlLHvvIzlpKflrrbph43ngrnnnIvpgLvovpHlkozmipXnpajkuIDoh7TmgKfjgILlvZPliY3msqHmnInku5bkurrlj5HoqIDlj6/mr5TovoPvvIzmiJHmmoLkuI3ngrnni7zvvIzmipXnpajliY3kvJrnu5PlkIjlrozmlbTlhazlvIDlj5HoqIDliKTmlq3jgIIKCiMjIOWkp+WOhSAjNjYyOAoK5pif55WM5Yab5LmZIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mgo+IOS5meWPkeiogO+8mummluWknOW5s+Wuie+8jOWFiOWIq+aKiuW5s+WuieWknOebtOaOpeetieWQjOS6juafkOS4quS6uuiiq+aVkeOAguWFreS6uuS4pOeLvO+8jOS7iuWkqemcgOimgeiupOecn+aJvueLvO+8jOS4jeiDveWPquaMieW6p+S9jeebsuaOqOOAgumihOiogOWutuiLpeacieafpeadgOivt+aYjuehruaKpeafpemqjOWvueixoeWSjOe7k+aenO+8m+iLpeaKpemHkeawtOS5n+ivt+ivtOaYjuWQjue7remqjOS6uuaAnei3r++8jOS+v+S6juavlOi+g+aYr+WQpuecn+WcqOaJvueLvOOAguWls+W3q+aaguaXtuS4jeW/heS4uuS6huivgeaYjuW5s+WuieWknOaatOmcsuiHquW3seOAguaIkeebruWJjeayoeaciei2s+Wkn+WFrOW8gOS/oeaBr+mUgeWumuiwge+8jOmHjeeCueeci+iwgeWFiOe7mee7k+iuuuWQjuihpeeQhueUseOAgeiwgeWPqui3n+elqOS4jeino+mHiuOAguetieWkp+WutuWOn+ivnem9kOS6huWGjeWGs+WumuelqO+8jOaaguS4jeaPkOWJjee7keWumuelqOWei+OAggoKIyMg5aSn5Y6FICM2NjI5CgrmmJ/nlYzlhpvnlLIg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaCj4g55Sy5bit77ya5oiR5oql6aKE6KiA5a6277yM6aaW5aSc5p+l6aqM6ams5Y2h6YeM5LmM5pav77yM57uT5p6c5LiN5piv54u844CC55uu5YmN5YWt5Lq66YO95rS7552A77yM5Lik54u85Zyo5LmZ44CB5LiZ44CB5oiK44CB5bex5Zub5bit5Lit44CC6aaW5aSc5peg5Lq65Ye65bGA5Y+q6IO956Gu6K6k5YWs5byA57uT5p6c77yM5LiN6IO95o2u5q2k56Gu5a6a5aWz5ber55So6I2v5oiW6LCB6KKr5YiA44CC6K+35YW25LuW5bit5L2N57uZ5Ye654us56uL5Yik5pat77yb6Iul5pyJ5a+56Lez77yM6K+35piO56Gu6aaW5aSc6aqM5Lq65ZKM57uT5p6c77yM5oiR5Lya57uT5ZCI5Y+R6KiA5om+55+b55u+44CC5LuK5aSp5oqV56Wo6ZyA6KaB6ZuG5Lit77yM5bmz56Wo5Lya6K6p54u857un57ut6I635b6X5aSc6Ze05py65Lya44CC5oiR5pqC5LiN55uy54K55p+Q5bit5Li654u877yM562J5YWo5ZGY5Y6f6K+d5YaN5a6a56Wo44CCCgojIyDlpKfljoUgIzY2MzAKCuaYn+eVjOWGm+aIiiDlj5HoqIDvvIjnjqnlrrbljp/mlofvvInvvJoKPiDmiJHmmK805Y+35oiK44CC6aaW5aSc5peg5Lq65Ye65bGA77yM5Y+q6IO956Gu6K6k5LuK5aSp5YWt5Lq66YO95Zyo77yM5LiN6IO95o2u5q2k6K6k5a6a6LCB5piv5aW95Lq677yM5Lmf5LiN5oCl552A6K6p5aWz5ber5oql5L+h5oGv44CC6aKE6KiA5a626Iul5pyJ5p+l5p2A77yM5bu66K6u5oqK5p+l6aqM5a+56LGh5ZKM55CG55Sx6K6y5riF5qWa77yb6Iul5pyJ5Lq65a+56Lez77yM6YeN54K555yL5Y+M5pa55L+h5oGv6IO95ZCm6Ieq5rS944CC5oiR55uu5YmN5rKh5pyJ5Y+v6ZSB5a6a55qE54u85Z2R77yM5oOz5ZCs5q+P5Lq65piO56Gu6K+05LiA5Liq5oCA55aR5a+56LGh5ZKM55CG55Sx77yM5oqV56Wo5YmN5YaN57uT5ZCI5YWs5byA5Y+R6KiA5Yik5pat44CC5LiN6KaB5Zug5Li66LCB5YWI6K+05oiW6K+05b6X6ZW/5bCx55u05o6l6K6k5aW944CCCgojIyDlpKfljoUgIzY2MzEKCuaYn+eVjOWGm+W3sSDlj5HoqIDvvIjnjqnlrrbljp/mlofvvInvvJoKPiDmiJHmmK815Y+35bex77yM5aWz5ber44CC6aaW5aSc5YiA5Y+j5pivNuWPt+mprOWNoemHjOS5jOaWr++8jOaIkeeUqOS6huaVkeiNr++8jOWboOatpOS7iuWkqeW5s+WuieWknO+8m+avkuiNr+i/mOWcqOOAgjblj7fmmK/miJHnmoTpk7bmsLTvvIzlhYjlgY/lpb3kurrnnIvvvIzkvYbkuI3og73mjpLpmaTni7zoh6rliIDjgILlha3kurrlsYDku4rlpKnmipXplJnjgIHku4rmmZrlho3mrbvlpb3kurrlvojljbHpmanvvIzor7fpooToqIDlrrbmiqXnnJ/lrp7mn6XpqozlkozpqozkurrnkIbnlLHvvJvoi6XmnInlr7not7PvvIzlpKflrrbmr5TovoPmn6XpqozkuI7lj5HoqIDvvIzkuI3lh63ouqvku73lpJblm6DntKDnq5npmJ/jgILnm67liY3msqHmnInlhazlvIDmn6XpqozvvIzmiJHkuI3pmo/kvr/ngrnni7zvvIzmipXnpajliY3kvJrnnIvlrozlkITluK3ljp/or53jgIIKCiMjIOWkp+WOhSAjNjYzMgoK55m95aSp5oqV56Wo5byA5aeL77yM6K+35o+Q5Lqk5oqV56Wo5oiW5byD5p2D44CCCuWtmOa0u+W4reS9je+8muaYn+eVjOWGm+eUsuOAgeaYn+eVjOWGm+S5meOAgeaYn+eVjOWGm+S4meOAgeaYn+eVjOWGm+aIiuOAgeaYn+eVjOWGm+W3seOAgemprOWNoemHjOS5jOaWr+OAggrmiKrmraLvvJoyMDI2LTEwLTI0IDAzOjE1OjQ477yIQXNpYS9TaGFuZ2hhae+8jOWMl+S6rOaXtumXtO+8ieOAggoKIyMg5aSn5Y6FICM2NjMzCgrmnKzmrKHnu5Pnrpfml6Dkurrlh7rlsYDjgIIKCuesrDLlpJzlvIDlp4vvvIzor7fnrYnlvoXlkIToh6rnmoTnp4Hlr4bmj5DnpLrjgIIKCiMjIOWkp+WOhSAjNjYzNAoK5pys5qyh57uT566X5Ye65bGA77ya5pif55WM5Yab55Sy44CB5pif55WM5Yab5oiK44CCCgrnmb3lpKnlj5HoqIDlvIDlp4vvvIzor7flkITkvY3mj5DkuqToh6rlt7HnmoTlj5HoqIDjgIIK5a2Y5rS75bit5L2N77ya5pif55WM5Yab5LmZ44CB5pif55WM5Yab5LiZ44CB5pif55WM5Yab5bex44CB6ams5Y2h6YeM5LmM5pav44CCCuaIquatou+8mjIwMjYtMTAtMjQgMDM6MTc6NTDvvIhBc2lhL1NoYW5naGFp77yM5YyX5Lqs5pe26Ze077yJ44CCCgojIyDlpKfljoUgIzY2MzUKCuaYn+eVjOWGm+S4mSDlj5HoqIDvvIjnjqnlrrbljp/mlofvvInvvJoKPiDkuJnmiqXnjI7kurrjgILmmKjlpKnmiJHmipXmiIrjgILnlLLljZXot7PpooToqIDlrrbnu5npqazljaHph4zkuYzmlq/ph5HmsLTvvIzlt7HljZXot7PlpbPlt6vmiqXmlZHpqazljaHph4zkuYzmlq/vvJvnjrDlnKjnlLLjgIHmiIrlj4zmrbvogIzmuLjmiI/nu6fnu63vvIzor7TmmI7oh7PlsJHkuIDni7zlt7Lnu4/lh7rlsYDjgILmiJHlgL7lkJHnlLLooqvliIDjgIHmiIrooqvlt7Hmr5LvvIzkvYbpnIDopoHlt7Hor7TmuIXku4rmmZrnlKjoja/vvIzkuI3og73miormjqjmlq3lvZPlhazlkYrjgILoi6Xlt7Hnoa7orqTmr5LmiIrvvIzliJnnlLLpooToqIDlrrbjgIHpqazljaHph4zkuYzmlq/ph5HmsLTlkozmiJHnmoTnjI7kurrop4bop5LlkIjotbfmnaXvvIzmnIDlkI7kuIDni7zlsLHmmK/kuZnvvIzku4rlpKnmiJHkvJrmipXkuZnjgILkuZnoi6Xlj43pqbPvvIzor7fnu5nlh7rog73op6Pph4rlj4zmrbvlkozpppbml6XkuKTku73ml6Dkurrlr7not7Pouqvku73nmoTlrozmlbTpgLvovpHjgILoi6XmnInkurrlr7not7PnjI7kurrvvIzkuZ/or7fnm7TmjqXor7TjgIIKCiMjIOWkp+WOhSAjNjYzNgoK6ams5Y2h6YeM5LmM5pavIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mgo+IOWFreWPt+WPkeiogOOAguaYqOWkqeaIkeaKleaIiu+8jOeQhueUseWPquaYr+WFtuimgeaxguWIq+S6uuaYjuehrueCueS6uu+8jOiHquW3seWNtOayoeaciee7meaAgOeWkeWvueixoe+8jOi/meWPquaYr+W8seaAgOeWke+8jOS4jeaYr+afpeadgO+8m+acgOe7iOaXoOS6uuWHuuWxgOOAguS7iuWkqeWFrOW8gOWPquehruiupOeUsuOAgeaIiuatu+S6oe+8jOayoeacieWFrOW4g+atu+S6oeWOn+WboOWSjOi6q+S7veOAgueUsuaYqOWkqeWNlei3s+mihOiogOWutue7meaIkemHkeawtO+8jOW3seWNlei3s+Wls+W3q+aKpeaVkeaIke+8jOaIkeebruWJjeWAvuWQkeebuOS/oei/meS4pOadoeS/oeaBr++8jOS9huatu+S6oeS4jeiDveWNleeLrOivgeaYjueUsuaYr+ecn+mihOiogOWutuOAguivt+W3seivtOaYjuaYqOWknOaYr+WQpueUqOavkuOAgeavkuiwge+8jOi/meiDveW4ruWKqeino+mHiuS4pOS6uuatu+S6oeOAguiLpeeUsuaYr+iiq+WIgOOAgeaIiuaYr+iiq+avku+8jOS4lOinhOWImeato+W4uOWIpOiDnOS7jei/m+WFpeeZveWkqe+8jOWImeaIiuW+iOWPr+iDveaYr+eLvO+8jOWQpuWImeS4pOeLvOWbm+S6uuW3sui+vuiDnOWIqeadoeS7tu+8m+i/meaYr+adoeS7tuaOqOaWre+8jOS4jeaYr+W3suaPrei6q+S7veOAguWJqeS4i+S5meWSjOS4meaYqOWkqemDveayoeacieaYjuehrueLvOWdke+8jOWFrOW8gOS/oeaBr+S4jei2s+S7peehrOWIhuOAguivt+S4pOS9jeS7iuWkqeaYjuehru+8muebuOS/oeeUsuWSjOW3seWQl++8jOaYqOWkqeaKleS6huiwge+8jOS7iuWkqeaAgOeWkeiwgeS7peWPiueQhueUseOAguaIkeWAvuWQkeS7juS5meOAgeS4meS4reaJvuacgOWQjuS4gOeLvO+8jOS9huS8muWQrOWujOWPkeiogOWGjeaKle+8jOS4jeaKiui/meenjeWAvuWQkeW9k+mTgeivgeOAggoKIyMg5aSn5Y6FICM2NjM3CgrmmJ/nlYzlhpvlt7Eg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaCj4gNeWPt+W3see7p+e7reaKpeS/oeaBr++8muaYqOWknOWIgOWPo+aYr+eUsu+8jOaIkeW3suayoeacieaVkeiNr++8m+aIkeeUqOavkuiNr+avkuS6huaIiuOAguaYqOaXpeaIkeS5n+aKleaIiu+8jOWOn+WboOaYr+WcqOWUr+S4gOmihOiogOWutueUsuS4juWFtumHkeawtDblj7fkuYvlpJbvvIzkuZnkuJnmiIrkuInluK3nmoTlj5HoqIDpg73lgY/kv53lrojvvIzmiIrlj6rmnInntKLopoHmgIDnlpHlr7nosaHvvIzmsqHmnInnu5nlhbfkvZPmib7ni7zmlrnms5XvvIzmiJHkvJjlhYjmjpLku5bjgILku4rlpKnlm5vkurrku43mnKrnu4jlsYDvvIzmjInkuKTni7zop4TliJnnu5PlkIjnlLLlpJzpl7TooqvliIDvvIzmiIrlpKfmpoLnjofooqvmiJHmr5LkuK3ni7zvvJvliankuIvkuIDni7zph43ngrnnnIvkuZnkuJnjgII25Y+35pyJ55Sy6YeR5rC05LiO6aaW5aSc5YiA5Y+j5Y+M6YeN5pSv5pKR77yM5pqC5LiN5Zue5aS044CC5LmZ5LiZ6K+35ZCE6Ieq6Kej6YeK5pio5pel56Wo5oqV6LCB5Y+K55CG55Sx77yM5bm257uZ5Ye65LuK5aSp5Yik5pat77yb5oiR5Lya5ZCs5a6M5YaN5oqV77yM5LiN6IO96K6p5bmz56Wo57un57ut5raI6ICX5aW95Lq644CCCgojIyDlpKfljoUgIzY2MzgKCuaYn+eVjOWGm+S5mSDlj5HoqIDvvIjnjqnlrrbljp/mlofvvInvvJoKPiDkuZnvvJrnjrDlnKjlm5vkurrov5jog73ov5vlhaXnmb3lpKnvvIzor7TmmI7lnLrkuIrkuI3kvJrku43mnInkuKTni7zjgILnlLLlkozmiIrlj4zmrbvvvIznu5PlkIjnlLLmmKjlpKnmiqXpooToqIDlrrbjgIHlt7HmiqXlpbPlt6vvvIzmiJHlgL7lkJHnlLLooqvliIDjgIHmiIrooqvmr5LvvIzor7flt7Hor7TmmI7nlKjmr5Llr7nosaHjgILmmKjlpKnmiJHmipXkuJnvvIzmmK/lnKjkuZnkuJnmiIrlt7Hlm5vluK3kuK3mjpLpmaTlvZPml7bml6Dkurrlr7not7PnmoTlpbPlt6vlkI7vvIzkuJnlj6rkvZzlronlhajooajmgIHvvIzmsqHmnInni6znq4vmib7ni7zngrnvvIzmiYDku6XpgInkuJnjgILku4rlpKnmiJHmiqXnjI7kurrvvIzmmKjlpKnmsqHot7PmmK/pgb/lhY3mj5DliY3mmrTpnLLmnqrvvJvnm67liY3miJHmnIDmgIDnlpHkuJnjgILlha3lj7foi6XmmK/nnJ/ph5HmsLTvvIzlt7Hlj4jog73or7TmmI7mr5LmiIrvvIzliankvZnni7zlnZHlsLHlnKjkuJnjgILor7fkuJnmraPpnaLmiqXouqvku73lkozmmKjlpKnmipXnpajnkIbnlLHvvIzliKvlj6rpnaDmiJHlj5HoqIDovoPmmZrmiJbluqfkvY3mnaXmjqjmiJHjgIIKCiMjIOWkp+WOhSAjNjYzOQoK55m95aSp5oqV56Wo5byA5aeL77yM6K+35o+Q5Lqk5oqV56Wo5oiW5byD5p2D44CCCuWtmOa0u+W4reS9je+8muaYn+eVjOWGm+S5meOAgeaYn+eVjOWGm+S4meOAgeaYn+eVjOWGm+W3seOAgemprOWNoemHjOS5jOaWr+OAggrmiKrmraLvvJoyMDI2LTEwLTI0IDAzOjE4OjQw77yIQXNpYS9TaGFuZ2hhae+8jOWMl+S6rOaXtumXtO+8ieOAggoKIyMg5aSn5Y6FICM2NjQwCgrmnKzmrKHnu5Pnrpflh7rlsYDvvJrmmJ/nlYzlhpvkuZnjgIIKCiMjIOWkp+WOhSAjNjY0MQoK5pif55WM5Yab5LmZIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mgo+IOS5memBl+iogO+8muacrOW4reW3suWHuuWxgO+8jOS4jeWGjeWPguS4juWQjue7reaKleelqOOAguaIkeeahOaKleelqOWSjOWIpOaWremDveW3suWcqOWJjemdouivtOaYju+8jOWcuuS4iuaMieWFrOW8gOe7k+eul+e7p+e7reWIpOaWreWNs+WPr+OAguetieW+heS4u+aMgeWujOaIkOmBl+iogOWQjueahOato+W8j+iDnOi0n+e7k+eul+OAggoKIyMg5aSn5Y6FICM2NjQyCgrmuLjmiI/nu5PmnZ/vvIzlpb3kurrpmLXokKXojrfog5zjgIIK" download="公开对局原话.md">下载此份原件</a><p class="hash">SHA-256：a0fe0dde54e94cf32ad034ca12a7e3577a85772f0e4bfcafcb46aa16196ba911</p></div><article><h1>公开对局原话</h1>
+<p>以下仅收录本局引擎展示层实际发送本组大厅的中文正文，玩家自述身份只是本人原话，不是主持揭牌。开局前规则另见大厅#6617、#6622。</p>
+<h2>大厅 #6623</h2>
+<p>六席游戏已准备好。参与席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。</p>
+<h2>大厅 #6625</h2>
+<p>本次结算无人出局。</p>
+<p>白天发言开始，请各位提交自己的发言。
+存活席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。
+截止：2026-10-24 03:14:52（Asia/Shanghai，北京时间）。</p>
+<h2>大厅 #6626</h2>
+<p>马卡里乌斯 发言（玩家原文）：</p>
+<blockquote>
+<p>六号马卡里乌斯发言。昨夜无人出局，但单凭平安夜不能判断谁是好人，也不能确定女巫用了药。目前没有公开查验，也还没有其他人的发言，我不凭座位随机点狼。预言家如果决定出来，请说清查了谁、结果是什么；若有人对跳，我们比较两人的查验和后续逻辑，不是谁先说就信谁。女巫不必为了说明平安夜把用药和身份都暴露，猎人也先别急着跳。希望各位给出具体怀疑对象及理由，不要只说自己是好人。我会看公开发言和查验再决定投票；无可靠信息时也不会把猜测说成铁证。</p>
+</blockquote>
+<h2>大厅 #6627</h2>
+<p>星界军丙 发言（玩家原文）：</p>
+<blockquote>
+<p>丙发言。首夜平安，不能据此认定任何人是好人，也先别让女巫报救人信息。六人两狼，今天投错可能直接进入危险局面，不能凭座位盲推。预言家若查到狼建议明确报查验；若只有好人结果，自行判断起跳收益。对跳请各自说清首验对象和选择理由，大家重点看逻辑和投票一致性。当前没有他人发言可比较，我暂不点狼，投票前会结合完整公开发言判断。</p>
+</blockquote>
+<h2>大厅 #6628</h2>
+<p>星界军乙 发言（玩家原文）：</p>
+<blockquote>
+<p>乙发言：首夜平安，先别把平安夜直接等同于某个人被救。六人两狼，今天需要认真找狼，不能只按座位盲推。预言家若有查杀请明确报查验对象和结果；若报金水也请说明后续验人思路，便于比较是否真在找狼。女巫暂时不必为了证明平安夜暴露自己。我目前没有足够公开信息锁定谁，重点看谁先给结论后补理由、谁只跟票不解释。等大家原话齐了再决定票，暂不提前绑定票型。</p>
+</blockquote>
+<h2>大厅 #6629</h2>
+<p>星界军甲 发言（玩家原文）：</p>
+<blockquote>
+<p>甲席：我报预言家，首夜查验马卡里乌斯，结果不是狼。目前六人都活着，两狼在乙、丙、戊、己四席中。首夜无人出局只能确认公开结果，不能据此确定女巫用药或谁被刀。请其他席位给出独立判断；若有对跳，请明确首夜验人和结果，我会结合发言找矛盾。今天投票需要集中，平票会让狼继续获得夜间机会。我暂不盲点某席为狼，等全员原话再定票。</p>
+</blockquote>
+<h2>大厅 #6630</h2>
+<p>星界军戊 发言（玩家原文）：</p>
+<blockquote>
+<p>我是4号戊。首夜无人出局，只能确认今天六人都在，不能据此认定谁是好人，也不急着让女巫报信息。预言家若有查杀，建议把查验对象和理由讲清楚；若有人对跳，重点看双方信息能否自洽。我目前没有可锁定的狼坑，想听每人明确说一个怀疑对象和理由，投票前再结合公开发言判断。不要因为谁先说或说得长就直接认好。</p>
+</blockquote>
+<h2>大厅 #6631</h2>
+<p>星界军己 发言（玩家原文）：</p>
+<blockquote>
+<p>我是5号己，女巫。首夜刀口是6号马卡里乌斯，我用了救药，因此今天平安夜；毒药还在。6号是我的银水，先偏好人看，但不能排除狼自刀。六人局今天投错、今晚再死好人很危险，请预言家报真实查验和验人理由；若有对跳，大家比较查验与发言，不凭身份外因素站队。目前没有公开查验，我不随便点狼，投票前会看完各席原话。</p>
+</blockquote>
+<h2>大厅 #6632</h2>
+<p>白天投票开始，请提交投票或弃权。
+存活席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。
+截止：2026-10-24 03:15:48（Asia/Shanghai，北京时间）。</p>
+<h2>大厅 #6633</h2>
+<p>本次结算无人出局。</p>
+<p>第2夜开始，请等待各自的私密提示。</p>
+<h2>大厅 #6634</h2>
+<p>本次结算出局：星界军甲、星界军戊。</p>
+<p>白天发言开始，请各位提交自己的发言。
+存活席位：星界军乙、星界军丙、星界军己、马卡里乌斯。
+截止：2026-10-24 03:17:50（Asia/Shanghai，北京时间）。</p>
+<h2>大厅 #6635</h2>
+<p>星界军丙 发言（玩家原文）：</p>
+<blockquote>
+<p>丙报猎人。昨天我投戊。甲单跳预言家给马卡里乌斯金水，己单跳女巫报救马卡里乌斯；现在甲、戊双死而游戏继续，说明至少一狼已经出局。我倾向甲被刀、戊被己毒，但需要己说清今晚用药，不能把推断当公告。若己确认毒戊，则甲预言家、马卡里乌斯金水和我的猎人视角合起来，最后一狼就是乙，今天我会投乙。乙若反驳，请给出能解释双死和首日两份无人对跳身份的完整逻辑。若有人对跳猎人，也请直接说。</p>
+</blockquote>
+<h2>大厅 #6636</h2>
+<p>马卡里乌斯 发言（玩家原文）：</p>
+<blockquote>
+<p>六号发言。昨天我投戊，理由只是其要求别人明确点人，自己却没有给怀疑对象，这只是弱怀疑，不是查杀；最终无人出局。今天公开只确认甲、戊死亡，没有公布死亡原因和身份。甲昨天单跳预言家给我金水，己单跳女巫报救我，我目前倾向相信这两条信息，但死亡不能单独证明甲是真预言家。请己说明昨夜是否用毒、毒谁，这能帮助解释两人死亡。若甲是被刀、戊是被毒，且规则正常判胜仍进入白天，则戊很可能是狼，否则两狼四人已达胜利条件；这是条件推断，不是已揭身份。剩下乙和丙昨天都没有明确狼坑，公开信息不足以硬分。请两位今天明确：相信甲和己吗，昨天投了谁，今天怀疑谁以及理由。我倾向从乙、丙中找最后一狼，但会听完发言再投，不把这种倾向当铁证。</p>
+</blockquote>
+<h2>大厅 #6637</h2>
+<p>星界军己 发言（玩家原文）：</p>
+<blockquote>
+<p>5号己继续报信息：昨夜刀口是甲，我已没有救药；我用毒药毒了戊。昨日我也投戊，原因是在唯一预言家甲与其金水6号之外，乙丙戊三席的发言都偏保守，戊只有索要怀疑对象，没有给具体找狼方法，我优先排他。今天四人仍未终局，按两狼规则结合甲夜间被刀，戊大概率被我毒中狼；剩下一狼重点看乙丙。6号有甲金水与首夜刀口双重支撑，暂不回头。乙丙请各自解释昨日票投谁及理由，并给出今天判断；我会听完再投，不能让平票继续消耗好人。</p>
+</blockquote>
+<h2>大厅 #6638</h2>
+<p>星界军乙 发言（玩家原文）：</p>
+<blockquote>
+<p>乙：现在四人还能进入白天，说明场上不会仍有两狼。甲和戊双死，结合甲昨天报预言家、己报女巫，我倾向甲被刀、戊被毒，请己说明用毒对象。昨天我投丙，是在乙丙戊己四席中排除当时无人对跳的女巫后，丙只作安全表态，没有独立找狼点，所以选丙。今天我报猎人，昨天没跳是避免提前暴露枪；目前我最怀疑丙。六号若是真金水，己又能说明毒戊，剩余狼坑就在丙。请丙正面报身份和昨天投票理由，别只靠我发言较晚或座位来推我。</p>
+</blockquote>
+<h2>大厅 #6639</h2>
+<p>白天投票开始，请提交投票或弃权。
+存活席位：星界军乙、星界军丙、星界军己、马卡里乌斯。
+截止：2026-10-24 03:18:40（Asia/Shanghai，北京时间）。</p>
+<h2>大厅 #6640</h2>
+<p>本次结算出局：星界军乙。</p>
+<h2>大厅 #6641</h2>
+<p>星界军乙 发言（玩家原文）：</p>
+<blockquote>
+<p>乙遗言：本席已出局，不再参与后续投票。我的投票和判断都已在前面说明，场上按公开结算继续判断即可。等待主持完成遗言后的正式胜负结算。</p>
+</blockquote>
+<h2>大厅 #6642</h2>
+<p>游戏结束，好人阵营获胜。</p>
+</article></section><section id="doc4"><div class="doc-head"><p>原件 4 / 7 · 9,724 字节</p><h2>公开消息与真实回执.json</h2><a class="download" href="data:application/octet-stream;base64,WwogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyMywKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLlha3luK3muLjmiI/lt7Llh4blpIflpb3jgILlj4LkuI7luK3kvY3vvJrmmJ/nlYzlhpvnlLLjgIHmmJ/nlYzlhpvkuZnjgIHmmJ/nlYzlhpvkuJnjgIHmmJ/nlYzlhpvmiIrjgIHmmJ/nlYzlhpvlt7HjgIHpqazljaHph4zkuYzmlq/jgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MjUsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi5pys5qyh57uT566X5peg5Lq65Ye65bGA44CCXG5cbueZveWkqeWPkeiogOW8gOWni++8jOivt+WQhOS9jeaPkOS6pOiHquW3seeahOWPkeiogOOAglxu5a2Y5rS75bit5L2N77ya5pif55WM5Yab55Sy44CB5pif55WM5Yab5LmZ44CB5pif55WM5Yab5LiZ44CB5pif55WM5Yab5oiK44CB5pif55WM5Yab5bex44CB6ams5Y2h6YeM5LmM5pav44CCXG7miKrmraLvvJoyMDI2LTEwLTI0IDAzOjE0OjUy77yIQXNpYS9TaGFuZ2hhae+8jOWMl+S6rOaXtumXtO+8ieOAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyNiwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLpqazljaHph4zkuYzmlq8g5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOWFreWPt+mprOWNoemHjOS5jOaWr+WPkeiogOOAguaYqOWknOaXoOS6uuWHuuWxgO+8jOS9huWNleWHreW5s+WuieWknOS4jeiDveWIpOaWreiwgeaYr+WlveS6uu+8jOS5n+S4jeiDveehruWumuWls+W3q+eUqOS6huiNr+OAguebruWJjeayoeacieWFrOW8gOafpemqjO+8jOS5n+i/mOayoeacieWFtuS7luS6uueahOWPkeiogO+8jOaIkeS4jeWHreW6p+S9jemaj+acuueCueeLvOOAgumihOiogOWutuWmguaenOWGs+WumuWHuuadpe+8jOivt+ivtOa4heafpeS6huiwgeOAgee7k+aenOaYr+S7gOS5iO+8m+iLpeacieS6uuWvuei3s++8jOaIkeS7rOavlOi+g+S4pOS6uueahOafpemqjOWSjOWQjue7remAu+i+ke+8jOS4jeaYr+iwgeWFiOivtOWwseS/oeiwgeOAguWls+W3q+S4jeW/heS4uuS6huivtOaYjuW5s+WuieWknOaKiueUqOiNr+WSjOi6q+S7vemDveaatOmcsu+8jOeMjuS6uuS5n+WFiOWIq+aApeedgOi3s+OAguW4jOacm+WQhOS9jee7meWHuuWFt+S9k+aAgOeWkeWvueixoeWPiueQhueUse+8jOS4jeimgeWPquivtOiHquW3seaYr+WlveS6uuOAguaIkeS8mueci+WFrOW8gOWPkeiogOWSjOafpemqjOWGjeWGs+WumuaKleelqO+8m+aXoOWPr+mdoOS/oeaBr+aXtuS5n+S4jeS8muaKiueMnOa1i+ivtOaIkOmTgeivgeOAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyNywKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmmJ/nlYzlhpvkuJkg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOS4meWPkeiogOOAgummluWknOW5s+Wuie+8jOS4jeiDveaNruatpOiupOWumuS7u+S9leS6uuaYr+WlveS6uu+8jOS5n+WFiOWIq+iuqeWls+W3q+aKpeaVkeS6uuS/oeaBr+OAguWFreS6uuS4pOeLvO+8jOS7iuWkqeaKlemUmeWPr+iDveebtOaOpei/m+WFpeWNsemZqeWxgOmdou+8jOS4jeiDveWHreW6p+S9jeebsuaOqOOAgumihOiogOWutuiLpeafpeWIsOeLvOW7uuiuruaYjuehruaKpeafpemqjO+8m+iLpeWPquacieWlveS6uue7k+aenO+8jOiHquihjOWIpOaWrei1t+i3s+aUtuebiuOAguWvuei3s+ivt+WQhOiHquivtOa4hemmlumqjOWvueixoeWSjOmAieaLqeeQhueUse+8jOWkp+WutumHjeeCueeci+mAu+i+keWSjOaKleelqOS4gOiHtOaAp+OAguW9k+WJjeayoeacieS7luS6uuWPkeiogOWPr+avlOi+g++8jOaIkeaaguS4jeeCueeLvO+8jOaKleelqOWJjeS8mue7k+WQiOWujOaVtOWFrOW8gOWPkeiogOWIpOaWreOAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyOCwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmmJ/nlYzlhpvkuZkg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOS5meWPkeiogO+8mummluWknOW5s+Wuie+8jOWFiOWIq+aKiuW5s+WuieWknOebtOaOpeetieWQjOS6juafkOS4quS6uuiiq+aVkeOAguWFreS6uuS4pOeLvO+8jOS7iuWkqemcgOimgeiupOecn+aJvueLvO+8jOS4jeiDveWPquaMieW6p+S9jeebsuaOqOOAgumihOiogOWutuiLpeacieafpeadgOivt+aYjuehruaKpeafpemqjOWvueixoeWSjOe7k+aenO+8m+iLpeaKpemHkeawtOS5n+ivt+ivtOaYjuWQjue7remqjOS6uuaAnei3r++8jOS+v+S6juavlOi+g+aYr+WQpuecn+WcqOaJvueLvOOAguWls+W3q+aaguaXtuS4jeW/heS4uuS6huivgeaYjuW5s+WuieWknOaatOmcsuiHquW3seOAguaIkeebruWJjeayoeaciei2s+Wkn+WFrOW8gOS/oeaBr+mUgeWumuiwge+8jOmHjeeCueeci+iwgeWFiOe7mee7k+iuuuWQjuihpeeQhueUseOAgeiwgeWPqui3n+elqOS4jeino+mHiuOAguetieWkp+WutuWOn+ivnem9kOS6huWGjeWGs+WumuelqO+8jOaaguS4jeaPkOWJjee7keWumuelqOWei+OAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyOSwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmmJ/nlYzlhpvnlLIg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOeUsuW4re+8muaIkeaKpemihOiogOWutu+8jOmmluWknOafpemqjOmprOWNoemHjOS5jOaWr++8jOe7k+aenOS4jeaYr+eLvOOAguebruWJjeWFreS6uumDvea0u+edgO+8jOS4pOeLvOWcqOS5meOAgeS4meOAgeaIiuOAgeW3seWbm+W4reS4reOAgummluWknOaXoOS6uuWHuuWxgOWPquiDveehruiupOWFrOW8gOe7k+aenO+8jOS4jeiDveaNruatpOehruWumuWls+W3q+eUqOiNr+aIluiwgeiiq+WIgOOAguivt+WFtuS7luW4reS9jee7meWHuueLrOeri+WIpOaWre+8m+iLpeacieWvuei3s++8jOivt+aYjuehrummluWknOmqjOS6uuWSjOe7k+aenO+8jOaIkeS8mue7k+WQiOWPkeiogOaJvuefm+ebvuOAguS7iuWkqeaKleelqOmcgOimgembhuS4re+8jOW5s+elqOS8muiuqeeLvOe7p+e7reiOt+W+l+WknOmXtOacuuS8muOAguaIkeaaguS4jeebsueCueafkOW4reS4uueLvO+8jOetieWFqOWRmOWOn+ivneWGjeWumuelqOOAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYzMCwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmmJ/nlYzlhpvmiIog5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOaIkeaYrzTlj7fmiIrjgILpppblpJzml6Dkurrlh7rlsYDvvIzlj6rog73noa7orqTku4rlpKnlha3kurrpg73lnKjvvIzkuI3og73mja7mraTorqTlrprosIHmmK/lpb3kurrvvIzkuZ/kuI3mgKXnnYDorqnlpbPlt6vmiqXkv6Hmga/jgILpooToqIDlrrboi6XmnInmn6XmnYDvvIzlu7rorq7miormn6Xpqozlr7nosaHlkoznkIbnlLHorrLmuIXmpZrvvJvoi6XmnInkurrlr7not7PvvIzph43ngrnnnIvlj4zmlrnkv6Hmga/og73lkKboh6rmtL3jgILmiJHnm67liY3msqHmnInlj6/plIHlrprnmoTni7zlnZHvvIzmg7PlkKzmr4/kurrmmI7noa7or7TkuIDkuKrmgIDnlpHlr7nosaHlkoznkIbnlLHvvIzmipXnpajliY3lho3nu5PlkIjlhazlvIDlj5HoqIDliKTmlq3jgILkuI3opoHlm6DkuLrosIHlhYjor7TmiJbor7Tlvpfplb/lsLHnm7TmjqXorqTlpb3jgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzEsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi5pif55WM5Yab5bexIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mlxuPiDmiJHmmK815Y+35bex77yM5aWz5ber44CC6aaW5aSc5YiA5Y+j5pivNuWPt+mprOWNoemHjOS5jOaWr++8jOaIkeeUqOS6huaVkeiNr++8jOWboOatpOS7iuWkqeW5s+WuieWknO+8m+avkuiNr+i/mOWcqOOAgjblj7fmmK/miJHnmoTpk7bmsLTvvIzlhYjlgY/lpb3kurrnnIvvvIzkvYbkuI3og73mjpLpmaTni7zoh6rliIDjgILlha3kurrlsYDku4rlpKnmipXplJnjgIHku4rmmZrlho3mrbvlpb3kurrlvojljbHpmanvvIzor7fpooToqIDlrrbmiqXnnJ/lrp7mn6XpqozlkozpqozkurrnkIbnlLHvvJvoi6XmnInlr7not7PvvIzlpKflrrbmr5TovoPmn6XpqozkuI7lj5HoqIDvvIzkuI3lh63ouqvku73lpJblm6DntKDnq5npmJ/jgILnm67liY3msqHmnInlhazlvIDmn6XpqozvvIzmiJHkuI3pmo/kvr/ngrnni7zvvIzmipXnpajliY3kvJrnnIvlrozlkITluK3ljp/or53jgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzIsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi55m95aSp5oqV56Wo5byA5aeL77yM6K+35o+Q5Lqk5oqV56Wo5oiW5byD5p2D44CCXG7lrZjmtLvluK3kvY3vvJrmmJ/nlYzlhpvnlLLjgIHmmJ/nlYzlhpvkuZnjgIHmmJ/nlYzlhpvkuJnjgIHmmJ/nlYzlhpvmiIrjgIHmmJ/nlYzlhpvlt7HjgIHpqazljaHph4zkuYzmlq/jgIJcbuaIquatou+8mjIwMjYtMTAtMjQgMDM6MTU6NDjvvIhBc2lhL1NoYW5naGFp77yM5YyX5Lqs5pe26Ze077yJ44CCIgogIH0sCiAgewogICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjMzLAogICAgImNoYW5uZWxfaWQiOiAiZWJkZGZhM2YtZDA0Ny00YTk3LWI0NmItNWIwNWQ5YjEwMTk5IiwKICAgICJ0ZXh0IjogIuacrOasoee7k+eul+aXoOS6uuWHuuWxgOOAglxuXG7nrKwy5aSc5byA5aeL77yM6K+3562J5b6F5ZCE6Ieq55qE56eB5a+G5o+Q56S644CCIgogIH0sCiAgewogICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjM0LAogICAgImNoYW5uZWxfaWQiOiAiZWJkZGZhM2YtZDA0Ny00YTk3LWI0NmItNWIwNWQ5YjEwMTk5IiwKICAgICJ0ZXh0IjogIuacrOasoee7k+eul+WHuuWxgO+8muaYn+eVjOWGm+eUsuOAgeaYn+eVjOWGm+aIiuOAglxuXG7nmb3lpKnlj5HoqIDlvIDlp4vvvIzor7flkITkvY3mj5DkuqToh6rlt7HnmoTlj5HoqIDjgIJcbuWtmOa0u+W4reS9je+8muaYn+eVjOWGm+S5meOAgeaYn+eVjOWGm+S4meOAgeaYn+eVjOWGm+W3seOAgemprOWNoemHjOS5jOaWr+OAglxu5oiq5q2i77yaMjAyNi0xMC0yNCAwMzoxNzo1MO+8iEFzaWEvU2hhbmdoYWnvvIzljJfkuqzml7bpl7TvvInjgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzUsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi5pif55WM5Yab5LiZIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mlxuPiDkuJnmiqXnjI7kurrjgILmmKjlpKnmiJHmipXmiIrjgILnlLLljZXot7PpooToqIDlrrbnu5npqazljaHph4zkuYzmlq/ph5HmsLTvvIzlt7HljZXot7PlpbPlt6vmiqXmlZHpqazljaHph4zkuYzmlq/vvJvnjrDlnKjnlLLjgIHmiIrlj4zmrbvogIzmuLjmiI/nu6fnu63vvIzor7TmmI7oh7PlsJHkuIDni7zlt7Lnu4/lh7rlsYDjgILmiJHlgL7lkJHnlLLooqvliIDjgIHmiIrooqvlt7Hmr5LvvIzkvYbpnIDopoHlt7Hor7TmuIXku4rmmZrnlKjoja/vvIzkuI3og73miormjqjmlq3lvZPlhazlkYrjgILoi6Xlt7Hnoa7orqTmr5LmiIrvvIzliJnnlLLpooToqIDlrrbjgIHpqazljaHph4zkuYzmlq/ph5HmsLTlkozmiJHnmoTnjI7kurrop4bop5LlkIjotbfmnaXvvIzmnIDlkI7kuIDni7zlsLHmmK/kuZnvvIzku4rlpKnmiJHkvJrmipXkuZnjgILkuZnoi6Xlj43pqbPvvIzor7fnu5nlh7rog73op6Pph4rlj4zmrbvlkozpppbml6XkuKTku73ml6Dkurrlr7not7Pouqvku73nmoTlrozmlbTpgLvovpHjgILoi6XmnInkurrlr7not7PnjI7kurrvvIzkuZ/or7fnm7TmjqXor7TjgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzYsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi6ams5Y2h6YeM5LmM5pavIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mlxuPiDlha3lj7flj5HoqIDjgILmmKjlpKnmiJHmipXmiIrvvIznkIbnlLHlj6rmmK/lhbbopoHmsYLliKvkurrmmI7noa7ngrnkurrvvIzoh6rlt7HljbTmsqHmnInnu5nmgIDnlpHlr7nosaHvvIzov5nlj6rmmK/lvLHmgIDnlpHvvIzkuI3mmK/mn6XmnYDvvJvmnIDnu4jml6Dkurrlh7rlsYDjgILku4rlpKnlhazlvIDlj6rnoa7orqTnlLLjgIHmiIrmrbvkuqHvvIzmsqHmnInlhazluIPmrbvkuqHljp/lm6Dlkozouqvku73jgILnlLLmmKjlpKnljZXot7PpooToqIDlrrbnu5nmiJHph5HmsLTvvIzlt7HljZXot7PlpbPlt6vmiqXmlZHmiJHvvIzmiJHnm67liY3lgL7lkJHnm7jkv6Hov5nkuKTmnaHkv6Hmga/vvIzkvYbmrbvkuqHkuI3og73ljZXni6zor4HmmI7nlLLmmK/nnJ/pooToqIDlrrbjgILor7flt7Hor7TmmI7mmKjlpJzmmK/lkKbnlKjmr5LjgIHmr5LosIHvvIzov5nog73luK7liqnop6Pph4rkuKTkurrmrbvkuqHjgILoi6XnlLLmmK/ooqvliIDjgIHmiIrmmK/ooqvmr5LvvIzkuJTop4TliJnmraPluLjliKTog5zku43ov5vlhaXnmb3lpKnvvIzliJnmiIrlvojlj6/og73mmK/ni7zvvIzlkKbliJnkuKTni7zlm5vkurrlt7Lovr7og5zliKnmnaHku7bvvJvov5nmmK/mnaHku7bmjqjmlq3vvIzkuI3mmK/lt7Lmj63ouqvku73jgILliankuIvkuZnlkozkuJnmmKjlpKnpg73msqHmnInmmI7noa7ni7zlnZHvvIzlhazlvIDkv6Hmga/kuI3otrPku6XnoazliIbjgILor7fkuKTkvY3ku4rlpKnmmI7noa7vvJrnm7jkv6HnlLLlkozlt7HlkJfvvIzmmKjlpKnmipXkuobosIHvvIzku4rlpKnmgIDnlpHosIHku6Xlj4rnkIbnlLHjgILmiJHlgL7lkJHku47kuZnjgIHkuJnkuK3mib7mnIDlkI7kuIDni7zvvIzkvYbkvJrlkKzlrozlj5HoqIDlho3mipXvvIzkuI3miorov5nnp43lgL7lkJHlvZPpk4Hor4HjgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzcsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi5pif55WM5Yab5bexIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mlxuPiA15Y+35bex57un57ut5oql5L+h5oGv77ya5pio5aSc5YiA5Y+j5piv55Sy77yM5oiR5bey5rKh5pyJ5pWR6I2v77yb5oiR55So5q+S6I2v5q+S5LqG5oiK44CC5pio5pel5oiR5Lmf5oqV5oiK77yM5Y6f5Zug5piv5Zyo5ZSv5LiA6aKE6KiA5a6255Sy5LiO5YW26YeR5rC0NuWPt+S5i+Wklu+8jOS5meS4meaIiuS4ieW4reeahOWPkeiogOmDveWBj+S/neWuiO+8jOaIiuWPquaciee0ouimgeaAgOeWkeWvueixoe+8jOayoeaciee7meWFt+S9k+aJvueLvOaWueazle+8jOaIkeS8mOWFiOaOkuS7luOAguS7iuWkqeWbm+S6uuS7jeacque7iOWxgO+8jOaMieS4pOeLvOinhOWImee7k+WQiOeUsuWknOmXtOiiq+WIgO+8jOaIiuWkp+amgueOh+iiq+aIkeavkuS4reeLvO+8m+WJqeS4i+S4gOeLvOmHjeeCueeci+S5meS4meOAgjblj7fmnInnlLLph5HmsLTkuI7pppblpJzliIDlj6Plj4zph43mlK/mkpHvvIzmmoLkuI3lm57lpLTjgILkuZnkuJnor7flkIToh6rop6Pph4rmmKjml6XnpajmipXosIHlj4rnkIbnlLHvvIzlubbnu5nlh7rku4rlpKnliKTmlq3vvJvmiJHkvJrlkKzlrozlho3mipXvvIzkuI3og73orqnlubPnpajnu6fnu63mtojogJflpb3kurrjgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzgsCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi5pif55WM5Yab5LmZIOWPkeiogO+8iOeOqeWutuWOn+aWh++8ie+8mlxuPiDkuZnvvJrnjrDlnKjlm5vkurrov5jog73ov5vlhaXnmb3lpKnvvIzor7TmmI7lnLrkuIrkuI3kvJrku43mnInkuKTni7zjgILnlLLlkozmiIrlj4zmrbvvvIznu5PlkIjnlLLmmKjlpKnmiqXpooToqIDlrrbjgIHlt7HmiqXlpbPlt6vvvIzmiJHlgL7lkJHnlLLooqvliIDjgIHmiIrooqvmr5LvvIzor7flt7Hor7TmmI7nlKjmr5Llr7nosaHjgILmmKjlpKnmiJHmipXkuJnvvIzmmK/lnKjkuZnkuJnmiIrlt7Hlm5vluK3kuK3mjpLpmaTlvZPml7bml6Dkurrlr7not7PnmoTlpbPlt6vlkI7vvIzkuJnlj6rkvZzlronlhajooajmgIHvvIzmsqHmnInni6znq4vmib7ni7zngrnvvIzmiYDku6XpgInkuJnjgILku4rlpKnmiJHmiqXnjI7kurrvvIzmmKjlpKnmsqHot7PmmK/pgb/lhY3mj5DliY3mmrTpnLLmnqrvvJvnm67liY3miJHmnIDmgIDnlpHkuJnjgILlha3lj7foi6XmmK/nnJ/ph5HmsLTvvIzlt7Hlj4jog73or7TmmI7mr5LmiIrvvIzliankvZnni7zlnZHlsLHlnKjkuJnjgILor7fkuJnmraPpnaLmiqXouqvku73lkozmmKjlpKnmipXnpajnkIbnlLHvvIzliKvlj6rpnaDmiJHlj5HoqIDovoPmmZrmiJbluqfkvY3mnaXmjqjmiJHjgIIiCiAgfSwKICB7CiAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzksCiAgICAiY2hhbm5lbF9pZCI6ICJlYmRkZmEzZi1kMDQ3LTRhOTctYjQ2Yi01YjA1ZDliMTAxOTkiLAogICAgInRleHQiOiAi55m95aSp5oqV56Wo5byA5aeL77yM6K+35o+Q5Lqk5oqV56Wo5oiW5byD5p2D44CCXG7lrZjmtLvluK3kvY3vvJrmmJ/nlYzlhpvkuZnjgIHmmJ/nlYzlhpvkuJnjgIHmmJ/nlYzlhpvlt7HjgIHpqazljaHph4zkuYzmlq/jgIJcbuaIquatou+8mjIwMjYtMTAtMjQgMDM6MTg6NDDvvIhBc2lhL1NoYW5naGFp77yM5YyX5Lqs5pe26Ze077yJ44CCIgogIH0sCiAgewogICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjQwLAogICAgImNoYW5uZWxfaWQiOiAiZWJkZGZhM2YtZDA0Ny00YTk3LWI0NmItNWIwNWQ5YjEwMTk5IiwKICAgICJ0ZXh0IjogIuacrOasoee7k+eul+WHuuWxgO+8muaYn+eVjOWGm+S5meOAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjY0MSwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmmJ/nlYzlhpvkuZkg5Y+R6KiA77yI546p5a625Y6f5paH77yJ77yaXG4+IOS5memBl+iogO+8muacrOW4reW3suWHuuWxgO+8jOS4jeWGjeWPguS4juWQjue7reaKleelqOOAguaIkeeahOaKleelqOWSjOWIpOaWremDveW3suWcqOWJjemdouivtOaYju+8jOWcuuS4iuaMieWFrOW8gOe7k+eul+e7p+e7reWIpOaWreWNs+WPr+OAguetieW+heS4u+aMgeWujOaIkOmBl+iogOWQjueahOato+W8j+iDnOi0n+e7k+eul+OAgiIKICB9LAogIHsKICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjY0MiwKICAgICJjaGFubmVsX2lkIjogImViZGRmYTNmLWQwNDctNGE5Ny1iNDZiLTViMDVkOWIxMDE5OSIsCiAgICAidGV4dCI6ICLmuLjmiI/nu5PmnZ/vvIzlpb3kurrpmLXokKXojrfog5zjgIIiCiAgfQpdCg==" download="公开消息与真实回执.json">下载此份原件</a><p class="hash">SHA-256：3587a46154bf34354e6de500f4ff9977aa6efe670c9c7c9c4c76ba685e0f26fd</p></div><article><pre>[
+  {
+    &quot;platform_message_id&quot;: 6623,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;六席游戏已准备好。参与席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6625,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;本次结算无人出局。\n\n白天发言开始，请各位提交自己的发言。\n存活席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。\n截止：2026-10-24 03:14:52（Asia/Shanghai，北京时间）。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6626,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;马卡里乌斯 发言（玩家原文）：\n&gt; 六号马卡里乌斯发言。昨夜无人出局，但单凭平安夜不能判断谁是好人，也不能确定女巫用了药。目前没有公开查验，也还没有其他人的发言，我不凭座位随机点狼。预言家如果决定出来，请说清查了谁、结果是什么；若有人对跳，我们比较两人的查验和后续逻辑，不是谁先说就信谁。女巫不必为了说明平安夜把用药和身份都暴露，猎人也先别急着跳。希望各位给出具体怀疑对象及理由，不要只说自己是好人。我会看公开发言和查验再决定投票；无可靠信息时也不会把猜测说成铁证。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6627,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军丙 发言（玩家原文）：\n&gt; 丙发言。首夜平安，不能据此认定任何人是好人，也先别让女巫报救人信息。六人两狼，今天投错可能直接进入危险局面，不能凭座位盲推。预言家若查到狼建议明确报查验；若只有好人结果，自行判断起跳收益。对跳请各自说清首验对象和选择理由，大家重点看逻辑和投票一致性。当前没有他人发言可比较，我暂不点狼，投票前会结合完整公开发言判断。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6628,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军乙 发言（玩家原文）：\n&gt; 乙发言：首夜平安，先别把平安夜直接等同于某个人被救。六人两狼，今天需要认真找狼，不能只按座位盲推。预言家若有查杀请明确报查验对象和结果；若报金水也请说明后续验人思路，便于比较是否真在找狼。女巫暂时不必为了证明平安夜暴露自己。我目前没有足够公开信息锁定谁，重点看谁先给结论后补理由、谁只跟票不解释。等大家原话齐了再决定票，暂不提前绑定票型。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6629,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军甲 发言（玩家原文）：\n&gt; 甲席：我报预言家，首夜查验马卡里乌斯，结果不是狼。目前六人都活着，两狼在乙、丙、戊、己四席中。首夜无人出局只能确认公开结果，不能据此确定女巫用药或谁被刀。请其他席位给出独立判断；若有对跳，请明确首夜验人和结果，我会结合发言找矛盾。今天投票需要集中，平票会让狼继续获得夜间机会。我暂不盲点某席为狼，等全员原话再定票。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6630,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军戊 发言（玩家原文）：\n&gt; 我是4号戊。首夜无人出局，只能确认今天六人都在，不能据此认定谁是好人，也不急着让女巫报信息。预言家若有查杀，建议把查验对象和理由讲清楚；若有人对跳，重点看双方信息能否自洽。我目前没有可锁定的狼坑，想听每人明确说一个怀疑对象和理由，投票前再结合公开发言判断。不要因为谁先说或说得长就直接认好。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6631,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军己 发言（玩家原文）：\n&gt; 我是5号己，女巫。首夜刀口是6号马卡里乌斯，我用了救药，因此今天平安夜；毒药还在。6号是我的银水，先偏好人看，但不能排除狼自刀。六人局今天投错、今晚再死好人很危险，请预言家报真实查验和验人理由；若有对跳，大家比较查验与发言，不凭身份外因素站队。目前没有公开查验，我不随便点狼，投票前会看完各席原话。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6632,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;白天投票开始，请提交投票或弃权。\n存活席位：星界军甲、星界军乙、星界军丙、星界军戊、星界军己、马卡里乌斯。\n截止：2026-10-24 03:15:48（Asia/Shanghai，北京时间）。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6633,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;本次结算无人出局。\n\n第2夜开始，请等待各自的私密提示。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6634,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;本次结算出局：星界军甲、星界军戊。\n\n白天发言开始，请各位提交自己的发言。\n存活席位：星界军乙、星界军丙、星界军己、马卡里乌斯。\n截止：2026-10-24 03:17:50（Asia/Shanghai，北京时间）。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6635,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军丙 发言（玩家原文）：\n&gt; 丙报猎人。昨天我投戊。甲单跳预言家给马卡里乌斯金水，己单跳女巫报救马卡里乌斯；现在甲、戊双死而游戏继续，说明至少一狼已经出局。我倾向甲被刀、戊被己毒，但需要己说清今晚用药，不能把推断当公告。若己确认毒戊，则甲预言家、马卡里乌斯金水和我的猎人视角合起来，最后一狼就是乙，今天我会投乙。乙若反驳，请给出能解释双死和首日两份无人对跳身份的完整逻辑。若有人对跳猎人，也请直接说。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6636,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;马卡里乌斯 发言（玩家原文）：\n&gt; 六号发言。昨天我投戊，理由只是其要求别人明确点人，自己却没有给怀疑对象，这只是弱怀疑，不是查杀；最终无人出局。今天公开只确认甲、戊死亡，没有公布死亡原因和身份。甲昨天单跳预言家给我金水，己单跳女巫报救我，我目前倾向相信这两条信息，但死亡不能单独证明甲是真预言家。请己说明昨夜是否用毒、毒谁，这能帮助解释两人死亡。若甲是被刀、戊是被毒，且规则正常判胜仍进入白天，则戊很可能是狼，否则两狼四人已达胜利条件；这是条件推断，不是已揭身份。剩下乙和丙昨天都没有明确狼坑，公开信息不足以硬分。请两位今天明确：相信甲和己吗，昨天投了谁，今天怀疑谁以及理由。我倾向从乙、丙中找最后一狼，但会听完发言再投，不把这种倾向当铁证。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6637,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军己 发言（玩家原文）：\n&gt; 5号己继续报信息：昨夜刀口是甲，我已没有救药；我用毒药毒了戊。昨日我也投戊，原因是在唯一预言家甲与其金水6号之外，乙丙戊三席的发言都偏保守，戊只有索要怀疑对象，没有给具体找狼方法，我优先排他。今天四人仍未终局，按两狼规则结合甲夜间被刀，戊大概率被我毒中狼；剩下一狼重点看乙丙。6号有甲金水与首夜刀口双重支撑，暂不回头。乙丙请各自解释昨日票投谁及理由，并给出今天判断；我会听完再投，不能让平票继续消耗好人。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6638,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军乙 发言（玩家原文）：\n&gt; 乙：现在四人还能进入白天，说明场上不会仍有两狼。甲和戊双死，结合甲昨天报预言家、己报女巫，我倾向甲被刀、戊被毒，请己说明用毒对象。昨天我投丙，是在乙丙戊己四席中排除当时无人对跳的女巫后，丙只作安全表态，没有独立找狼点，所以选丙。今天我报猎人，昨天没跳是避免提前暴露枪；目前我最怀疑丙。六号若是真金水，己又能说明毒戊，剩余狼坑就在丙。请丙正面报身份和昨天投票理由，别只靠我发言较晚或座位来推我。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6639,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;白天投票开始，请提交投票或弃权。\n存活席位：星界军乙、星界军丙、星界军己、马卡里乌斯。\n截止：2026-10-24 03:18:40（Asia/Shanghai，北京时间）。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6640,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;本次结算出局：星界军乙。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6641,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;星界军乙 发言（玩家原文）：\n&gt; 乙遗言：本席已出局，不再参与后续投票。我的投票和判断都已在前面说明，场上按公开结算继续判断即可。等待主持完成遗言后的正式胜负结算。&quot;
+  },
+  {
+    &quot;platform_message_id&quot;: 6642,
+    &quot;channel_id&quot;: &quot;ebddfa3f-d047-4a97-b46b-5b05d9b10199&quot;,
+    &quot;text&quot;: &quot;游戏结束，好人阵营获胜。&quot;
+  }
+]
+</pre></article></section><section id="doc5"><div class="doc-head"><p>原件 5 / 7 · 2,744 字节</p><h2>记录覆盖与披露边界.json</h2><a class="download" href="data:application/octet-stream;base64,ewogICJnYW1lcyI6IFsKICAgIHsKICAgICAgImdhbWVfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLTIwMjYxMDIzIiwKICAgICAgImNvbmZpZ3VyYXRpb24iOiAi5a2Y5Zyo77yM5Y6f55Sfc2tpbGwv5rqQ56CB6KeE5YiZ5Y+KRELvvJvouqvku73liIbphY3kuI3lhazlvIAiLAogICAgICAic3RhZ2VzIjogIuWtmOWcqO+8jOWIhuWxgOmYtuauteiuoeaVsOS4juS4u+WxgOaXp+WuoeiuoeaRmOimgSIsCiAgICAgICJzcGVlY2giOiAi5YWs5byA5oqV5b2x5Y6f6K+d77yb5YGc5q2i6aaW5bGA5pyq6L+b5YWl55m95aSp77yM5LiN6YCC55SoIiwKICAgICAgInZvdGVzIjogIuacqui/m+WFpeeZveWkqe+8jOacquS6p+eUnyIsCiAgICAgICJuaWdodF9hY3Rpb25zIjogIuWOn+Wuv+S4u0RC5a2Y5Zyo56eB5a+G6K6w5b2V77yb5pys5qyh5LuF5rGH5oC76Zi25q615o6l57qz5pWw77yM5LiN5a+85Ye65Y6f5L+hL+inkuiJsi/nm67moIcv5p+l6aqMIiwKICAgICAgImFkanVkaWNhdGlvbiI6ICLlhazlvIBvdXRib3jmipXlvbHvvIznirbmgIHkuI7lubPlj7BJROWIhuWIlyIsCiAgICAgICJlbmRpbmciOiAic3RvcHBlZO+8jOaXoOiDnOi0n++8jOS4jeihpee7iOWxgCIsCiAgICAgICJtaXNzaW5nIjogIui1m+WQjuaPreeJjC/np4Hlr4bpgJDooYzliqjlhazlvIDmjojmnYPlkozlj6/lpJblj5Hnp4Hlr4bmipXlvbHmnKrlj5blvpfvvJvkuI3nrYnkuo7ljp/lrr/kuLvmlbDmja7kuKLlpLEiCiAgICB9LAogICAgewogICAgICAiZ2FtZV9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjMiLAogICAgICAiY29uZmlndXJhdGlvbiI6ICLlrZjlnKjvvIzljp/nlJ9za2lsbC/mupDnoIHop4TliJnlj4pEQu+8m+i6q+S7veWIhumFjeS4jeWFrOW8gCIsCiAgICAgICJzdGFnZXMiOiAi5a2Y5Zyo77yM5YiG5bGA6Zi25q616K6h5pWw5LiO5Li75bGA5pen5a6h6K6h5pGY6KaBIiwKICAgICAgInNwZWVjaCI6ICLlhazlvIDmipXlvbHljp/or53vvJtjNzEx5Y+m5pyJ5Y6f5Lu25YWs5byA5a+55bGA5Y6f6K+dLm1kIiwKICAgICAgInZvdGVzIjogIueZveWkqemYtuauteaOpee6s+iuoeaVsOS4juWFrOW8gOijgeWGs++8m+mAkOS6uuebruagh+acquS9nOS4uuWFrOW8gOmZhOS7tiIsCiAgICAgICJuaWdodF9hY3Rpb25zIjogIuWOn+Wuv+S4u0RC5a2Y5Zyo56eB5a+G6K6w5b2V77yb5pys5qyh5LuF5rGH5oC76Zi25q615o6l57qz5pWw77yM5LiN5a+85Ye65Y6f5L+hL+inkuiJsi/nm67moIcv5p+l6aqMIiwKICAgICAgImFkanVkaWNhdGlvbiI6ICLlhazlvIBvdXRib3jmipXlvbHvvIznirbmgIHkuI7lubPlj7BJROWIhuWIlyIsCiAgICAgICJlbmRpbmciOiAiZmluaXNoZWQvd29sdmVzIiwKICAgICAgIm1pc3NpbmciOiAi6LWb5ZCO5o+t54mML+engeWvhumAkOihjOWKqOWFrOW8gOaOiOadg+WSjOWPr+WkluWPkeengeWvhuaKleW9seacquWPluW+l++8m+S4jeetieS6juWOn+Wuv+S4u+aVsOaNruS4ouWksSIKICAgIH0sCiAgICB7CiAgICAgICJnYW1lX2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMSIsCiAgICAgICJjb25maWd1cmF0aW9uIjogIuWtmOWcqO+8jOWOn+eUn3NraWxsL+a6kOeggeinhOWImeWPikRC77yb6Lqr5Lu95YiG6YWN5LiN5YWs5byAIiwKICAgICAgInN0YWdlcyI6ICLlrZjlnKjvvIzliIblsYDpmLbmrrXorqHmlbDkuI7kuLvlsYDml6flrqHorqHmkZjopoEiLAogICAgICAic3BlZWNoIjogIuWFrOW8gOaKleW9seWOn+ivne+8m2M3MTHlj6bmnInljp/ku7blhazlvIDlr7nlsYDljp/or50ubWQiLAogICAgICAidm90ZXMiOiAi55m95aSp6Zi25q615o6l57qz6K6h5pWw5LiO5YWs5byA6KOB5Yaz77yb6YCQ5Lq655uu5qCH5pyq5L2c5Li65YWs5byA6ZmE5Lu2IiwKICAgICAgIm5pZ2h0X2FjdGlvbnMiOiAi5Y6f5a6/5Li7RELlrZjlnKjnp4Hlr4borrDlvZXvvJvmnKzmrKHku4XmsYfmgLvpmLbmrrXmjqXnurPmlbDvvIzkuI3lr7zlh7rljp/kv6Ev6KeS6ImyL+ebruaghy/mn6XpqowiLAogICAgICAiYWRqdWRpY2F0aW9uIjogIuWFrOW8gG91dGJveOaKleW9se+8jOeKtuaAgeS4juW5s+WPsElE5YiG5YiXIiwKICAgICAgImVuZGluZyI6ICJmaW5pc2hlZC9nb29kIiwKICAgICAgIm1pc3NpbmciOiAi6LWb5ZCO5o+t54mML+engeWvhumAkOihjOWKqOWFrOW8gOaOiOadg+WSjOWPr+WkluWPkeengeWvhuaKleW9seacquWPluW+l++8m+S4jeetieS6juWOn+Wuv+S4u+aVsOaNruS4ouWksSIKICAgIH0KICBdLAogICJkaXNjbG9zdXJlX2NhdGVnb3JpZXMiOiB7CiAgICAicHVibGljIjogIuW8leaTjnB1YmxpY+S6i+S7tuOAgeW3suWPkeW4g+eOqeWutuWOn+ivneOAgeinhOWImeS4juiDnOi0n++8m+eOqeWutuiHqui/sOS4jeetieS6jui6q+S7veiupOivgSIsCiAgICAicG9zdF9nYW1lX3NoYXJlYWJsZSI6ICLljrvouqvku73ljJbpmLbmrrXmlbDph4/jgIHmjqXnurPmlbDjgIHlrqHorqHlk4jluIzjgIHmipXpgJLnirbmgIHjgIHmlYXpmpzkuovlrp7vvJvmnKzmrKHlj6/kuqTku5giLAogICAgImhvc3RfcHJpdmF0ZSI6ICJyb2xlcy9hY3Rpb25zL+WOn+Wni+WknOS/oS9zdGF0dXMvYXVkaXTlrozmlbTooagv56eB5a+Gb3V0Ym94L+WOn0RC77yb57uI5bGA5LiN6Ieq5Yqo6Kej5a+G77yM5LiN6ZmE5L+hIgogIH0sCiAgIm1pc3NpbmdfZm9ybWFsIjogIuacquWPluW+lyBMSVZFIGdhbWVfaWQg5LiO5Y6f5Lu2IiwKICAibm9fZ2VuZXJhdGVkX2dhbWVfYWN0aW9ucyI6IHRydWUKfQo=" download="记录覆盖与披露边界.json">下载此份原件</a><p class="hash">SHA-256：d6d04219dd976e1a4d97a3b2091efdc7aa36bdd0aea799703de56a736dfb908c</p></div><article><pre>{
+  &quot;games&quot;: [
+    {
+      &quot;game_id&quot;: &quot;VERIFY-e636f4da-20261023&quot;,
+      &quot;configuration&quot;: &quot;存在，原生skill/源码规则及DB；身份分配不公开&quot;,
+      &quot;stages&quot;: &quot;存在，分局阶段计数与主局旧审计摘要&quot;,
+      &quot;speech&quot;: &quot;公开投影原话；停止首局未进入白天，不适用&quot;,
+      &quot;votes&quot;: &quot;未进入白天，未产生&quot;,
+      &quot;night_actions&quot;: &quot;原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验&quot;,
+      &quot;adjudication&quot;: &quot;公开outbox投影，状态与平台ID分列&quot;,
+      &quot;ending&quot;: &quot;stopped，无胜负，不补终局&quot;,
+      &quot;missing&quot;: &quot;赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失&quot;
+    },
+    {
+      &quot;game_id&quot;: &quot;VERIFY-e636f4da-relay-20261023&quot;,
+      &quot;configuration&quot;: &quot;存在，原生skill/源码规则及DB；身份分配不公开&quot;,
+      &quot;stages&quot;: &quot;存在，分局阶段计数与主局旧审计摘要&quot;,
+      &quot;speech&quot;: &quot;公开投影原话；c711另有原件公开对局原话.md&quot;,
+      &quot;votes&quot;: &quot;白天阶段接纳计数与公开裁决；逐人目标未作为公开附件&quot;,
+      &quot;night_actions&quot;: &quot;原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验&quot;,
+      &quot;adjudication&quot;: &quot;公开outbox投影，状态与平台ID分列&quot;,
+      &quot;ending&quot;: &quot;finished/wolves&quot;,
+      &quot;missing&quot;: &quot;赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失&quot;
+    },
+    {
+      &quot;game_id&quot;: &quot;VERIFY-c71137ee-20261023-01&quot;,
+      &quot;configuration&quot;: &quot;存在，原生skill/源码规则及DB；身份分配不公开&quot;,
+      &quot;stages&quot;: &quot;存在，分局阶段计数与主局旧审计摘要&quot;,
+      &quot;speech&quot;: &quot;公开投影原话；c711另有原件公开对局原话.md&quot;,
+      &quot;votes&quot;: &quot;白天阶段接纳计数与公开裁决；逐人目标未作为公开附件&quot;,
+      &quot;night_actions&quot;: &quot;原宿主DB存在私密记录；本次仅汇总阶段接纳数，不导出原信/角色/目标/查验&quot;,
+      &quot;adjudication&quot;: &quot;公开outbox投影，状态与平台ID分列&quot;,
+      &quot;ending&quot;: &quot;finished/good&quot;,
+      &quot;missing&quot;: &quot;赛后揭牌/私密逐行动公开授权和可外发私密投影未取得；不等于原宿主数据丢失&quot;
+    }
+  ],
+  &quot;disclosure_categories&quot;: {
+    &quot;public&quot;: &quot;引擎public事件、已发布玩家原话、规则与胜负；玩家自述不等于身份认证&quot;,
+    &quot;post_game_shareable&quot;: &quot;去身份化阶段数量、接纳数、审计哈希、投递状态、故障事实；本次可交付&quot;,
+    &quot;host_private&quot;: &quot;roles/actions/原始夜信/status/audit完整表/私密outbox/原DB；终局不自动解密，不附信&quot;
+  },
+  &quot;missing_formal&quot;: &quot;未取得 LIVE game_id 与原件&quot;,
+  &quot;no_generated_game_actions&quot;: true
+}
+</pre></article></section><section id="doc6"><div class="doc-head"><p>原件 6 / 7 · 22,519 字节</p><h2>历史公开记录投影.json</h2><a class="download" href="data:application/octet-stream;base64,WwogIHsKICAgICJnYW1lX2lkIjogIlZFUklGWS1lNjM2ZjRkYS0yMDI2MTAyMyIsCiAgICAibW9kZSI6ICJ2ZXJpZmljYXRpb24iLAogICAgInRlc3QiOiBmYWxzZSwKICAgICJzb3VyY2VfZGF0YWJhc2Vfc2hhMjU2IjogIjlmN2ZmN2I2YzZlM2Q2OWRlNmU3MjJkMGNjZjE1M2FkYmRjZDQ0YTlmZDMwOGI3ZmNlMzRhNjhhMjU0MDAxZjYiLAogICAgInN0YXR1cyI6ICJzdG9wcGVkIiwKICAgICJ3aW5uZXIiOiBudWxsLAogICAgInB1YmxpY19ldmVudHMiOiBbCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtMjAyNjEwMjM6MTowIiwKICAgICAgICAidmVyc2lvbiI6IDEsCiAgICAgICAgInR5cGUiOiAiY3JlYXRlZCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAicGxheWVycyI6IFsKICAgICAgICAgICAgIuaYn+eVjOWGm+eUsiIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuZkiLAogICAgICAgICAgICAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4gSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIgogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYwOTcKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS0yMDI2MTAyMzoyMDowIiwKICAgICAgICAidmVyc2lvbiI6IDIwLAogICAgICAgICJ0eXBlIjogImNvbnRyb2wiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgIm9wZXJhdGlvbiI6ICJwYXVzZSIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAicGVuZGluZyIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiBudWxsCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtMjAyNjEwMjM6MjE6MCIsCiAgICAgICAgInZlcnNpb24iOiAyMSwKICAgICAgICAidHlwZSI6ICJjb250cm9sIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJvcGVyYXRpb24iOiAic3RvcCIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTAzCiAgICAgIH0KICAgIF0sCiAgICAid2FybmluZyI6ICLmnKzmlofku7bkuLrmnKzmrKHlj6ror7vnmb3lkI3ljZXmipXlvbHvvIzpnZ7mlrDlj5HlhazlkYrvvJtwZW5kaW5n5LiN5YaS56ew5YWs5byA6YCB6L6+77yb546p5a626Ieq6L+w6Lqr5Lu95LiN6K6k6K+B5Li655yf44CCIgogIH0sCiAgewogICAgImdhbWVfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLXJlbGF5LTIwMjYxMDIzIiwKICAgICJtb2RlIjogInZlcmlmaWNhdGlvbiIsCiAgICAidGVzdCI6IGZhbHNlLAogICAgInNvdXJjZV9kYXRhYmFzZV9zaGEyNTYiOiAiOWY3ZmY3YjZjNmUzZDY5ZGU2ZTcyMmQwY2NmMTUzYWRiZGNkNDRhOWZkMzA4YjdmY2UzNGE2OGEyNTQwMDFmNiIsCiAgICAic3RhdHVzIjogImZpbmlzaGVkIiwKICAgICJ3aW5uZXIiOiAid29sdmVzIiwKICAgICJwdWJsaWNfZXZlbnRzIjogWwogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLXJlbGF5LTIwMjYxMDIzOjE6MCIsCiAgICAgICAgInZlcnNpb24iOiAxLAogICAgICAgICJ0eXBlIjogImNyZWF0ZWQiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvnlLIiLAogICAgICAgICAgICAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4gSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S5mSIKICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTA0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6MzU6MCIsCiAgICAgICAgInZlcnNpb24iOiAzNSwKICAgICAgICAidHlwZSI6ICJkZWF0aHMiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxMTgKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzozNToxIiwKICAgICAgICAidmVyc2lvbiI6IDM1LAogICAgICAgICJ0eXBlIjogImRpc2N1c3Npb24iLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgImFsaXZlIjogWwogICAgICAgICAgICAi5pif55WM5Yab55SyIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuIEiLAogICAgICAgICAgICAi5pif55WM5Yab5oiKIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+W3sSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuZkiCiAgICAgICAgICBdLAogICAgICAgICAgImRlYWRsaW5lIjogMTc5Mjc1ODQwMC4yMTM1ODEKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTE5CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6NTI6MCIsCiAgICAgICAgInZlcnNpb24iOiA1MiwKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIuaYn+eVjOWGm+aIiiIsCiAgICAgICAgICAidGV4dCI6ICLnm67liY3lhazlvIDkv6Hmga/mnInpmZDvvIzlu7rorq7lpKflrrbnu5nlh7rmmI7noa7liKTmlq3lj4rnkIbnlLHjgILmiJHkvJrnu5PlkIjlhazlvIDlj5HoqIDlho3lhrPlrprmipXnpajjgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjEyMgogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLXJlbGF5LTIwMjYxMDIzOjUzOjAiLAogICAgICAgICJ2ZXJzaW9uIjogNTMsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvnlLIiLAogICAgICAgICAgInRleHQiOiAi5b2T5YmN5YWo5ZGY5a2Y5rS744CC5oiR5YWI5ZCs5ZCE5L2N5Y+R6KiA77yM5YWz5rOo5oqV56Wo55CG55Sx5LiO5YmN5ZCO5piv5ZCm5LiA6Ie044CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxMjMKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzo1NDowIiwKICAgICAgICAidmVyc2lvbiI6IDU0LAogICAgICAgICJ0eXBlIjogInBsYXllcl9zcGVlY2giLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInNwZWFrZXIiOiAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICJ0ZXh0IjogIuebruWJjeaIkeayoeaciei2s+Wkn+eahOWFrOW8gOS/oeaBr+mUgeWumuebruagh+OAguivt+WQhOS9jeivtOaYjuWIpOaWreS+neaNru+8jOaIkeS8mue7k+WQiOWPkeiogOS4reeahOefm+ebvuS4juaKleelqOeQhueUseS9nOmAieaLqeOAgiIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTI0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6NjE6MCIsCiAgICAgICAgInZlcnNpb24iOiA2MSwKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIuaYn+eVjOWGm+W3sSIsCiAgICAgICAgICAidGV4dCI6ICLlt7HluK3lt7Llrp7mlLbmnKzpmLbmrrXmj5DnpLrjgILmnKzova7ku4Xpqozor4HnnJ/lrp7mlLblj5HpgJrpgZPvvJvlvZPliY3mj5DnpLrmnKrmj5DkvpvlsYDlhoXouqvku73miJbooYzliqjor4Hmja7vvIzmiJHmmoLkuI3mjIforqTku7vkvZXluK3kvY3vvIzor7fmjInlt7LmlLbliLDnmoTlhazlvIDkv6Hmga/nu6fnu63orqjorrrjgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjEyOAogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLXJlbGF5LTIwMjYxMDIzOjY1OjAiLAogICAgICAgICJ2ZXJzaW9uIjogNjUsCiAgICAgICAgInR5cGUiOiAidm90ZSIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAiYWxpdmUiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvnlLIiLAogICAgICAgICAgICAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4gSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S5mSIKICAgICAgICAgIF0sCiAgICAgICAgICAiZGVhZGxpbmUiOiAxNzkyNzU5MDE2LjY1OTY5NjgKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTM0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6ODY6MCIsCiAgICAgICAgInZlcnNpb24iOiA4NiwKICAgICAgICAidHlwZSI6ICJkZWF0aHMiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxNDkKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzo4NjozIiwKICAgICAgICAidmVyc2lvbiI6IDg2LAogICAgICAgICJ0eXBlIjogIm5pZ2h0IiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJyb3VuZCI6IDIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTUwCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6MTA5OjAiLAogICAgICAgICJ2ZXJzaW9uIjogMTA5LAogICAgICAgICJ0eXBlIjogImRlYXRocyIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAicGxheWVycyI6IFsKICAgICAgICAgICAgIuaYn+eVjOWGm+eUsiIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuZkiCiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjE3NQogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWU2MzZmNGRhLXJlbGF5LTIwMjYxMDIzOjEwOToxIiwKICAgICAgICAidmVyc2lvbiI6IDEwOSwKICAgICAgICAidHlwZSI6ICJkaXNjdXNzaW9uIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJhbGl2ZSI6IFsKICAgICAgICAgICAgIuaYn+eVjOWGm+S4mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuIEiLAogICAgICAgICAgICAi5pif55WM5Yab5oiKIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+W3sSIKICAgICAgICAgIF0sCiAgICAgICAgICAiZGVhZGxpbmUiOiAxNzkyNzYwNjA2Ljc3MjQwNTQKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTc2CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6MTIyOjAiLAogICAgICAgICJ2ZXJzaW9uIjogMTIyLAogICAgICAgICJ0eXBlIjogInBsYXllcl9zcGVlY2giLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInNwZWFrZXIiOiAi5pif55WM5Yab5LiBIiwKICAgICAgICAgICJ0ZXh0IjogIuS4geW4reW3suaUtuWIsOacrOmYtuauteaPkOekuu+8jOaMiemqjOivgeWxgOinhOWImeWPkeiogOOAgiIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTc4CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6MTIzOjAiLAogICAgICAgICJ2ZXJzaW9uIjogMTIzLAogICAgICAgICJ0eXBlIjogInBsYXllcl9zcGVlY2giLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInNwZWFrZXIiOiAi5pif55WM5Yab5oiKIiwKICAgICAgICAgICJ0ZXh0IjogIueOsOWcqOWtmOa0u+S6uuaVsOWHj+Wwke+8jOW7uuiuruWQhOS9jeaYjuehruivtOaYjuacrOi9ruaAgOeWkeWvueixoeS4juS+neaNru+8jOmBv+WFjeWIhuaVo+elqOWei+OAguaIkeW4jOacm+WQrOWIsOWPr+S7peaguOWvueeahOWFrOW8gOeQhueUseOAgiIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2MTc5CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktZTYzNmY0ZGEtcmVsYXktMjAyNjEwMjM6MTMwOjAiLAogICAgICAgICJ2ZXJzaW9uIjogMTMwLAogICAgICAgICJ0eXBlIjogInZvdGUiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgImFsaXZlIjogWwogICAgICAgICAgICAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4gSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIgogICAgICAgICAgXSwKICAgICAgICAgICJkZWFkbGluZSI6IDE3OTI3NjExMTMuNzYxMTA4OQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxODAKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzoxNDU6MCIsCiAgICAgICAgInZlcnNpb24iOiAxNDUsCiAgICAgICAgInR5cGUiOiAiZGVhdGhzIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJwbGF5ZXJzIjogWwogICAgICAgICAgICAi5pif55WM5Yab5LiZIgogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxODUKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzoxNTE6MSIsCiAgICAgICAgInZlcnNpb24iOiAxNTEsCiAgICAgICAgInR5cGUiOiAibmlnaHQiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInJvdW5kIjogMwogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxODgKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzoxNjY6MCIsCiAgICAgICAgInZlcnNpb24iOiAxNjYsCiAgICAgICAgInR5cGUiOiAiZGVhdGhzIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJwbGF5ZXJzIjogWwogICAgICAgICAgICAi5pif55WM5Yab5LiBIgogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYxOTkKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1lNjM2ZjRkYS1yZWxheS0yMDI2MTAyMzoxNjY6MSIsCiAgICAgICAgInZlcnNpb24iOiAxNjYsCiAgICAgICAgInR5cGUiOiAid2lubmVyIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJ3aW5uZXIiOiAid29sdmVzIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDYyMDAKICAgICAgfQogICAgXSwKICAgICJ3YXJuaW5nIjogIuacrOaWh+S7tuS4uuacrOasoeWPquivu+eZveWQjeWNleaKleW9se+8jOmdnuaWsOWPkeWFrOWRiu+8m3BlbmRpbmfkuI3lhpLnp7DlhazlvIDpgIHovr7vvJvnjqnlrrboh6rov7Douqvku73kuI3orqTor4HkuLrnnJ/jgIIiCiAgfSwKICB7CiAgICAiZ2FtZV9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDEiLAogICAgIm1vZGUiOiAidmVyaWZpY2F0aW9uIiwKICAgICJ0ZXN0IjogZmFsc2UsCiAgICAic291cmNlX2RhdGFiYXNlX3NoYTI1NiI6ICI5MjVmZmVmOGVhYzk2ZDU4ZmNjYzU2NzRkYWQwNzcwMjY5YzllY2I4ODY2YmQzMzYzMjE1ZWJlOWNkODE2NGJjIiwKICAgICJzdGF0dXMiOiAiZmluaXNoZWQiLAogICAgIndpbm5lciI6ICJnb29kIiwKICAgICJwdWJsaWNfZXZlbnRzIjogWwogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjE6MCIsCiAgICAgICAgInZlcnNpb24iOiAxLAogICAgICAgICJ0eXBlIjogImNyZWF0ZWQiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvnlLIiLAogICAgICAgICAgICAi5pif55WM5Yab5LmZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIiwKICAgICAgICAgICAgIumprOWNoemHjOS5jOaWryIKICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjIzCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6MzI6MCIsCiAgICAgICAgInZlcnNpb24iOiAzMiwKICAgICAgICAidHlwZSI6ICJkZWF0aHMiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MjUKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMTozMjoxIiwKICAgICAgICAidmVyc2lvbiI6IDMyLAogICAgICAgICJ0eXBlIjogImRpc2N1c3Npb24iLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgImFsaXZlIjogWwogICAgICAgICAgICAi5pif55WM5Yab55SyIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S5mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuJkiLAogICAgICAgICAgICAi5pif55WM5Yab5oiKIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+W3sSIsCiAgICAgICAgICAgICLpqazljaHph4zkuYzmlq8iCiAgICAgICAgICBdLAogICAgICAgICAgImRlYWRsaW5lIjogMTc5Mjc4Mjg5Mi4wMTM2MzcKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjI1CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6NDc6MCIsCiAgICAgICAgInZlcnNpb24iOiA0NywKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIumprOWNoemHjOS5jOaWryIsCiAgICAgICAgICAidGV4dCI6ICLlha3lj7fpqazljaHph4zkuYzmlq/lj5HoqIDjgILmmKjlpJzml6Dkurrlh7rlsYDvvIzkvYbljZXlh63lubPlronlpJzkuI3og73liKTmlq3osIHmmK/lpb3kurrvvIzkuZ/kuI3og73noa7lrprlpbPlt6vnlKjkuoboja/jgILnm67liY3msqHmnInlhazlvIDmn6XpqozvvIzkuZ/ov5jmsqHmnInlhbbku5bkurrnmoTlj5HoqIDvvIzmiJHkuI3lh63luqfkvY3pmo/mnLrngrnni7zjgILpooToqIDlrrblpoLmnpzlhrPlrprlh7rmnaXvvIzor7for7TmuIXmn6XkuobosIHjgIHnu5PmnpzmmK/ku4DkuYjvvJvoi6XmnInkurrlr7not7PvvIzmiJHku6zmr5TovoPkuKTkurrnmoTmn6XpqozlkozlkI7nu63pgLvovpHvvIzkuI3mmK/osIHlhYjor7TlsLHkv6HosIHjgILlpbPlt6vkuI3lv4XkuLrkuobor7TmmI7lubPlronlpJzmiornlKjoja/lkozouqvku73pg73mmrTpnLLvvIznjI7kurrkuZ/lhYjliKvmgKXnnYDot7PjgILluIzmnJvlkITkvY3nu5nlh7rlhbfkvZPmgIDnlpHlr7nosaHlj4rnkIbnlLHvvIzkuI3opoHlj6ror7Toh6rlt7HmmK/lpb3kurrjgILmiJHkvJrnnIvlhazlvIDlj5HoqIDlkozmn6Xpqozlho3lhrPlrprmipXnpajvvJvml6Dlj6/pnaDkv6Hmga/ml7bkuZ/kuI3kvJrmiornjJzmtYvor7TmiJDpk4Hor4HjgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyNgogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjUwOjAiLAogICAgICAgICJ2ZXJzaW9uIjogNTAsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvkuJkiLAogICAgICAgICAgInRleHQiOiAi5LiZ5Y+R6KiA44CC6aaW5aSc5bmz5a6J77yM5LiN6IO95o2u5q2k6K6k5a6a5Lu75L2V5Lq65piv5aW95Lq677yM5Lmf5YWI5Yir6K6p5aWz5ber5oql5pWR5Lq65L+h5oGv44CC5YWt5Lq65Lik54u877yM5LuK5aSp5oqV6ZSZ5Y+v6IO955u05o6l6L+b5YWl5Y2x6Zmp5bGA6Z2i77yM5LiN6IO95Yet5bqn5L2N55uy5o6o44CC6aKE6KiA5a626Iul5p+l5Yiw54u85bu66K6u5piO56Gu5oql5p+l6aqM77yb6Iul5Y+q5pyJ5aW95Lq657uT5p6c77yM6Ieq6KGM5Yik5pat6LW36Lez5pS255uK44CC5a+56Lez6K+35ZCE6Ieq6K+05riF6aaW6aqM5a+56LGh5ZKM6YCJ5oup55CG55Sx77yM5aSn5a626YeN54K555yL6YC76L6R5ZKM5oqV56Wo5LiA6Ie05oCn44CC5b2T5YmN5rKh5pyJ5LuW5Lq65Y+R6KiA5Y+v5q+U6L6D77yM5oiR5pqC5LiN54K554u877yM5oqV56Wo5YmN5Lya57uT5ZCI5a6M5pW05YWs5byA5Y+R6KiA5Yik5pat44CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MjcKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMTo1MTowIiwKICAgICAgICAidmVyc2lvbiI6IDUxLAogICAgICAgICJ0eXBlIjogInBsYXllcl9zcGVlY2giLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInNwZWFrZXIiOiAi5pif55WM5Yab5LmZIiwKICAgICAgICAgICJ0ZXh0IjogIuS5meWPkeiogO+8mummluWknOW5s+Wuie+8jOWFiOWIq+aKiuW5s+WuieWknOebtOaOpeetieWQjOS6juafkOS4quS6uuiiq+aVkeOAguWFreS6uuS4pOeLvO+8jOS7iuWkqemcgOimgeiupOecn+aJvueLvO+8jOS4jeiDveWPquaMieW6p+S9jeebsuaOqOOAgumihOiogOWutuiLpeacieafpeadgOivt+aYjuehruaKpeafpemqjOWvueixoeWSjOe7k+aenO+8m+iLpeaKpemHkeawtOS5n+ivt+ivtOaYjuWQjue7remqjOS6uuaAnei3r++8jOS+v+S6juavlOi+g+aYr+WQpuecn+WcqOaJvueLvOOAguWls+W3q+aaguaXtuS4jeW/heS4uuS6huivgeaYjuW5s+WuieWknOaatOmcsuiHquW3seOAguaIkeebruWJjeayoeaciei2s+Wkn+WFrOW8gOS/oeaBr+mUgeWumuiwge+8jOmHjeeCueeci+iwgeWFiOe7mee7k+iuuuWQjuihpeeQhueUseOAgeiwgeWPqui3n+elqOS4jeino+mHiuOAguetieWkp+WutuWOn+ivnem9kOS6huWGjeWGs+WumuelqO+8jOaaguS4jeaPkOWJjee7keWumuelqOWei+OAgiIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjI4CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6NTI6MCIsCiAgICAgICAgInZlcnNpb24iOiA1MiwKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIuaYn+eVjOWGm+eUsiIsCiAgICAgICAgICAidGV4dCI6ICLnlLLluK3vvJrmiJHmiqXpooToqIDlrrbvvIzpppblpJzmn6XpqozpqazljaHph4zkuYzmlq/vvIznu5PmnpzkuI3mmK/ni7zjgILnm67liY3lha3kurrpg73mtLvnnYDvvIzkuKTni7zlnKjkuZnjgIHkuJnjgIHmiIrjgIHlt7Hlm5vluK3kuK3jgILpppblpJzml6Dkurrlh7rlsYDlj6rog73noa7orqTlhazlvIDnu5PmnpzvvIzkuI3og73mja7mraTnoa7lrprlpbPlt6vnlKjoja/miJbosIHooqvliIDjgILor7flhbbku5bluK3kvY3nu5nlh7rni6znq4vliKTmlq3vvJvoi6XmnInlr7not7PvvIzor7fmmI7noa7pppblpJzpqozkurrlkoznu5PmnpzvvIzmiJHkvJrnu5PlkIjlj5HoqIDmib7nn5vnm77jgILku4rlpKnmipXnpajpnIDopoHpm4bkuK3vvIzlubPnpajkvJrorqnni7znu6fnu63ojrflvpflpJzpl7TmnLrkvJrjgILmiJHmmoLkuI3nm7Lngrnmn5DluK3kuLrni7zvvIznrYnlhajlkZjljp/or53lho3lrprnpajjgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYyOQogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjUzOjAiLAogICAgICAgICJ2ZXJzaW9uIjogNTMsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgInRleHQiOiAi5oiR5pivNOWPt+aIiuOAgummluWknOaXoOS6uuWHuuWxgO+8jOWPquiDveehruiupOS7iuWkqeWFreS6uumDveWcqO+8jOS4jeiDveaNruatpOiupOWumuiwgeaYr+WlveS6uu+8jOS5n+S4jeaApeedgOiuqeWls+W3q+aKpeS/oeaBr+OAgumihOiogOWutuiLpeacieafpeadgO+8jOW7uuiuruaKiuafpemqjOWvueixoeWSjOeQhueUseiusua4healmu+8m+iLpeacieS6uuWvuei3s++8jOmHjeeCueeci+WPjOaWueS/oeaBr+iDveWQpuiHqua0veOAguaIkeebruWJjeayoeacieWPr+mUgeWumueahOeLvOWdke+8jOaDs+WQrOavj+S6uuaYjuehruivtOS4gOS4quaAgOeWkeWvueixoeWSjOeQhueUse+8jOaKleelqOWJjeWGjee7k+WQiOWFrOW8gOWPkeiogOWIpOaWreOAguS4jeimgeWboOS4uuiwgeWFiOivtOaIluivtOW+l+mVv+WwseebtOaOpeiupOWlveOAgiIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjMwCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6NTQ6MCIsCiAgICAgICAgInZlcnNpb24iOiA1NCwKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIuaYn+eVjOWGm+W3sSIsCiAgICAgICAgICAidGV4dCI6ICLmiJHmmK815Y+35bex77yM5aWz5ber44CC6aaW5aSc5YiA5Y+j5pivNuWPt+mprOWNoemHjOS5jOaWr++8jOaIkeeUqOS6huaVkeiNr++8jOWboOatpOS7iuWkqeW5s+WuieWknO+8m+avkuiNr+i/mOWcqOOAgjblj7fmmK/miJHnmoTpk7bmsLTvvIzlhYjlgY/lpb3kurrnnIvvvIzkvYbkuI3og73mjpLpmaTni7zoh6rliIDjgILlha3kurrlsYDku4rlpKnmipXplJnjgIHku4rmmZrlho3mrbvlpb3kurrlvojljbHpmanvvIzor7fpooToqIDlrrbmiqXnnJ/lrp7mn6XpqozlkozpqozkurrnkIbnlLHvvJvoi6XmnInlr7not7PvvIzlpKflrrbmr5TovoPmn6XpqozkuI7lj5HoqIDvvIzkuI3lh63ouqvku73lpJblm6DntKDnq5npmJ/jgILnm67liY3msqHmnInlhazlvIDmn6XpqozvvIzmiJHkuI3pmo/kvr/ngrnni7zvvIzmipXnpajliY3kvJrnnIvlrozlkITluK3ljp/or53jgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYzMQogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjY1OjAiLAogICAgICAgICJ2ZXJzaW9uIjogNjUsCiAgICAgICAgInR5cGUiOiAidm90ZSIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAiYWxpdmUiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvnlLIiLAogICAgICAgICAgICAi5pif55WM5Yab5LmZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+S4mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIiwKICAgICAgICAgICAgIumprOWNoemHjOS5jOaWryIKICAgICAgICAgIF0sCiAgICAgICAgICAiZGVhZGxpbmUiOiAxNzkyNzgyOTQ4Ljk2NzkwNDgKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjMyCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6ODY6MCIsCiAgICAgICAgInZlcnNpb24iOiA4NiwKICAgICAgICAidHlwZSI6ICJkZWF0aHMiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbXQogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzMKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMTo4NjozIiwKICAgICAgICAidmVyc2lvbiI6IDg2LAogICAgICAgICJ0eXBlIjogIm5pZ2h0IiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJyb3VuZCI6IDIKICAgICAgICB9LAogICAgICAgICJkZWxpdmVyeV9zdGF0dXMiOiAic2VudCIsCiAgICAgICAgInBsYXRmb3JtX21lc3NhZ2VfaWQiOiA2NjMzCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAic291cmNlX291dGJveF9pZCI6ICJWRVJJRlktYzcxMTM3ZWUtMjAyNjEwMjMtMDE6MTA1OjAiLAogICAgICAgICJ2ZXJzaW9uIjogMTA1LAogICAgICAgICJ0eXBlIjogImRlYXRocyIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAicGxheWVycyI6IFsKICAgICAgICAgICAgIuaYn+eVjOWGm+eUsiIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvmiIoiCiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYzNAogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjEwNToxIiwKICAgICAgICAidmVyc2lvbiI6IDEwNSwKICAgICAgICAidHlwZSI6ICJkaXNjdXNzaW9uIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJhbGl2ZSI6IFsKICAgICAgICAgICAgIuaYn+eVjOWGm+S5mSIsCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuJkiLAogICAgICAgICAgICAi5pif55WM5Yab5bexIiwKICAgICAgICAgICAgIumprOWNoemHjOS5jOaWryIKICAgICAgICAgIF0sCiAgICAgICAgICAiZGVhZGxpbmUiOiAxNzkyNzgzMDcwLjQ3NTA1NgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzQKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMToxMTY6MCIsCiAgICAgICAgInZlcnNpb24iOiAxMTYsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvkuJkiLAogICAgICAgICAgInRleHQiOiAi5LiZ5oql54yO5Lq644CC5pio5aSp5oiR5oqV5oiK44CC55Sy5Y2V6Lez6aKE6KiA5a6257uZ6ams5Y2h6YeM5LmM5pav6YeR5rC077yM5bex5Y2V6Lez5aWz5ber5oql5pWR6ams5Y2h6YeM5LmM5pav77yb546w5Zyo55Sy44CB5oiK5Y+M5q276ICM5ri45oiP57un57ut77yM6K+05piO6Iez5bCR5LiA54u85bey57uP5Ye65bGA44CC5oiR5YC+5ZCR55Sy6KKr5YiA44CB5oiK6KKr5bex5q+S77yM5L2G6ZyA6KaB5bex6K+05riF5LuK5pma55So6I2v77yM5LiN6IO95oqK5o6o5pat5b2T5YWs5ZGK44CC6Iul5bex56Gu6K6k5q+S5oiK77yM5YiZ55Sy6aKE6KiA5a6244CB6ams5Y2h6YeM5LmM5pav6YeR5rC05ZKM5oiR55qE54yO5Lq66KeG6KeS5ZCI6LW35p2l77yM5pyA5ZCO5LiA54u85bCx5piv5LmZ77yM5LuK5aSp5oiR5Lya5oqV5LmZ44CC5LmZ6Iul5Y+N6amz77yM6K+357uZ5Ye66IO96Kej6YeK5Y+M5q275ZKM6aaW5pel5Lik5Lu95peg5Lq65a+56Lez6Lqr5Lu955qE5a6M5pW06YC76L6R44CC6Iul5pyJ5Lq65a+56Lez54yO5Lq677yM5Lmf6K+355u05o6l6K+044CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzUKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMToxMTk6MCIsCiAgICAgICAgInZlcnNpb24iOiAxMTksCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLpqazljaHph4zkuYzmlq8iLAogICAgICAgICAgInRleHQiOiAi5YWt5Y+35Y+R6KiA44CC5pio5aSp5oiR5oqV5oiK77yM55CG55Sx5Y+q5piv5YW26KaB5rGC5Yir5Lq65piO56Gu54K55Lq677yM6Ieq5bex5Y205rKh5pyJ57uZ5oCA55aR5a+56LGh77yM6L+Z5Y+q5piv5byx5oCA55aR77yM5LiN5piv5p+l5p2A77yb5pyA57uI5peg5Lq65Ye65bGA44CC5LuK5aSp5YWs5byA5Y+q56Gu6K6k55Sy44CB5oiK5q275Lqh77yM5rKh5pyJ5YWs5biD5q275Lqh5Y6f5Zug5ZKM6Lqr5Lu944CC55Sy5pio5aSp5Y2V6Lez6aKE6KiA5a6257uZ5oiR6YeR5rC077yM5bex5Y2V6Lez5aWz5ber5oql5pWR5oiR77yM5oiR55uu5YmN5YC+5ZCR55u45L+h6L+Z5Lik5p2h5L+h5oGv77yM5L2G5q275Lqh5LiN6IO95Y2V54us6K+B5piO55Sy5piv55yf6aKE6KiA5a6244CC6K+35bex6K+05piO5pio5aSc5piv5ZCm55So5q+S44CB5q+S6LCB77yM6L+Z6IO95biu5Yqp6Kej6YeK5Lik5Lq65q275Lqh44CC6Iul55Sy5piv6KKr5YiA44CB5oiK5piv6KKr5q+S77yM5LiU6KeE5YiZ5q2j5bi45Yik6IOc5LuN6L+b5YWl55m95aSp77yM5YiZ5oiK5b6I5Y+v6IO95piv54u877yM5ZCm5YiZ5Lik54u85Zub5Lq65bey6L6+6IOc5Yip5p2h5Lu277yb6L+Z5piv5p2h5Lu25o6o5pat77yM5LiN5piv5bey5o+t6Lqr5Lu944CC5Ymp5LiL5LmZ5ZKM5LiZ5pio5aSp6YO95rKh5pyJ5piO56Gu54u85Z2R77yM5YWs5byA5L+h5oGv5LiN6Laz5Lul56Gs5YiG44CC6K+35Lik5L2N5LuK5aSp5piO56Gu77ya55u45L+h55Sy5ZKM5bex5ZCX77yM5pio5aSp5oqV5LqG6LCB77yM5LuK5aSp5oCA55aR6LCB5Lul5Y+K55CG55Sx44CC5oiR5YC+5ZCR5LuO5LmZ44CB5LiZ5Lit5om+5pyA5ZCO5LiA54u877yM5L2G5Lya5ZCs5a6M5Y+R6KiA5YaN5oqV77yM5LiN5oqK6L+Z56eN5YC+5ZCR5b2T6ZOB6K+B44CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzYKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMToxMjA6MCIsCiAgICAgICAgInZlcnNpb24iOiAxMjAsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvlt7EiLAogICAgICAgICAgInRleHQiOiAiNeWPt+W3see7p+e7reaKpeS/oeaBr++8muaYqOWknOWIgOWPo+aYr+eUsu+8jOaIkeW3suayoeacieaVkeiNr++8m+aIkeeUqOavkuiNr+avkuS6huaIiuOAguaYqOaXpeaIkeS5n+aKleaIiu+8jOWOn+WboOaYr+WcqOWUr+S4gOmihOiogOWutueUsuS4juWFtumHkeawtDblj7fkuYvlpJbvvIzkuZnkuJnmiIrkuInluK3nmoTlj5HoqIDpg73lgY/kv53lrojvvIzmiIrlj6rmnInntKLopoHmgIDnlpHlr7nosaHvvIzmsqHmnInnu5nlhbfkvZPmib7ni7zmlrnms5XvvIzmiJHkvJjlhYjmjpLku5bjgILku4rlpKnlm5vkurrku43mnKrnu4jlsYDvvIzmjInkuKTni7zop4TliJnnu5PlkIjnlLLlpJzpl7TooqvliIDvvIzmiIrlpKfmpoLnjofooqvmiJHmr5LkuK3ni7zvvJvliankuIvkuIDni7zph43ngrnnnIvkuZnkuJnjgII25Y+35pyJ55Sy6YeR5rC05LiO6aaW5aSc5YiA5Y+j5Y+M6YeN5pSv5pKR77yM5pqC5LiN5Zue5aS044CC5LmZ5LiZ6K+35ZCE6Ieq6Kej6YeK5pio5pel56Wo5oqV6LCB5Y+K55CG55Sx77yM5bm257uZ5Ye65LuK5aSp5Yik5pat77yb5oiR5Lya5ZCs5a6M5YaN5oqV77yM5LiN6IO96K6p5bmz56Wo57un57ut5raI6ICX5aW95Lq644CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzcKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMToxMjE6MCIsCiAgICAgICAgInZlcnNpb24iOiAxMjEsCiAgICAgICAgInR5cGUiOiAicGxheWVyX3NwZWVjaCIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAic3BlYWtlciI6ICLmmJ/nlYzlhpvkuZkiLAogICAgICAgICAgInRleHQiOiAi5LmZ77ya546w5Zyo5Zub5Lq66L+Y6IO96L+b5YWl55m95aSp77yM6K+05piO5Zy65LiK5LiN5Lya5LuN5pyJ5Lik54u844CC55Sy5ZKM5oiK5Y+M5q2777yM57uT5ZCI55Sy5pio5aSp5oql6aKE6KiA5a6244CB5bex5oql5aWz5ber77yM5oiR5YC+5ZCR55Sy6KKr5YiA44CB5oiK6KKr5q+S77yM6K+35bex6K+05piO55So5q+S5a+56LGh44CC5pio5aSp5oiR5oqV5LiZ77yM5piv5Zyo5LmZ5LiZ5oiK5bex5Zub5bit5Lit5o6S6Zmk5b2T5pe25peg5Lq65a+56Lez55qE5aWz5ber5ZCO77yM5LiZ5Y+q5L2c5a6J5YWo6KGo5oCB77yM5rKh5pyJ54us56uL5om+54u854K577yM5omA5Lul6YCJ5LiZ44CC5LuK5aSp5oiR5oql54yO5Lq677yM5pio5aSp5rKh6Lez5piv6YG/5YWN5o+Q5YmN5pq06Zyy5p6q77yb55uu5YmN5oiR5pyA5oCA55aR5LiZ44CC5YWt5Y+36Iul5piv55yf6YeR5rC077yM5bex5Y+I6IO96K+05piO5q+S5oiK77yM5Ymp5L2Z54u85Z2R5bCx5Zyo5LiZ44CC6K+35LiZ5q2j6Z2i5oql6Lqr5Lu95ZKM5pio5aSp5oqV56Wo55CG55Sx77yM5Yir5Y+q6Z2g5oiR5Y+R6KiA6L6D5pma5oiW5bqn5L2N5p2l5o6o5oiR44CCIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2MzgKICAgICAgfSwKICAgICAgewogICAgICAgICJzb3VyY2Vfb3V0Ym94X2lkIjogIlZFUklGWS1jNzExMzdlZS0yMDI2MTAyMy0wMToxMjg6MCIsCiAgICAgICAgInZlcnNpb24iOiAxMjgsCiAgICAgICAgInR5cGUiOiAidm90ZSIsCiAgICAgICAgInB1YmxpY19maWVsZHMiOiB7CiAgICAgICAgICAiYWxpdmUiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuZkiLAogICAgICAgICAgICAi5pif55WM5Yab5LiZIiwKICAgICAgICAgICAgIuaYn+eVjOWGm+W3sSIsCiAgICAgICAgICAgICLpqazljaHph4zkuYzmlq8iCiAgICAgICAgICBdLAogICAgICAgICAgImRlYWRsaW5lIjogMTc5Mjc4MzEyMC45Mjc4Mzg4CiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjYzOQogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjE0MzowIiwKICAgICAgICAidmVyc2lvbiI6IDE0MywKICAgICAgICAidHlwZSI6ICJkZWF0aHMiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgInBsYXllcnMiOiBbCiAgICAgICAgICAgICLmmJ/nlYzlhpvkuZkiCiAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjY0MAogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjE0ODowIiwKICAgICAgICAidmVyc2lvbiI6IDE0OCwKICAgICAgICAidHlwZSI6ICJwbGF5ZXJfc3BlZWNoIiwKICAgICAgICAicHVibGljX2ZpZWxkcyI6IHsKICAgICAgICAgICJzcGVha2VyIjogIuaYn+eVjOWGm+S5mSIsCiAgICAgICAgICAidGV4dCI6ICLkuZnpgZfoqIDvvJrmnKzluK3lt7Llh7rlsYDvvIzkuI3lho3lj4LkuI7lkI7nu63mipXnpajjgILmiJHnmoTmipXnpajlkozliKTmlq3pg73lt7LlnKjliY3pnaLor7TmmI7vvIzlnLrkuIrmjInlhazlvIDnu5Pnrpfnu6fnu63liKTmlq3ljbPlj6/jgILnrYnlvoXkuLvmjIHlrozmiJDpgZfoqIDlkI7nmoTmraPlvI/og5zotJ/nu5PnrpfjgIIiCiAgICAgICAgfSwKICAgICAgICAiZGVsaXZlcnlfc3RhdHVzIjogInNlbnQiLAogICAgICAgICJwbGF0Zm9ybV9tZXNzYWdlX2lkIjogNjY0MQogICAgICB9LAogICAgICB7CiAgICAgICAgInNvdXJjZV9vdXRib3hfaWQiOiAiVkVSSUZZLWM3MTEzN2VlLTIwMjYxMDIzLTAxOjE1MTowIiwKICAgICAgICAidmVyc2lvbiI6IDE1MSwKICAgICAgICAidHlwZSI6ICJ3aW5uZXIiLAogICAgICAgICJwdWJsaWNfZmllbGRzIjogewogICAgICAgICAgIndpbm5lciI6ICJnb29kIgogICAgICAgIH0sCiAgICAgICAgImRlbGl2ZXJ5X3N0YXR1cyI6ICJzZW50IiwKICAgICAgICAicGxhdGZvcm1fbWVzc2FnZV9pZCI6IDY2NDIKICAgICAgfQogICAgXSwKICAgICJ3YXJuaW5nIjogIuacrOaWh+S7tuS4uuacrOasoeWPquivu+eZveWQjeWNleaKleW9se+8jOmdnuaWsOWPkeWFrOWRiu+8m3BlbmRpbmfkuI3lhpLnp7DlhazlvIDpgIHovr7vvJvnjqnlrrboh6rov7Douqvku73kuI3orqTor4HkuLrnnJ/jgIIiCiAgfQpdCg==" download="历史公开记录投影.json">下载此份原件</a><p class="hash">SHA-256：aac82e5035f77c063d4c8f4323ce5f5ea2244855f2cca824ba180837f5d26f9c</p></div><article><pre>[
+  {
+    &quot;game_id&quot;: &quot;VERIFY-e636f4da-20261023&quot;,
+    &quot;mode&quot;: &quot;verification&quot;,
+    &quot;test&quot;: false,
+    &quot;source_database_sha256&quot;: &quot;9f7ff7b6c6e3d69de6e722d0ccf153adbdcd44a9fd308b7fce34a68a254001f6&quot;,
+    &quot;status&quot;: &quot;stopped&quot;,
+    &quot;winner&quot;: null,
+    &quot;public_events&quot;: [
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-20261023:1:0&quot;,
+        &quot;version&quot;: 1,
+        &quot;type&quot;: &quot;created&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6097
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-20261023:20:0&quot;,
+        &quot;version&quot;: 20,
+        &quot;type&quot;: &quot;control&quot;,
+        &quot;public_fields&quot;: {
+          &quot;operation&quot;: &quot;pause&quot;
+        },
+        &quot;delivery_status&quot;: &quot;pending&quot;,
+        &quot;platform_message_id&quot;: null
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-20261023:21:0&quot;,
+        &quot;version&quot;: 21,
+        &quot;type&quot;: &quot;control&quot;,
+        &quot;public_fields&quot;: {
+          &quot;operation&quot;: &quot;stop&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6103
+      }
+    ],
+    &quot;warning&quot;: &quot;本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。&quot;
+  },
+  {
+    &quot;game_id&quot;: &quot;VERIFY-e636f4da-relay-20261023&quot;,
+    &quot;mode&quot;: &quot;verification&quot;,
+    &quot;test&quot;: false,
+    &quot;source_database_sha256&quot;: &quot;9f7ff7b6c6e3d69de6e722d0ccf153adbdcd44a9fd308b7fce34a68a254001f6&quot;,
+    &quot;status&quot;: &quot;finished&quot;,
+    &quot;winner&quot;: &quot;wolves&quot;,
+    &quot;public_events&quot;: [
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:1:0&quot;,
+        &quot;version&quot;: 1,
+        &quot;type&quot;: &quot;created&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;星界军乙&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6104
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:35:0&quot;,
+        &quot;version&quot;: 35,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: []
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6118
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:35:1&quot;,
+        &quot;version&quot;: 35,
+        &quot;type&quot;: &quot;discussion&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;星界军乙&quot;
+          ],
+          &quot;deadline&quot;: 1792758400.213581
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6119
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:52:0&quot;,
+        &quot;version&quot;: 52,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军戊&quot;,
+          &quot;text&quot;: &quot;目前公开信息有限，建议大家给出明确判断及理由。我会结合公开发言再决定投票。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6122
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:53:0&quot;,
+        &quot;version&quot;: 53,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军甲&quot;,
+          &quot;text&quot;: &quot;当前全员存活。我先听各位发言，关注投票理由与前后是否一致。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6123
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:54:0&quot;,
+        &quot;version&quot;: 54,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军丙&quot;,
+          &quot;text&quot;: &quot;目前我没有足够的公开信息锁定目标。请各位说明判断依据，我会结合发言中的矛盾与投票理由作选择。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6124
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:61:0&quot;,
+        &quot;version&quot;: 61,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军己&quot;,
+          &quot;text&quot;: &quot;己席已实收本阶段提示。本轮仅验证真实收发通道；当前提示未提供局内身份或行动证据，我暂不指认任何席位，请按已收到的公开信息继续讨论。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6128
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:65:0&quot;,
+        &quot;version&quot;: 65,
+        &quot;type&quot;: &quot;vote&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;星界军乙&quot;
+          ],
+          &quot;deadline&quot;: 1792759016.6596968
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6134
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:86:0&quot;,
+        &quot;version&quot;: 86,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: []
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6149
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:86:3&quot;,
+        &quot;version&quot;: 86,
+        &quot;type&quot;: &quot;night&quot;,
+        &quot;public_fields&quot;: {
+          &quot;round&quot;: 2
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6150
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:109:0&quot;,
+        &quot;version&quot;: 109,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军乙&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6175
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:109:1&quot;,
+        &quot;version&quot;: 109,
+        &quot;type&quot;: &quot;discussion&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;
+          ],
+          &quot;deadline&quot;: 1792760606.7724054
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6176
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:122:0&quot;,
+        &quot;version&quot;: 122,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军丁&quot;,
+          &quot;text&quot;: &quot;丁席已收到本阶段提示，按验证局规则发言。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6178
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:123:0&quot;,
+        &quot;version&quot;: 123,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军戊&quot;,
+          &quot;text&quot;: &quot;现在存活人数减少，建议各位明确说明本轮怀疑对象与依据，避免分散票型。我希望听到可以核对的公开理由。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6179
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:130:0&quot;,
+        &quot;version&quot;: 130,
+        &quot;type&quot;: &quot;vote&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军丙&quot;,
+            &quot;星界军丁&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;
+          ],
+          &quot;deadline&quot;: 1792761113.7611089
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6180
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:145:0&quot;,
+        &quot;version&quot;: 145,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军丙&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6185
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:151:1&quot;,
+        &quot;version&quot;: 151,
+        &quot;type&quot;: &quot;night&quot;,
+        &quot;public_fields&quot;: {
+          &quot;round&quot;: 3
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6188
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:166:0&quot;,
+        &quot;version&quot;: 166,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军丁&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6199
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-e636f4da-relay-20261023:166:1&quot;,
+        &quot;version&quot;: 166,
+        &quot;type&quot;: &quot;winner&quot;,
+        &quot;public_fields&quot;: {
+          &quot;winner&quot;: &quot;wolves&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6200
+      }
+    ],
+    &quot;warning&quot;: &quot;本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。&quot;
+  },
+  {
+    &quot;game_id&quot;: &quot;VERIFY-c71137ee-20261023-01&quot;,
+    &quot;mode&quot;: &quot;verification&quot;,
+    &quot;test&quot;: false,
+    &quot;source_database_sha256&quot;: &quot;925ffef8eac96d58fccc5674dad0770269c9ecb8866bd3363215ebe9cd8164bc&quot;,
+    &quot;status&quot;: &quot;finished&quot;,
+    &quot;winner&quot;: &quot;good&quot;,
+    &quot;public_events&quot;: [
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:1:0&quot;,
+        &quot;version&quot;: 1,
+        &quot;type&quot;: &quot;created&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;马卡里乌斯&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6623
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:32:0&quot;,
+        &quot;version&quot;: 32,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: []
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6625
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:32:1&quot;,
+        &quot;version&quot;: 32,
+        &quot;type&quot;: &quot;discussion&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;马卡里乌斯&quot;
+          ],
+          &quot;deadline&quot;: 1792782892.013637
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6625
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:47:0&quot;,
+        &quot;version&quot;: 47,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;马卡里乌斯&quot;,
+          &quot;text&quot;: &quot;六号马卡里乌斯发言。昨夜无人出局，但单凭平安夜不能判断谁是好人，也不能确定女巫用了药。目前没有公开查验，也还没有其他人的发言，我不凭座位随机点狼。预言家如果决定出来，请说清查了谁、结果是什么；若有人对跳，我们比较两人的查验和后续逻辑，不是谁先说就信谁。女巫不必为了说明平安夜把用药和身份都暴露，猎人也先别急着跳。希望各位给出具体怀疑对象及理由，不要只说自己是好人。我会看公开发言和查验再决定投票；无可靠信息时也不会把猜测说成铁证。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6626
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:50:0&quot;,
+        &quot;version&quot;: 50,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军丙&quot;,
+          &quot;text&quot;: &quot;丙发言。首夜平安，不能据此认定任何人是好人，也先别让女巫报救人信息。六人两狼，今天投错可能直接进入危险局面，不能凭座位盲推。预言家若查到狼建议明确报查验；若只有好人结果，自行判断起跳收益。对跳请各自说清首验对象和选择理由，大家重点看逻辑和投票一致性。当前没有他人发言可比较，我暂不点狼，投票前会结合完整公开发言判断。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6627
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:51:0&quot;,
+        &quot;version&quot;: 51,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军乙&quot;,
+          &quot;text&quot;: &quot;乙发言：首夜平安，先别把平安夜直接等同于某个人被救。六人两狼，今天需要认真找狼，不能只按座位盲推。预言家若有查杀请明确报查验对象和结果；若报金水也请说明后续验人思路，便于比较是否真在找狼。女巫暂时不必为了证明平安夜暴露自己。我目前没有足够公开信息锁定谁，重点看谁先给结论后补理由、谁只跟票不解释。等大家原话齐了再决定票，暂不提前绑定票型。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6628
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:52:0&quot;,
+        &quot;version&quot;: 52,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军甲&quot;,
+          &quot;text&quot;: &quot;甲席：我报预言家，首夜查验马卡里乌斯，结果不是狼。目前六人都活着，两狼在乙、丙、戊、己四席中。首夜无人出局只能确认公开结果，不能据此确定女巫用药或谁被刀。请其他席位给出独立判断；若有对跳，请明确首夜验人和结果，我会结合发言找矛盾。今天投票需要集中，平票会让狼继续获得夜间机会。我暂不盲点某席为狼，等全员原话再定票。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6629
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:53:0&quot;,
+        &quot;version&quot;: 53,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军戊&quot;,
+          &quot;text&quot;: &quot;我是4号戊。首夜无人出局，只能确认今天六人都在，不能据此认定谁是好人，也不急着让女巫报信息。预言家若有查杀，建议把查验对象和理由讲清楚；若有人对跳，重点看双方信息能否自洽。我目前没有可锁定的狼坑，想听每人明确说一个怀疑对象和理由，投票前再结合公开发言判断。不要因为谁先说或说得长就直接认好。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6630
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:54:0&quot;,
+        &quot;version&quot;: 54,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军己&quot;,
+          &quot;text&quot;: &quot;我是5号己，女巫。首夜刀口是6号马卡里乌斯，我用了救药，因此今天平安夜；毒药还在。6号是我的银水，先偏好人看，但不能排除狼自刀。六人局今天投错、今晚再死好人很危险，请预言家报真实查验和验人理由；若有对跳，大家比较查验与发言，不凭身份外因素站队。目前没有公开查验，我不随便点狼，投票前会看完各席原话。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6631
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:65:0&quot;,
+        &quot;version&quot;: 65,
+        &quot;type&quot;: &quot;vote&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军戊&quot;,
+            &quot;星界军己&quot;,
+            &quot;马卡里乌斯&quot;
+          ],
+          &quot;deadline&quot;: 1792782948.9679048
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6632
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:86:0&quot;,
+        &quot;version&quot;: 86,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: []
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6633
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:86:3&quot;,
+        &quot;version&quot;: 86,
+        &quot;type&quot;: &quot;night&quot;,
+        &quot;public_fields&quot;: {
+          &quot;round&quot;: 2
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6633
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:105:0&quot;,
+        &quot;version&quot;: 105,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军甲&quot;,
+            &quot;星界军戊&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6634
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:105:1&quot;,
+        &quot;version&quot;: 105,
+        &quot;type&quot;: &quot;discussion&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军己&quot;,
+            &quot;马卡里乌斯&quot;
+          ],
+          &quot;deadline&quot;: 1792783070.475056
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6634
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:116:0&quot;,
+        &quot;version&quot;: 116,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军丙&quot;,
+          &quot;text&quot;: &quot;丙报猎人。昨天我投戊。甲单跳预言家给马卡里乌斯金水，己单跳女巫报救马卡里乌斯；现在甲、戊双死而游戏继续，说明至少一狼已经出局。我倾向甲被刀、戊被己毒，但需要己说清今晚用药，不能把推断当公告。若己确认毒戊，则甲预言家、马卡里乌斯金水和我的猎人视角合起来，最后一狼就是乙，今天我会投乙。乙若反驳，请给出能解释双死和首日两份无人对跳身份的完整逻辑。若有人对跳猎人，也请直接说。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6635
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:119:0&quot;,
+        &quot;version&quot;: 119,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;马卡里乌斯&quot;,
+          &quot;text&quot;: &quot;六号发言。昨天我投戊，理由只是其要求别人明确点人，自己却没有给怀疑对象，这只是弱怀疑，不是查杀；最终无人出局。今天公开只确认甲、戊死亡，没有公布死亡原因和身份。甲昨天单跳预言家给我金水，己单跳女巫报救我，我目前倾向相信这两条信息，但死亡不能单独证明甲是真预言家。请己说明昨夜是否用毒、毒谁，这能帮助解释两人死亡。若甲是被刀、戊是被毒，且规则正常判胜仍进入白天，则戊很可能是狼，否则两狼四人已达胜利条件；这是条件推断，不是已揭身份。剩下乙和丙昨天都没有明确狼坑，公开信息不足以硬分。请两位今天明确：相信甲和己吗，昨天投了谁，今天怀疑谁以及理由。我倾向从乙、丙中找最后一狼，但会听完发言再投，不把这种倾向当铁证。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6636
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:120:0&quot;,
+        &quot;version&quot;: 120,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军己&quot;,
+          &quot;text&quot;: &quot;5号己继续报信息：昨夜刀口是甲，我已没有救药；我用毒药毒了戊。昨日我也投戊，原因是在唯一预言家甲与其金水6号之外，乙丙戊三席的发言都偏保守，戊只有索要怀疑对象，没有给具体找狼方法，我优先排他。今天四人仍未终局，按两狼规则结合甲夜间被刀，戊大概率被我毒中狼；剩下一狼重点看乙丙。6号有甲金水与首夜刀口双重支撑，暂不回头。乙丙请各自解释昨日票投谁及理由，并给出今天判断；我会听完再投，不能让平票继续消耗好人。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6637
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:121:0&quot;,
+        &quot;version&quot;: 121,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军乙&quot;,
+          &quot;text&quot;: &quot;乙：现在四人还能进入白天，说明场上不会仍有两狼。甲和戊双死，结合甲昨天报预言家、己报女巫，我倾向甲被刀、戊被毒，请己说明用毒对象。昨天我投丙，是在乙丙戊己四席中排除当时无人对跳的女巫后，丙只作安全表态，没有独立找狼点，所以选丙。今天我报猎人，昨天没跳是避免提前暴露枪；目前我最怀疑丙。六号若是真金水，己又能说明毒戊，剩余狼坑就在丙。请丙正面报身份和昨天投票理由，别只靠我发言较晚或座位来推我。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6638
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:128:0&quot;,
+        &quot;version&quot;: 128,
+        &quot;type&quot;: &quot;vote&quot;,
+        &quot;public_fields&quot;: {
+          &quot;alive&quot;: [
+            &quot;星界军乙&quot;,
+            &quot;星界军丙&quot;,
+            &quot;星界军己&quot;,
+            &quot;马卡里乌斯&quot;
+          ],
+          &quot;deadline&quot;: 1792783120.9278388
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6639
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:143:0&quot;,
+        &quot;version&quot;: 143,
+        &quot;type&quot;: &quot;deaths&quot;,
+        &quot;public_fields&quot;: {
+          &quot;players&quot;: [
+            &quot;星界军乙&quot;
+          ]
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6640
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:148:0&quot;,
+        &quot;version&quot;: 148,
+        &quot;type&quot;: &quot;player_speech&quot;,
+        &quot;public_fields&quot;: {
+          &quot;speaker&quot;: &quot;星界军乙&quot;,
+          &quot;text&quot;: &quot;乙遗言：本席已出局，不再参与后续投票。我的投票和判断都已在前面说明，场上按公开结算继续判断即可。等待主持完成遗言后的正式胜负结算。&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6641
+      },
+      {
+        &quot;source_outbox_id&quot;: &quot;VERIFY-c71137ee-20261023-01:151:0&quot;,
+        &quot;version&quot;: 151,
+        &quot;type&quot;: &quot;winner&quot;,
+        &quot;public_fields&quot;: {
+          &quot;winner&quot;: &quot;good&quot;
+        },
+        &quot;delivery_status&quot;: &quot;sent&quot;,
+        &quot;platform_message_id&quot;: 6642
+      }
+    ],
+    &quot;warning&quot;: &quot;本文件为本次只读白名单投影，非新发公告；pending不冒称公开送达；玩家自述身份不认证为真。&quot;
+  }
+]
+</pre></article></section><section id="doc7"><div class="doc-head"><p>原件 7 / 7 · 2,309 字节</p><h2>自检记录.json</h2><a class="download" href="data:application/octet-stream;base64,ewogICJ0YXNrX2lkIjogImIyNmMyY2Q3LTNlYmUtNDVlMC05Zjc0LTIwMThmNTNjZGJiMSIsCiAgImF0X3V0YyI6ICIyMDI2LTEwLTI1VDE1OjU1OjM1LjMwMDA3NSswMDowMCIsCiAgInBhc3NlZCI6IHRydWUsCiAgImNoZWNrcyI6IFsKICAgIHsKICAgICAgImNoZWNrIjogIuaXp+S7u+WKoTE45Lu96YCQ6aG55a2Y5Zyo5LiO5ZOI5biMIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZSI6ICLmnaXmupDntKLlvJU2N+adoe+8jOWQq+i3qOS7u+WKoeWkjeeUqO+8jOS4jeWkjeWItuaXp+WOn+S7tiIKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICLkuqTku5hKU09O5YWo6YOo5Y+v6Kej5p6QIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZSI6ICLmnKzku7vliqFkZWxpdmVyYWJsZXMvKi5qc29uIgogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogIuS4ieWxgOWIhuW8gOS4lOWdh3ZlcmlmaWNhdGlvbiIsCiAgICAgICJwYXNzZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2UiOiAi5Y+q6K+75a6h6K6h5LiO5bGA55WMLmpzb27vvJvmraPlvI/lsYDmnKrlj5blvpfljp/ku7YiCiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAi5Y6fRELkuovku7bpk77kuI7nirbmgIHkuIDoh7TkuJTmnKrmlLnlj5giLAogICAgICAicGFzc2VkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlIjogImJ1aWxkX3Jldmlldy5weeaMieWOn+W8leaTjmVuY29kZS9oYXNo6KeE5YiZ5Y+q6K+76YeN566XIgogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogIuS4u+WxgDEx5q615Y+R6KiAL+mBl+iogCIsCiAgICAgICJwYXNzZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2UiOiAi5Y6G5Y+y5YWs5byA6K6w5b2V5oqV5b2xLmpzb24iCiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAi5Li75bGAMTnmrKHnnJ/lrp7lhazlvIDmraPmlofkuI7ml6fljp/ku7bpgJDlrZfnm7jnrKYiLAogICAgICAicGFzc2VkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlIjogIlNRTGl0ZSBwdWJsaWNfcHJlc2VudGF0aW9uc+WbuuWumuato+aWh+WvueaXp+WFrOW8gOa2iOaBr+S4juecn+WunuWbnuaJpy5qc29uIgogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogIuWFrOW8gOaKleW9seeZveWQjeWNleS4lOayoeacieengeWvhuWtl+autSIsCiAgICAgICJwYXNzZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2UiOiAi5LiN5a+85Ye65a6M5pW0RELjgIFzdGF0dXMvYXVkaXTjgIHljp/lp4vlpJzkv6HjgIHnp4Hlr4ZvdXRib3jjgIHpgJDkurrlpJzpl7TmmKDlsIQiCiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAi5pegRELlj4rljovnvKnnp4Hlr4bljIUiLAogICAgICAicGFzc2VkIjogdHJ1ZSwKICAgICAgImV2aWRlbmNlIjogIuWPquS6pOS7mOaWh+Wtl+aKpeWRiuWSjOWFrOW8gC/mkZjopoFKU09OIgogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogIuW4uOingeWHreaNruW9ouaAgeaJq+aPjyIsCiAgICAgICJwYXNzZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2UiOiAi6IyD5Zu05LuF5pys5Lu75Yqh5Lqk5LuY5paH5pys77yb5pyq6K+75Y+W546v5aKD5Y+Y6YeP5ZKM5Yet5o2u5paH5Lu277yb5Lq65bel5qOA5p+l5o6S6Zmk5peg5YWz5YaF6YOo5p2Q5paZIgogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogIui+ueeVjOWSjOWunueOsOWQhOmhueiQveebmCIsCiAgICAgICJwYXNzZWQiOiB0cnVlLAogICAgICAiZXZpZGVuY2UiOiAi5YWo5bGA5aSN55uY5LiO5a6e546w6Kej6K+0Lm1k44CB6K6w5b2V6KaG55uW5LiO5oqr6Zyy6L6555WMLmpzb24iCiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAi5o+S5Lu25ZKMSmV25YiG5bGCIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJldmlkZW5jZSI6ICLmj5Lku7bljJbljaHngrnkuI5KZXbor4Hmja7liIbmnpAubWQiCiAgICB9CiAgXSwKICAibm90X2RvbmUiOiBbCiAgICAi5pyq5paw5bu6L+mHjeWQr+S7u+S9leWxgOaIluihpeWPkeWKqOS9nCIsCiAgICAi5pyq5Y+W5b6XTElWReWxgGdhbWVfaWTlkozljp/ku7YiLAogICAgIuacquWvvOWHuuacquaOiOadg+i1m+WQjuengeWvhuWGheWuuSIsCiAgICAi5pyq6YeN56CUSmV25oiW5a6e5rWL5b2T5YmN6L+c56uvL+W4guWcuueKtuaAgSIsCiAgICAi5pyq5Luj57uE6ZW/5a+55ZCI5L2c6aKR6YGTIzk3OTflj5HluIPmiJbnu5PmoYgiCiAgXSwKICAidGVzdF9zY29wZSI6ICLmnKzmrKHku4XmnaXmupDlkozlj6ror7vljoblj7LkuIDoh7TmgKfmoLjpqozvvIzkuI3ph43ot5HmuLjmiI8v5qih5Z6LL+aXp+eglOWPkea1i+ivlSIKfQo=" download="自检记录.json">下载此份原件</a><p class="hash">SHA-256：f6cd9654322fa74e744505e9f5010b8f443ab1d574359dd99cdbbbb94c7ea122</p></div><article><pre>{
+  &quot;task_id&quot;: &quot;b26c2cd7-3ebe-45e0-9f74-2018f53cdbb1&quot;,
+  &quot;at_utc&quot;: &quot;2026-10-25T15:55:35.300075+00:00&quot;,
+  &quot;passed&quot;: true,
+  &quot;checks&quot;: [
+    {
+      &quot;check&quot;: &quot;旧任务18份逐项存在与哈希&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;来源索引67条，含跨任务复用，不复制旧原件&quot;
+    },
+    {
+      &quot;check&quot;: &quot;交付JSON全部可解析&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;本任务deliverables/*.json&quot;
+    },
+    {
+      &quot;check&quot;: &quot;三局分开且均verification&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;只读审计与局界.json；正式局未取得原件&quot;
+    },
+    {
+      &quot;check&quot;: &quot;原DB事件链与状态一致且未改变&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;build_review.py按原引擎encode/hash规则只读重算&quot;
+    },
+    {
+      &quot;check&quot;: &quot;主局11段发言/遗言&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;历史公开记录投影.json&quot;
+    },
+    {
+      &quot;check&quot;: &quot;主局19次真实公开正文与旧原件逐字相符&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;SQLite public_presentations固定正文对旧公开消息与真实回执.json&quot;
+    },
+    {
+      &quot;check&quot;: &quot;公开投影白名单且没有私密字段&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;不导出完整DB、status/audit、原始夜信、私密outbox、逐人夜间映射&quot;
+    },
+    {
+      &quot;check&quot;: &quot;无DB及压缩私密包&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;只交付文字报告和公开/摘要JSON&quot;
+    },
+    {
+      &quot;check&quot;: &quot;常见凭据形态扫描&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;范围仅本任务交付文本；未读取环境变量和凭据文件；人工检查排除无关内部材料&quot;
+    },
+    {
+      &quot;check&quot;: &quot;边界和实现各项落盘&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;全局复盘与实现解说.md、记录覆盖与披露边界.json&quot;
+    },
+    {
+      &quot;check&quot;: &quot;插件和Jev分层&quot;,
+      &quot;passed&quot;: true,
+      &quot;evidence&quot;: &quot;插件化卡点与Jev证据分析.md&quot;
+    }
+  ],
+  &quot;not_done&quot;: [
+    &quot;未新建/重启任何局或补发动作&quot;,
+    &quot;未取得LIVE局game_id和原件&quot;,
+    &quot;未导出未授权赛后私密内容&quot;,
+    &quot;未重研Jev或实测当前远端/市场状态&quot;,
+    &quot;未代组长对合作频道#9797发布或结案&quot;
+  ],
+  &quot;test_scope&quot;: &quot;本次仅来源和只读历史一致性核验，不重跑游戏/模型/旧研发测试&quot;
+}
+</pre></article></section></main></div><footer>马克西姆斯·索恩 · 山阵号 · 合并阅读版</footer></body></html>
