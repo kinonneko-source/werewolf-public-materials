@@ -1,0 +1,53 @@
+test_audit_tamper_detected (test_engine.GameTest.test_audit_tamper_detected) ... ok
+test_cli_actual_process (test_engine.GameTest.test_cli_actual_process) ... ok
+test_concurrent_writers_only_one_wins (test_engine.GameTest.test_concurrent_writers_only_one_wins) ... ok
+test_correction_cannot_rewrite_disclosed_or_settled (test_engine.GameTest.test_correction_cannot_rewrite_disclosed_or_settled) ... ok
+test_delivery_failure_no_reply_and_unknown (test_engine.GameTest.test_delivery_failure_no_reply_and_unknown) ... ok
+test_duplicate_stale_wrong_phase_and_atomic_failure (test_engine.GameTest.test_duplicate_stale_wrong_phase_and_atomic_failure) ... ok
+test_first_night_words_strict_seat_order (test_engine.GameTest.test_first_night_words_strict_seat_order) ... ok
+test_full_good_victory_no_role_reveal (test_engine.GameTest.test_full_good_victory_no_role_reveal) ... ok
+test_hunter_shot_then_words_and_no_dead_vote (test_engine.GameTest.test_hunter_shot_then_words_and_no_dead_vote) ... ok
+test_illegal_actions_and_hall_secrets (test_engine.GameTest.test_illegal_actions_and_hall_secrets) ... ok
+test_inbox_binding_replay_and_channel (test_engine.GameTest.test_inbox_binding_replay_and_channel) ... ok
+test_integer_clock_audit (test_engine.GameTest.test_integer_clock_audit) ... ok
+test_no_early_advance_and_deadline (test_engine.GameTest.test_no_early_advance_and_deadline) ... ok
+test_pause_resume_stop_and_correct (test_engine.GameTest.test_pause_resume_stop_and_correct) ... ok
+test_poison_hunter_no_shot_and_first_night_words (test_engine.GameTest.test_poison_hunter_no_shot_and_first_night_words) ... ok
+test_private_may_act_pause_stop_and_expired (test_engine.GameTest.test_private_may_act_pause_stop_and_expired) ... ok
+test_restart_no_repeated_settlement (test_engine.GameTest.test_restart_no_repeated_settlement) ... ok
+test_rollback_including_outbox_when_storage_fails (test_engine.GameTest.test_rollback_including_outbox_when_storage_fails) ... ok
+test_seer_result_only_private_once (test_engine.GameTest.test_seer_result_only_private_once) ... ok
+test_self_save_second_night_forbidden (test_engine.GameTest.test_self_save_second_night_forbidden) ... ok
+test_setup_and_private_views (test_engine.GameTest.test_setup_and_private_views) ... ok
+test_snapshot_tamper_detected (test_engine.GameTest.test_snapshot_tamper_detected) ... ok
+test_stale_prompt_and_stopped_dispatch_rejected (test_engine.GameTest.test_stale_prompt_and_stopped_dispatch_rejected) ... ok
+test_terminal_control_notice_can_dispatch (test_engine.GameTest.test_terminal_control_notice_can_dispatch) ... ok
+test_tied_wolves_no_kill (test_engine.GameTest.test_tied_wolves_no_kill) ... ok
+test_vote_tie_and_all_abstain (test_engine.GameTest.test_vote_tie_and_all_abstain) ... ok
+test_witch_one_potion_self_save_and_consumption (test_engine.GameTest.test_witch_one_potion_self_save_and_consumption) ... ok
+test_wolf_victory_after_queues (test_engine.GameTest.test_wolf_victory_after_queues) ... ok
+test_actual_self_sent_readback_and_relay_share_dedup (test_host.HostTests.test_actual_self_sent_readback_and_relay_share_dedup) ... ok
+test_authenticated_forward_is_actual_receive_but_tamper_rejected (test_host.HostTests.test_authenticated_forward_is_actual_receive_but_tamper_rejected) ... ok
+test_dispatch_private_receipts_and_no_resend (test_host.HostTests.test_dispatch_private_receipts_and_no_resend) ... ok
+test_filtered_outbox_and_compact_status_keep_private_state_out (test_host.HostTests.test_filtered_outbox_and_compact_status_keep_private_state_out) ... ok
+test_hall_requires_channel_and_secret_action_stays_private (test_host.HostTests.test_hall_requires_channel_and_secret_action_stays_private) ... ok
+test_identity_spoof_wrong_recipient_game_phase_no_mutation (test_host.HostTests.test_identity_spoof_wrong_recipient_game_phase_no_mutation) ... ok
+test_ingest_duplicate_and_late (test_host.HostTests.test_ingest_duplicate_and_late) ... ok
+test_maximum_game_id_can_dispatch_and_recover (test_host.HostTests.test_maximum_game_id_can_dispatch_and_recover) ... ok
+test_persist_binding_random_roles_and_test_flags (test_host.HostTests.test_persist_binding_random_roles_and_test_flags) ... ok
+test_player_host_requires_relay_and_only_relay_can_confirm (test_host.HostTests.test_player_host_requires_relay_and_only_relay_can_confirm) ... ok
+test_relay_input_preserves_original_sender_game_and_dedup (test_host.HostTests.test_relay_input_preserves_original_sender_game_and_dedup) ... ok
+test_restart_unknown_and_timeout (test_host.HostTests.test_restart_unknown_and_timeout) ... ok
+test_batch_atomic_receipt_restart_and_no_repeat (test_presentation.PresentationTests.test_batch_atomic_receipt_restart_and_no_repeat) ... ok
+test_fixed_templates_and_player_words (test_presentation.PresentationTests.test_fixed_templates_and_player_words) ... ok
+test_malformed_false_like_deaths_and_unicode_lines (test_presentation.PresentationTests.test_malformed_false_like_deaths_and_unicode_lines) ... ok
+test_order_and_rollback (test_presentation.PresentationTests.test_order_and_rollback) ... ok
+test_trailing_empty_lines_are_preserved (test_presentation.PresentationTests.test_trailing_empty_lines_are_preserved) ... ok
+test_unknown_batch_fails_closed_and_audits_once (test_presentation.PresentationTests.test_unknown_batch_fails_closed_and_audits_once) ... ok
+test_whitelist_time_and_private_guard (test_presentation.PresentationTests.test_whitelist_time_and_private_guard) ... ok
+test_100_complete_or_bounded_games (test_simulation.SimulationTest.test_100_complete_or_bounded_games) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 20.260s
+
+OK
